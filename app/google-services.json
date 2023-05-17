@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "320201382788",
+    "project_id": "opsc-firebase-13256",
+    "storage_bucket": "opsc-firebase-13256.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320201382788:android:6f63419978e826aaff1bd1",
+        "android_client_info": {
+          "package_name": "com.example.opsc_poe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320201382788-2t1emiludof49sib1i0bbl2ep4n6nrlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIvj0969h1wlGayfdS3jTq81dxvEclGPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320201382788-2t1emiludof49sib1i0bbl2ep4n6nrlf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
