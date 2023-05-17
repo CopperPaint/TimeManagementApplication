@@ -28,34 +28,43 @@
         />
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:id="@+id/llHomeActivities"
+        android:layout_width="389dp"
+        android:layout_height="102dp"
         android:layout_marginLeft="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_toRightOf="@id/vwAppTitleBar">
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/vwAppTitleBar"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvAppTitleWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Welcome"
+            android:textColor="@color/Dark_Green"
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/Dark_Green"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tvAppTitleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="{Username}!"
+            android:textColor="@color/Dark_Green"
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/Dark_Green"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
+    <View
+        android:layout_below="@id/llHomeActivities"
+        android:layout_marginTop="20dp"
+        android:id="@+id/vwEntryBackground"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="@drawable/backing_dark_green"/>
 </RelativeLayout>
