@@ -11,14 +11,24 @@
 
     <View
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/vwAppTitleBar"
         android:layout_width="4dp"
         android:layout_height="100dp"
         android:background="@drawable/rounded_rectangle_dark_green"/>
 
+    <ImageView
+        android:id="@+id/imgBlackTurtle"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:srcCompat="@drawable/blackturtle"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="20dp"
+        android:rotation="-45"
+        />
+
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +51,8 @@
             android:id="@+id/tvAppTitleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Turle Time"
+            android:text="Turtle Time"
+            android:textStyle="bold"
             android:textSize="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
