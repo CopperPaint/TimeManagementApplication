@@ -10,6 +10,9 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //getActionBar().hide();
+        supportActionBar?.hide()
+
         //PLEASE FUCKING WORK
         //I BEG OF YOU
         //I SWEAR TO GOD
