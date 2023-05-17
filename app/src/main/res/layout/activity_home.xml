@@ -46,7 +46,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/Dark_Green"/>
-
         <TextView
             android:id="@+id/tvAppTitleName"
             android:layout_width="wrap_content"
@@ -58,16 +57,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:textColor="@color/Dark_Green"/>
-
-
-
-
     </LinearLayout>
-
-
-
-
-
-
-
 </RelativeLayout>
