@@ -11,5 +11,7 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
 
         //PLEASE FUCKING WORK
+        //I BEG OF YOU
+        //I SWEAR TO GOD
     }
 }
