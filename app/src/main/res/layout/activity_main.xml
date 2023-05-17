@@ -92,7 +92,9 @@
             android:textSize="30dp"
             android:textColor="@color/Input_Grey"
             android:text="Sign In"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:onClick="onClick"
+            android:clickable="true"/>
 
         <TextView
             android:id="@+id/tvSignUp"
@@ -102,7 +104,9 @@
             android:textSize="30dp"
             android:textColor="@color/Input_Grey"
             android:text="Sign Up"
-            android:textAlignment="center"/>
+            android:textAlignment="center"
+            android:onClick="onClick"
+            android:clickable="true"/>
 
 
 
