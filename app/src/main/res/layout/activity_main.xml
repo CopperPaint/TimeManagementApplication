@@ -28,10 +28,11 @@
         />
 
     <LinearLayout
+        android:id="@+id/llWelcome"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="8dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_toRightOf="@id/vwAppTitleBar">
 
@@ -63,10 +64,13 @@
 
     </LinearLayout>
 
-
-
-
-
+    <View
+        android:layout_below="@id/llWelcome"
+        android:layout_marginTop="40dp"
+        android:id="@+id/vwEntryBackground"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:background="@drawable/backing_dark_green"/>
 
 
 </RelativeLayout>
