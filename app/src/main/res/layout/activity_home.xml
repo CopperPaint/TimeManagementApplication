@@ -60,6 +60,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
+
     <View
         android:layout_below="@id/llHomeActivities"
         android:layout_marginTop="20dp"
@@ -67,4 +68,26 @@
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:background="@drawable/backing_dark_green"/>
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/llHomeActivities"
+        android:id="@+id/llActivityPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_below="@id/llActivityPage"
+            android:layout_marginTop="10dp"
+            android:id="@+id/vwActivityBar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/rounded_rectangle_muted_green"/>
+
+
+    </LinearLayout>
+
 </RelativeLayout>
