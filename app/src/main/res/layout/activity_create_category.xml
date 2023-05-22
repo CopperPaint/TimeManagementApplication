@@ -76,7 +76,7 @@
     <LinearLayout
         android:id="@+id/llCategoryInput"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/llCreateCategory"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="30dp"
@@ -137,7 +137,30 @@
             android:inputType="textPersonName"
             android:text="Discription" />
 
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Muted_Green"
+            android:text="Create"
+            android:textSize="20sp"
+            android:theme="@style/button_colour_green" />
+
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgBrown"
+        android:layout_below="@id/llCategoryInput"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:rotation="-35"
+        app:srcCompat="@drawable/brownturtle" />
 
 
 </RelativeLayout>

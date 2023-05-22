@@ -13,4 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="button_colour_green">
+        <item name="colorPrimary">@color/Muted_Green</item>
+    </style>
 </resources>
