@@ -66,6 +66,8 @@
 
     </LinearLayout>
 
+
+
     <View
         android:layout_below="@id/llWelcome"
         android:layout_marginTop="40dp"
@@ -114,14 +116,25 @@
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/vwEntryMethod"
-        android:layout_width="140dp"
-        android:layout_height="5dp"
-        android:layout_below="@id/llEntrySelector"
-        android:layout_marginLeft="42dp"
-        android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/Input_Grey"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:id="@+id/fcFragmentContainer"/>
+
+        <View
+            android:id="@+id/vwEntryMethod"
+            android:layout_width="140dp"
+            android:layout_height="5dp"
+            android:layout_below="@id/llEntrySelector"
+            android:layout_marginLeft="42dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Input_Grey"/>
+
+
+
+
+
 
 
 

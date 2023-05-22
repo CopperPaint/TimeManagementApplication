@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity()
         signUpSelect.setOnClickListener{
 
             //EntryMethodSelector.left = 500
-           // EntryMethodSelector.marginLeft = 500
+            // EntryMethodSelector. = 500
             //move or hide the bar to be on the sign up
 
         }
