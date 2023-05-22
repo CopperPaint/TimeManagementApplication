@@ -16,4 +16,7 @@
     <style name="button_colour_green">
         <item name="colorPrimary">@color/Muted_Green</item>
     </style>
+    <style name="button_colour_white">
+        <item name="colorPrimary">@color/Input_Grey</item>
+    </style>
 </resources>
