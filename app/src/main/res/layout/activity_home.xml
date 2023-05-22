@@ -96,34 +96,7 @@
             android:id="@+id/vwActivityNames"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/Input_Grey"/>
-
-        <View
-            android:layout_below="@id/vwActivityBar"
-            android:layout_marginTop="30dp"
-            android:id="@+id/vwActivityNames2"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/Input_Grey"/>
-
-        <View
-            android:layout_below="@id/vwActivityBar"
-            android:layout_marginTop="30dp"
-            android:id="@+id/vwActivityNames3"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/Input_Grey"/>
-
-        <View
-            android:layout_below="@id/vwActivityBar"
-            android:layout_marginTop="30dp"
-            android:id="@+id/vwActivityNames4"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/rounded_rectangle"
+            android:background="@drawable/rounded_item_box"
             android:backgroundTint="@color/Input_Grey"/>
 
         <View
@@ -131,11 +104,19 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_below="@id/vwActivityBar"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="330dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:background="@drawable/rounded_rectangle"
+            android:background="@drawable/rounded_item_box"
             android:backgroundTint="@color/Input_Grey" />
+
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imgTurtleActivityBar"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="642dp"
+        android:layout_marginLeft="170dp"
+        app:srcCompat="@drawable/cyanturtle" />
 </RelativeLayout>
