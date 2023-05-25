@@ -5,44 +5,50 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.marginLeft
+import androidx.fragment.app.Fragment
+import com.example.opsc_poe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        //getActionBar().hide();
+        //Hide the action bar
         supportActionBar?.hide()
 
-        //PLEASE FUCKING WORK
-        //I BEG OF YOU
-        //I SWEAR TO GOD
+        //Set view binding
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        //create local fragment controller
+        val fragmentControl = FragmentHandler()
+
+        //set the sign in fragment to be the initial view
+        fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
 
-        //testing (please) - jake
+        //Sign in view activation
+        binding.tvSignIn.setOnClickListener{
+            //replaceFragment(sign_in_fragment())
+            fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
+        }
 
-        //testing work - ben
-
-        val signInSelect = findViewById<TextView>(R.id.tvSignIn)
-        val signUpSelect = findViewById<TextView>(R.id.tvSignUp)
-        val EntryMethodSelector = findViewById<View>(R.id.vwEntryMethod)
-
-        signUpSelect.setOnClickListener{
-
-            //EntryMethodSelector.left = 500
-            // EntryMethodSelector. = 500
-            //move or hide the bar to be on the sign up
-
+        //Sign up view activation
+        binding.tvSignUp.setOnClickListener{
+            //replaceFragment(sign_up_fragment())
+            fragmentControl.replaceFragment(sign_up_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
         }
 
 
-        signInSelect.setOnClickListener{
 
-            EntryMethodSelector.left = 100
-          //move or hide the bar to be on the sign in
-        }
 
     }
+
+  /*  private fun replaceFragment(fragment : Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fcFragmentContainer, fragment)
+        fragmentTransaction.commit()
+    }*/
 }

@@ -117,10 +117,7 @@
     </LinearLayout>
 
 
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:id="@+id/fcFragmentContainer"/>
+
 
         <View
             android:id="@+id/vwEntryMethod"
@@ -131,7 +128,12 @@
             android:background="@drawable/rounded_rectangle"
             android:backgroundTint="@color/Input_Grey"/>
 
-
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:id="@+id/fcFragmentContainer"
+        android:layout_below="@id/llEntrySelector"
+         />
 
 
 
