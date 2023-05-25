@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="600dp"
+    android:background="@color/Dark_Green">
+
+    <View
+        android:id="@+id/vwEntryMethod"
+        android:layout_width="140dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="225dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Input_Grey"/>
 
     <TextView
         android:id="@+id/tvSignUp"

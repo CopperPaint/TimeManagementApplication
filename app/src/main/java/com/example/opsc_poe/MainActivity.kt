@@ -1,11 +1,9 @@
 package com.example.opsc_poe
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.res.Resources
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import androidx.core.view.marginLeft
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()
@@ -17,6 +15,9 @@ class MainActivity : AppCompatActivity()
         //Hide the action bar
         supportActionBar?.hide()
 
+        //set status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
+
         //Set view binding
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity()
 
         //set the sign in fragment to be the initial view
         fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
+
 
 
         //Sign in view activation
