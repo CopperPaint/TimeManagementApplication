@@ -71,7 +71,7 @@
         android:layout_below="@id/llCreateCategory"
         android:layout_marginTop="10dp"
         android:background="@drawable/backing_shape"
-        android:backgroundTint="@color/Dark_Green"/>
+        android:backgroundTint="@color/Dark_Green" />
 
     <LinearLayout
         android:id="@+id/llCategoryInput"
