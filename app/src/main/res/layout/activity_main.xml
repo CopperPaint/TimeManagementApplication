@@ -93,24 +93,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="30dp"
-            android:textColor="@color/Input_Grey"
+            android:clickable="true"
+            android:onClick="onClick"
             android:text="Sign In"
             android:textAlignment="center"
-            android:onClick="onClick"
-            android:clickable="true"/>
+            android:textColor="@color/Input_Grey"
+            android:textSize="30dp"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/tvSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="30dp"
-            android:textColor="@color/Input_Grey"
+            android:clickable="true"
+            android:onClick="onClick"
             android:text="Sign Up"
             android:textAlignment="center"
-            android:onClick="onClick"
-            android:clickable="true"/>
+            android:textColor="@color/Input_Grey"
+            android:textSize="30dp"
+            tools:ignore="TouchTargetSizeCheck" />
 
 
 
