@@ -99,7 +99,7 @@
             android:text="TextView" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnClick"
             android:layout_width="220dp"
             android:layout_height="50dp"
             android:layout_marginLeft="70dp"
@@ -117,9 +117,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="167dp"
-        android:layout_marginLeft="142dp"
+        android:layout_marginLeft="138dp"
         android:text="Activities"
         android:textStyle="bold"
         android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/imgTurtle"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="658dp"
+        android:layout_marginLeft="162dp"
+        app:srcCompat="@drawable/cyanturtle" />
+
+    <TextView
+        android:id="@+id/TvLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="161dp"
+        android:text="<"
+        android:textSize="40dp" />
+
+    <TextView
+        android:id="@+id/TvRight"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="161dp"
+        android:text=">"
+        android:textSize="40dp" />
 
 </RelativeLayout>
