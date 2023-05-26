@@ -21,14 +21,14 @@
         android:layout_height="80dp"
         app:srcCompat="@drawable/cyanturtle"
         android:layout_marginLeft="320dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:rotation="-125"
         android:layout_below="@id/vwEntryMethodBar"/>
 
     <TextView
         android:id="@+id/tvEmailPrompt"
         android:layout_below="@id/imgCyanTurtle"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="-20dp"
         android:layout_marginLeft="64dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -120,5 +120,27 @@
         android:textStyle="bold"
         android:onClick="onClick"
         android:clickable="true"/>
+
+
+    <ImageView
+        android:id="@+id/imgBrownTurtle"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginLeft="290dp"
+        android:rotation="-25"
+        app:srcCompat="@drawable/brownturtle"
+        android:layout_below="@id/tvForgotPasswordButton"/>
+
+    <ImageView
+        android:id="@+id/imgGreenTurtle"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:rotation="30"
+        app:srcCompat="@drawable/greenturtle"
+        android:layout_below="@id/tvForgotPasswordButton"/>
+
 
 </RelativeLayout>
