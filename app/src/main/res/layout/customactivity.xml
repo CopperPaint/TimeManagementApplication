@@ -12,26 +12,30 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-
+        android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_rectangle" />
 
     <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_rectangle" />
+        android:id="@+id/vHour"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@id/llNameText"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="#8BE1D9" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/llNameText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
         android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/llText"
-            android:layout_width="200dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -55,8 +59,32 @@
             android:layout_height="60dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/Dark_Green"/>
+            android:backgroundTint="@color/Dark_Green" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llHourText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/llNameText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHourText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours to go!" />
+
+        <TextView
+            android:id="@+id/tvHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="X"
+            android:textSize="24sp" />
     </LinearLayout>
 
 </RelativeLayout>
