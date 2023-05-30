@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/Light_Green">
+
+    <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/vwAppTitleBar"
+        android:layout_width="4dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Dark_Green"/>
+
+    <ImageView
+        android:id="@+id/imgBlackTurtle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/cogturtle"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="10dp"
+        android:rotation="-35"
+        />
+
+    <LinearLayout
+        android:id="@+id/llHomeActivities"
+        android:layout_width="374dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/vwAppTitleBar"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvAppTitleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="{CategoryName}!"
+            android:textColor="@color/Dark_Green"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+    <View
+        android:layout_below="@id/llHomeActivities"
+        android:layout_marginTop="0dp"
+        android:id="@+id/vwEntryBackground"
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        android:background="@drawable/backing_shape"
+        android:backgroundTint="@color/Dark_Green"/>
+
+    <LinearLayout
+        android:id="@+id/llActivityPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llHomeActivities"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/vwActivityBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Muted_Green" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Description of Category"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtActivty"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_rectangle"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnClick"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="400dp"
+            android:background="@drawable/rounded_item_box"
+            android:text=""
+            android:theme="@style/button_colour_white"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtActivityBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="138dp"
+        android:text="Activities"
+        android:textStyle="bold"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:id="@+id/imgTurtle"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="672dp"
+        android:layout_marginLeft="70dp"
+        app:srcCompat="@drawable/cyanturtle" />
+
+    <TextView
+        android:id="@+id/TvLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="93dp"
+        android:text="B"
+        android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/btnClick2"
+        android:layout_width="165dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="225dp"
+        android:layout_marginTop="672dp"
+        android:background="@drawable/rounded_item_box"
+        android:text=""
+        android:theme="@style/button_colour_white"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+
+    <ImageView
+        android:id="@+id/imgTurtle2"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="673dp"
+        android:layout_marginLeft="270dp"
+        app:srcCompat="@drawable/brownturtle" />
+</RelativeLayout>
