@@ -27,7 +27,7 @@
         />
 
     <LinearLayout
-        android:id="@+id/llHomeActivities"
+        android:id="@+id/llCreateEditActivity"
         android:layout_width="389dp"
         android:layout_height="102dp"
         android:layout_marginLeft="8dp"
@@ -63,7 +63,7 @@
     </LinearLayout>
 
     <View
-        android:layout_below="@id/llHomeActivities"
+        android:layout_below="@id/llCreateEditActivity"
         android:layout_marginTop="20dp"
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
-        android:layout_below="@id/llHomeActivities"
+        android:layout_below="@id/llCreateEditActivity"
         android:id="@+id/llActivityPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
