@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,9 @@ class MainActivity : AppCompatActivity()
         binding.tvSignIn.setOnClickListener{
             //replaceFragment(sign_in_fragment())
             fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
+
+            //val i = Intent(this, sign_in_fragment::class.java)
+
         }
 
         //Sign up view activation

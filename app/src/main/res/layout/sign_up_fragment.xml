@@ -122,7 +122,7 @@
         android:layout_weight="1"
         android:textSize="24dp"
         android:textColor="@color/Input_Grey"
-        android:text="Sign In"
+        android:text="Sign Up"
         android:textAlignment="center"
         android:background="@drawable/rounded_rectangle"
         android:backgroundTint="@color/Muted_Green"
