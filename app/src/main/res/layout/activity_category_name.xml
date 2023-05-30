@@ -106,7 +106,6 @@
             android:theme="@style/button_colour_white"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
 
-
     </LinearLayout>
 
     <TextView
