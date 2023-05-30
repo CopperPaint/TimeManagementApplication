@@ -9,7 +9,7 @@
 
 
     <View
-        android:id="@+id/vwAppTitleBar"
+        android:id="@+id/vwLogsBar"
         android:layout_width="3dp"
         android:layout_height="76dp"
         android:layout_marginLeft="10dp"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@id/vwAppTitleBar">
+        android:layout_toRightOf="@id/vwLogsBar">
 
         <TextView
             android:id="@+id/tvCreate"

@@ -12,6 +12,9 @@
         android:theme="@style/Theme.OPSC_POE"
         tools:targetApi="31">
         <activity
+            android:name=".LogsList"
+            android:exported="false" />
+        <activity
             android:name=".CategoryName"
             android:exported="false" />
         <activity

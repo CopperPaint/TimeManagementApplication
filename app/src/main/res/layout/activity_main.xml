@@ -13,7 +13,7 @@
     <View
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/vwAppTitleBar"
+        android:id="@+id/vwLogsBar"
         android:layout_width="4dp"
         android:layout_height="100dp"
         android:background="@drawable/rounded_rectangle"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_toRightOf="@id/vwAppTitleBar">
+        android:layout_toRightOf="@id/vwLogsBar">
 
         <TextView
             android:id="@+id/tvAppTitleWelcome"
@@ -51,7 +51,7 @@
             android:textColor="@color/Dark_Green"/>
 
         <TextView
-            android:id="@+id/tvAppTitleName"
+            android:id="@+id/tvCategoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Turtle Time"

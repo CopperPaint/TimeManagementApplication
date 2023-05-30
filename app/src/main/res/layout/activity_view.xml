@@ -9,7 +9,7 @@
     tools:context=".ViewActivity">
 
     <View
-        android:id="@+id/vwAppTitleBar"
+        android:id="@+id/vwLogsBar"
         android:layout_width="3dp"
         android:layout_height="76dp"
         android:layout_marginLeft="10dp"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="30dp"
-        android:layout_toRightOf="@id/vwAppTitleBar"
+        android:layout_toRightOf="@id/vwLogsBar"
         android:orientation="vertical">
 
         <TextView
