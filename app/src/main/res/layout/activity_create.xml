@@ -165,7 +165,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:text="Description" />
+            android:text="Categoty" />
 
         <Spinner
             android:id="@+id/spCategory"
