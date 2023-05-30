@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/Muted_Green"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <View
         android:id="@+id/viewWhiteBack"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_rectangle" />
 
     <View
-        android:id="@+id/vHour"
+        android:id="@+id/vBlock"
         android:layout_width="100dp"
         android:layout_height="70dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@id/llNameText"
         android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="#8BE1D9" />
+        android:backgroundTint="@color/Activity_Yellow"/>
 
     <LinearLayout
         android:id="@+id/llNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:orientation="horizontal">
-
+`
         <LinearLayout
             android:id="@+id/llText"
             android:layout_width="230dp"
@@ -40,7 +37,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvMainText"
+                android:id="@+id/tvPrimaryText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ActivityName"
@@ -59,12 +56,12 @@
             android:layout_height="60dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/Dark_Green" />
+            android:backgroundTint="@color/Muted_Green"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llHourText"
+        android:id="@+id/llBlockText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/llNameText"
@@ -73,13 +70,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvHourText"
+            android:id="@+id/tvBlockText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hours to go!" />
 
         <TextView
-            android:id="@+id/tvHour"
+            android:id="@+id/tvBlockX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"

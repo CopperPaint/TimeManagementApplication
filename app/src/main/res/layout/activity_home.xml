@@ -98,6 +98,17 @@
             android:background="@drawable/rounded_rectangle"
             android:text="TextView" />
 
+
+        <com.example.opsc_poe.CustomActivity
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:primarytext="Activity"
+            app:secondarytext="Category"
+            app:blocktext="Hours to go!"
+            app:xtext="X"
+            />
+
+
         <Button
             android:id="@+id/btnClick"
             android:layout_width="220dp"

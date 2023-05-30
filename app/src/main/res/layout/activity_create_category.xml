@@ -7,7 +7,6 @@
     android:background="@color/Light_Green"
     tools:context=".CreateCategory">
 
-
     <View
         android:id="@+id/vwLogsBar"
         android:layout_width="3dp"
