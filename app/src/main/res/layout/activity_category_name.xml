@@ -27,7 +27,7 @@
         />
 
     <LinearLayout
-        android:id="@+id/llHomeActivities"
+        android:id="@+id/llCategoryHome"
         android:layout_width="374dp"
         android:layout_height="65dp"
         android:layout_marginLeft="10dp"
@@ -52,7 +52,7 @@
     </LinearLayout>
 
     <View
-        android:layout_below="@id/llHomeActivities"
+        android:layout_below="@+id/llCategoryHome"
         android:layout_marginTop="0dp"
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
@@ -61,10 +61,10 @@
         android:backgroundTint="@color/Dark_Green"/>
 
     <LinearLayout
-        android:id="@+id/llActivityPage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/llHomeActivities"
+        android:id="@+id/llCategoryPage"
+        android:layout_width="391dp"
+        android:layout_height="569dp"
+        android:layout_below="@+id/llCategoryHome"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
@@ -95,17 +95,6 @@
             android:background="@drawable/rounded_rectangle"
             android:text="" />
 
-        <Button
-            android:id="@+id/btnClick"
-            android:layout_width="165dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="400dp"
-            android:background="@drawable/rounded_item_box"
-            android:text=""
-            android:theme="@style/button_colour_white"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
-
     </LinearLayout>
 
     <TextView
@@ -118,13 +107,37 @@
         android:textStyle="bold"
         android:textSize="30dp" />
 
-    <ImageView
-        android:id="@+id/imgTurtle"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="672dp"
-        android:layout_marginLeft="70dp"
-        app:srcCompat="@drawable/cyanturtle" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/llCategoryPage"
+        android:id="@+id/llCategoryButton"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btnClick"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_item_box"
+            android:text=""
+            android:theme="@style/button_colour_white"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+        <Button
+            android:id="@+id/btnClick2"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_item_box"
+            android:text=""
+            android:theme="@style/button_colour_white"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/TvLeft"
@@ -135,17 +148,21 @@
         android:text="B"
         android:textSize="40dp" />
 
+    <ImageView
+        android:id="@+id/imgTurtle"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="675dp"
+        android:layout_marginLeft="70dp"
+        app:srcCompat="@drawable/cyanturtle" />
 
-    <Button
-        android:id="@+id/btnClick2"
-        android:layout_width="165dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginTop="672dp"
-        android:background="@drawable/rounded_item_box"
-        android:text=""
-        android:theme="@style/button_colour_white"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
+    <ImageView
+        android:id="@+id/imgTurtle2"
+        android:layout_width="70dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="675dp"
+        android:layout_marginLeft="255dp"
+        app:srcCompat="@drawable/brownturtle" />
 
 
 </RelativeLayout>
