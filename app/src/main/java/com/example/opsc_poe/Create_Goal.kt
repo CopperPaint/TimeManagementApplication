@@ -38,16 +38,10 @@ class Create_Goal : AppCompatActivity() {
         binding.npTimeFrameGoal.setOnValueChangedListener { picker, oldVal, newVal ->
 
             when (newVal) {
-                1 -> {binding.npHourGoal.minValue = 1
-                binding.npHourGoal.maxValue = 24}
-                2 -> {binding.npHourGoal.minValue = 1
-                    binding.npHourGoal.maxValue = 25}
-                3 -> {binding.npHourGoal.minValue = 1
-                    binding.npHourGoal.maxValue = 26}
-                else -> { // Note the block
-                    binding.npHourGoal.minValue = 1
-                        binding.npHourGoal.maxValue = 24
-                }
+                1 -> {binding.npHourGoal.maxValue = 24}
+                2 -> {binding.npHourGoal.maxValue = 168}
+                3 -> { binding.npHourGoal.maxValue = 720}
+                else -> {binding.npHourGoal.maxValue = 24}
             }
 
 
