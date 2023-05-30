@@ -136,6 +136,7 @@
         android:text="B"
         android:textSize="40dp" />
 
+
     <Button
         android:id="@+id/btnClick2"
         android:layout_width="165dp"
@@ -147,11 +148,5 @@
         android:theme="@style/button_colour_white"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
 
-    <ImageView
-        android:id="@+id/imgTurtle2"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="673dp"
-        android:layout_marginLeft="270dp"
-        app:srcCompat="@drawable/brownturtle" />
+
 </RelativeLayout>
