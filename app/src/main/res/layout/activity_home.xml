@@ -102,11 +102,11 @@
         <com.example.opsc_poe.CustomActivity
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:blocktext="Hours to go!"
             app:primarytext="Activity"
             app:secondarytext="Category"
-            app:blocktext="Hours to go!"
             app:xtext="X"
-            />
+            app:blockcolour="@color/teal_200"/>
 
 
         <Button
