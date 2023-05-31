@@ -9,6 +9,7 @@ class ManageUser {
 
     private val appDatabase = Firebase.firestore
     private val newPasswordManager = ManagePassword()
+    var userEmail : String = ""
 
     fun RegisterUser (email: String, username: String, password: String){
 
@@ -34,7 +35,78 @@ class ManageUser {
             }
 
 
+    }
+
+
+
+    fun logInUser (emailAttempt: String, passwordAttempt: String){
+
+        var userPasswordHash = ""
+        var userPasswordSalt = ""
+        var userUsername = ""
+
+        appDatabase.collection("Users")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+
+                    Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
+
+                }
+
+            }
+            .addOnFailureListener{ exception ->
+                Log.w(ContentValues.TAG, "Error getting documents.", exception)
+            }
+
 
     }
+
+
+
+
+    /*
+    fun logInUser (emailAttempt: String, passwordAttempt: String): String{
+
+        var userPasswordHash = ""
+        var userPasswordSalt = ""
+        var userUsername = ""
+
+        appDatabase.collection("Activity")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
+
+                    //userData.put(document.data.getValue("userEmail").toString(), document.data.getValue("userPassword").toString())
+
+                   // userEmail = document.data.getValue("Email").toString()
+                    userEmail = document.data.getValue("CategoryID").toString()
+                   // userPasswordHash = document.data.getValue("PasswordHash").toString()
+                    //userPasswordSalt = document.data.getValue("PasswordSalt").toString()
+                    //userUsername = document.data.getValue("Username").toString()
+
+                    //userList.add(document.data.getValue("Email").toString())
+
+                   // if (emailAttempt == userEmail) {
+
+                       // userPasswordHash = document.data.getValue("PasswordHash").toString()
+                      //  userPasswordSalt = document.data.getValue("PasswordSalt").toString()
+
+                    //}
+
+                }
+
+            }
+            .addOnFailureListener{ exception ->
+                Log.w(ContentValues.TAG, "Error getting documents.", exception)
+            }
+
+        return userEmail
+
+    }
+
+     */
+
 
 }
