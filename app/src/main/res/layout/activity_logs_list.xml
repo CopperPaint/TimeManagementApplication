@@ -27,7 +27,7 @@
         />
 
     <LinearLayout
-        android:id="@+id/llLogsHome"
+        android:id="@+id/llLogsCalendar"
         android:layout_width="374dp"
         android:layout_height="65dp"
         android:layout_marginLeft="10dp"
@@ -52,7 +52,7 @@
     </LinearLayout>
 
     <View
-        android:layout_below="@+id/llLogsHome"
+        android:layout_below="@+id/llLogsCalendar"
         android:layout_marginTop="0dp"
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
@@ -61,24 +61,24 @@
         android:backgroundTint="@color/Dark_Green"/>
 
     <LinearLayout
-        android:id="@+id/llListPage"
+        android:id="@+id/llCalendarPage"
         android:layout_width="391dp"
         android:layout_height="636dp"
-        android:layout_below="@+id/llLogsHome"
+        android:layout_below="@+id/llLogsCalendar"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
 
         <View
-            android:id="@+id/vwListBar"
+            android:id="@+id/vwCalendarBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/rounded_rectangle"
             android:backgroundTint="@color/Muted_Green" />
 
         <TextView
-            android:id="@+id/tvLogsDateHeading"
+            android:id="@+id/tvCalendarDateHeading"
             android:layout_width="200dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
