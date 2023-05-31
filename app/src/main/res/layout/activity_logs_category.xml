@@ -97,13 +97,6 @@
             android:inputType="date"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <CalendarView
-            android:id="@+id/cvCalendar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginTop="20dp"/>
-
 
     </LinearLayout>
 
@@ -113,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginLeft="138dp"
-        android:text="Calendar"
+        android:text="Category"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="30dp" />
@@ -136,5 +129,30 @@
         android:text="F"
         android:textSize="40dp" />
 
+    <ImageView
+        android:id="@+id/imgTurtle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="610dp"
+        android:layout_marginLeft="30dp"
+        android:rotation="-45"
+        app:srcCompat="@drawable/cyanturtle" />
 
+    <ImageView
+        android:id="@+id/imgTurtle2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="180dp"
+        android:rotation="-45"
+        app:srcCompat="@drawable/brownturtle" />
+
+    <ImageView
+        android:id="@+id/imgTurtle3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="630dp"
+        android:layout_marginLeft="310dp"
+        android:rotation="-45"
+        app:srcCompat="@drawable/greenturtle" />
 </RelativeLayout>
