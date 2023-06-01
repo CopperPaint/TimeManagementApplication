@@ -95,6 +95,17 @@
             android:background="@drawable/rounded_rectangle"
             android:text="" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/llactivitycontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
     </LinearLayout>
 
     <TextView
