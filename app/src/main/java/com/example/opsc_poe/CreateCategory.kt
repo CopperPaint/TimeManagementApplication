@@ -17,6 +17,8 @@ class CreateCategory : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_category)
 
+        //global data
+        var globaldata = GlobalClass()
 
         val name = findViewById<EditText>(R.id.etName)
         val description = findViewById<EditText>(R.id.etDescription)
@@ -40,6 +42,7 @@ class CreateCategory : AppCompatActivity() {
                 description = description.text.toString(),
                 colour = defaultcolor
             )
+            globaldata.categories.add(category)
         }
 
 
