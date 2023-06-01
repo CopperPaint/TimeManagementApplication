@@ -117,21 +117,23 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvMaxGoal"
+        <LinearLayout
+            android:id="@+id/llgoalcontainer"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/rounded_rectangle"
-            android:text="Max Goal" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvMinGoal"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/rounded_rectangle"
-            android:text="Min Goal" />
+            <com.example.opsc_poe.CustomActivity
+                android:id="@+id/MinGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></com.example.opsc_poe.CustomActivity>
+
+            <com.example.opsc_poe.CustomActivity
+                android:id="@+id/MaxGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.example.opsc_poe.CustomActivity>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvDes"
