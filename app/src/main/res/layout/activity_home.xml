@@ -4,27 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/Light_Green">
+    android:background="@color/Light_Green"
+    tools:context=".MainActivity">
 
     <View
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/vwLogsBar"
         android:layout_width="4dp"
         android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/Dark_Green"/>
+        android:backgroundTint="@color/Dark_Green" />
 
     <ImageView
         android:id="@+id/imgBlackTurtle"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/cogturtle"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="10dp"
         android:rotation="-45"
-        />
+        app:srcCompat="@drawable/cogturtle" />
 
     <LinearLayout
         android:id="@+id/llCreateEditActivity"
@@ -40,9 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Welcome"
-            android:textStyle="bold"
             android:textColor="@color/Dark_Green"
             android:textSize="30dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,50 +62,43 @@
     </LinearLayout>
 
     <View
-        android:layout_below="@id/llCreateEditActivity"
-        android:layout_marginTop="20dp"
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
         android:layout_height="600dp"
+        android:layout_below="@id/llCreateEditActivity"
+        android:layout_marginTop="20dp"
         android:background="@drawable/backing_shape"
-        android:backgroundTint="@color/Dark_Green"/>
+        android:backgroundTint="@color/Dark_Green" />
 
     <LinearLayout
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_below="@id/llCreateEditActivity"
         android:id="@+id/llActivityPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/llCreateEditActivity"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
         android:orientation="vertical">
 
         <View
-            android:layout_below="@id/llActivityPage"
-            android:layout_marginTop="10dp"
             android:id="@+id/vwActivityBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_below="@id/llActivityPage"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/Muted_Green"/>
+            android:backgroundTint="@color/Muted_Green" />
 
-        <TextView
-            android:id="@+id/txtCategoryDescription"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/rounded_rectangle"
-            android:text="TextView" />
+            android:layout_height="wrap_content">
 
-
-        <com.example.opsc_poe.CustomActivity
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:blocktext="Hours to go!"
-            app:primarytext="Activity"
-            app:secondarytext="Category"
-            app:xtext="X"
-            app:blockcolour="@color/teal_200"/>
+            <LinearLayout
+                android:id="@+id/activitycontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
 
 
         <Button
@@ -127,18 +119,18 @@
         android:id="@+id/txtActivityBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="167dp"
         android:layout_marginLeft="138dp"
+        android:layout_marginTop="167dp"
         android:text="Activities"
-        android:textStyle="bold"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgTurtle"
         android:layout_width="70dp"
         android:layout_height="50dp"
-        android:layout_marginTop="658dp"
         android:layout_marginLeft="162dp"
+        android:layout_marginTop="658dp"
         app:srcCompat="@drawable/cyanturtle" />
 
     <TextView
