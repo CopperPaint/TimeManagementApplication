@@ -7,47 +7,65 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
+import com.example.opsc_poe.databinding.HomeActivityViewFragmentBinding
 
 class CategoryName : AppCompatActivity() {
+    private var _binding: HomeActivityViewFragmentBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_name)
 
+        //global data
+        var globaldata = GlobalClass()
+
+        //passed category
+        var category = Temp_CategoryDataClass()
+
+
+
+
         val CategoryName = findViewById<TextView>(R.id.tvCategoryName)
-        CategoryName.text = "set cat name"
+        CategoryName.text = category.name
+
 
         val CategoryDescription = findViewById<TextView>(R.id.txtCategoryDescription)
-        CategoryDescription.text = "Insert cat description"
-
-
+        CategoryDescription.text = category.description
 
 
         val activityLayout = findViewById<LinearLayout>(R.id.llactivitycontainer)
 
-        //for each activity in category
-        val customactivity = CustomActivity(this)
+        for (activity in globaldata.activities)
+        {
+            if (activity.categoryID == category.categoryID)
+            {
+                //FIX THIS
+                val activityLayout = binding.llBars
+                var newActivity = CustomActivity(this)
+                newActivity.binding.tvPrimaryText.text = activity.name
+                newActivity.binding.tvSecondaryText.text = ""
 
-        //set activity name
-        val PrimaryText = customactivity.findViewById<TextView>(R.id.tvPrimaryText)
-        PrimaryText.text = "set activity name"
 
-        //leave secondary blank
-        val SecondayText = customactivity.findViewById<TextView>(R.id.tvSecondaryText)
-        SecondayText.text = ""
+                //add to view
+                activityLayout.addView(newActivity)
 
-        //display hours until goal
-        val Hour = customactivity.findViewById<TextView>(R.id.tvBlockX)
-        //Hour.text = "insert amount of hours until goal"
-        //if goal reached
-        Hour.text = "✔"
+            }
 
-        //set block colour to category colour
-        val blockcolour = customactivity.findViewById<View>(R.id.llBlockText)
-        //leave alpha as 255
-        blockcolour.setBackgroundColor(Color.argb(255,90,255,200))
 
-        //add to view
-        activityLayout.addView(customactivity)
+
+
+
+        }
+
+
+
+
+
+
+
+
 
 
         val addactivityButton = findViewById<Button>(R.id.btnAddActvity)

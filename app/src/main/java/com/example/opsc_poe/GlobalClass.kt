@@ -6,6 +6,7 @@ class GlobalClass : Application()
 {
     var activities = arrayListOf<Temp_ActivityDataClass>()
     var categories = arrayListOf<Temp_CategoryDataClass>()
+    var goals = arrayListOf<Temp_GoalDataClass>()
     var logs = arrayListOf<Temp_LogDataClass>()
     var user = Temp_UserDataClass()
 }
