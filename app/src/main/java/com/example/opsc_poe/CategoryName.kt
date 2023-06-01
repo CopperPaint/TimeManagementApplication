@@ -42,7 +42,7 @@ class CategoryName : AppCompatActivity() {
         Hour.text = "✔"
 
         //set block colour to category colour
-        val blockcolour = customactivity.findViewById<View>(R.id.vBlock)
+        val blockcolour = customactivity.findViewById<View>(R.id.llBlockText)
         //leave alpha as 255
         blockcolour.setBackgroundColor(Color.argb(255,90,255,200))
 

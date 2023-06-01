@@ -33,11 +33,30 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
         //code here
 
         for (i in 1..10) {
+
             //create new views
             val activityLayout = binding.llBars
             var newActivity = CustomActivity(activity)
-            newActivity.binding.tvPrimaryText.text = "Bar Number: " + i.toString()
-            newActivity.binding.vBlock.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Light_Green)
+
+            //set primary text
+            newActivity.binding.tvPrimaryText.text = "Activity " + i.toString()
+
+            //set secondary text (if second line is not needed then set to null
+            newActivity.binding.tvSecondaryText.text = "Secondary " + i.toString()
+
+            //set the color of the divider bar between the text and the activity color shape
+            newActivity.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Light_Green)
+
+            //set the activity color shape color
+            newActivity.binding.llBlockText.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Dark_Green)
+
+            //set the activity color block text
+            newActivity.binding.tvBlockText.text = "Hours to go!"
+
+            //set the activity color block time
+            newActivity.binding.tvBlockX.text = i.toString()
+
+            //add the new view
             activityLayout.addView(newActivity)
 
         }
