@@ -27,6 +27,9 @@
             android:name=".CategoryName"
             android:exported="false" />
         <activity
+            android:name=".CreateCategory"
+            android:exported="false" />
+        <activity
             android:name=".CreateActivity"
             android:exported="false" />
         <activity
