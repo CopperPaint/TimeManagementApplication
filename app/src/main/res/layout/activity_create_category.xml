@@ -92,7 +92,7 @@
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:background="@drawable/rounded_rectangle"
             android:backgroundTint="@color/Input_Grey"
             android:ems="10"
@@ -100,22 +100,39 @@
             android:text="Name" />
 
         <TextView
-            android:id="@+id/Colour"
+            android:id="@+id/tvColour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Colour"
             android:textColor="@color/Input_Grey" />
 
-        <EditText
-            android:id="@+id/etColour"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/Input_Grey"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Colour" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pick_color_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:text="Pick Color"
+                android:textColor="#000000"
+                android:theme="@style/button_colour_white" />
+
+            <View
+                android:id="@+id/preview_selected_color"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/Activity_Yellow"/>
+
+
+
+
+
+        </LinearLayout>
 
 
         <TextView
@@ -127,7 +144,7 @@
             android:textColor="@color/Input_Grey" />
 
         <EditText
-            android:id="@+id/etDiscription"
+            android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="106dp"
             android:background="@drawable/rounded_rectangle"
