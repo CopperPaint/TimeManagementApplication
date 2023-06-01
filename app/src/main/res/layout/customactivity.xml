@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
     >
 
     <View
@@ -21,7 +22,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@id/llNameText"
-        android:background="@color/Activity_Yellow"/>
+        android:backgroundTint="@color/Activity_Yellow"
+        android:background="@drawable/rounded_rectangle"/>
 
 
     <LinearLayout
@@ -58,9 +60,12 @@
             android:layout_width="7dp"
             android:layout_height="60dp"
             android:layout_marginLeft="10dp"
-            android:background="@color/Muted_Green"/>
+            android:backgroundTint="@color/Muted_Green"
+            android:background="@drawable/rounded_rectangle"/>
 
     </LinearLayout>
+
+
 
     <LinearLayout
         android:id="@+id/llBlockText"
