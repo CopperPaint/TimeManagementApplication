@@ -33,6 +33,7 @@ class CreateActivity : AppCompatActivity() {
         val btnInsertImage: Button = findViewById(R.id.btnInsertImage)
         btnInsertImage.setOnClickListener {
 
+
             captureImage()
         }
 
