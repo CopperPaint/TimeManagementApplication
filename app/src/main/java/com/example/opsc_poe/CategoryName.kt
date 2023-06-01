@@ -59,8 +59,10 @@ class CategoryName : AppCompatActivity() {
         val editCategory = findViewById<Button>(R.id.btnEditCategory)
         addactivityButton?.setOnClickListener()
         {
-            //go to add edit category page
+            //go to add actvity page
         }
+
+
 
     }
 }
