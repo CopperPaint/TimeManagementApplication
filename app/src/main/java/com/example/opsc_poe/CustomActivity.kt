@@ -11,14 +11,14 @@ class CustomActivity(
     context: Context
 ) : RelativeLayout(context)
 {
-
+    /*
     //val tvprimarytext = findViewById<TextView>(R.id.tvPrimaryText)
     val secondaytext = findViewById<TextView>(R.id.tvSecondaryText)
     //val bar = findViewById<View>(R.id.vBar)
     val block = findViewById<View>(R.id.vBlock)
     val blocktext = findViewById<TextView>(R.id.tvBlockText)
     val blockx = findViewById<TextView>(R.id.tvBlockX)
-
+    */
 
     init
     {

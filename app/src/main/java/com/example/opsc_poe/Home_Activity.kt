@@ -20,13 +20,26 @@ class Home_Activity : AppCompatActivity() {
 
         val activityLayout = findViewById<LinearLayout>(R.id.activitycontainer)
 
-
         val customactivity = CustomActivity(this)
         val tvPrimaryText = customactivity.findViewById<TextView>(R.id.tvPrimaryText)
+        tvPrimaryText.text = "I want to die"
         activityLayout.addView(customactivity)
 
-        val customactivity2 = CustomActivity(this)
-        activityLayout.addView(customactivity2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         /*
