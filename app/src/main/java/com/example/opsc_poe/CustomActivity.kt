@@ -1,7 +1,10 @@
 package com.example.opsc_poe
 
+import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.fragment.app.FragmentActivity
+import com.example.opsc_poe.databinding.ActivityMainBinding
+import com.example.opsc_poe.databinding.CustomactivityBinding
 
 class CustomActivity(
     context: FragmentActivity? //FragmentActivity? was Context
@@ -16,11 +19,21 @@ class CustomActivity(
     val blockx = findViewById<TextView>(R.id.tvBlockX)
     */
 
+    var binding: CustomactivityBinding
+    
     init
     {
-        inflate(context, R.layout.customactivity, this)
+        //val binding = ActivityMainBinding.inflate()
+       binding = CustomactivityBinding.inflate(LayoutInflater.from(context))
+        addView(binding.root)
+        //inflate(context, R.layout.customactivity, this)
     }
 
+
+
+
+
+    
     /*
     init
     {

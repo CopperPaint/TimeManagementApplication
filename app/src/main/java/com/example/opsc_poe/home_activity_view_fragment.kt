@@ -28,35 +28,11 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
         //-------------------------------------------------
         //code here
 
-        //sign in button
-
-       // binding.tvSignInButton.setOnClickListener {
-
-
-
-           // }
-
         for (i in 1..10) {
             //create new views
-           // var newBar = TextView(activity)
-           // newBar.top = 10
-           // newBar.text = i.toString()
-
-
             val activityLayout = binding.llBars
             var newActivity = CustomActivity(activity)
-
-
-            val tvPrimaryText = newActivity.findViewById<TextView>(R.id.tvPrimaryText)
-            tvPrimaryText.text = "Bar Number: " + i.toString()
-
-
-            /*
-            newActivity.tvP
-                //"Bar Number: " + i.toString()
-
-             */
-
+            newActivity.binding.tvPrimaryText.text = "Bar Number: " + i.toString()
             activityLayout.addView(newActivity)
 
         }
