@@ -24,7 +24,7 @@ class CreateActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create)
 
         // Initialize the ExecutorService for camera operations
-        cameraExecutor = Executors.newSingleThreadExecutor()
+        //cameraExecutor = Executors.newSingleThreadExecutor()
 
         // Initialize the PreviewView
         previewView = findViewById(R.id.previewView)
@@ -42,6 +42,7 @@ class CreateActivity : AppCompatActivity() {
 
     private fun startCamera()
     {
+        /*
         val cameraProviderFuture: ListenableFuture<ProcessCameraProvider> = ProcessCameraProvider.getInstance(this)
         cameraProviderFuture.addListener(
             {
@@ -73,8 +74,11 @@ class CreateActivity : AppCompatActivity() {
             },
             ContextCompat.getMainExecutor(this)
         )
+
+         */
     }
     private fun captureImage() {
+        /*
         val imageCapture = imageCapture ?: return
 
         // Create a file to save the image
@@ -97,6 +101,8 @@ class CreateActivity : AppCompatActivity() {
                 }
             }
         )
+
+         */
     }
 
 }
