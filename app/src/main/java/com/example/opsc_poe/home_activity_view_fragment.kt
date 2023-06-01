@@ -39,6 +39,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
 
 
 
+
         //-------------------------------------------------
 
 

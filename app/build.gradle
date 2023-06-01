@@ -48,9 +48,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.github.yukuku:ambilwarna:2.0.1'
-    implementation 'androidx.camera.camera2:camera2:1.1.0-alpha07'
-    implementation 'androidx.camera.lifecycle:camera-lifecycle:1.1.0-alpha07'
-    implementation 'androidx.camera.view:camera-view:1.1.0-alpha07'
+
+
 
 
 }
