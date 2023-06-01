@@ -1,14 +1,10 @@
 package com.example.opsc_poe
 
-import android.content.Context
-import android.graphics.Color
-import android.util.AttributeSet
-import android.view.View
 import android.widget.RelativeLayout
-import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 
 class CustomActivity(
-    context: Context
+    context: FragmentActivity? //FragmentActivity? was Context
 ) : RelativeLayout(context)
 {
     /*

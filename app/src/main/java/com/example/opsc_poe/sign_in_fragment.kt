@@ -41,7 +41,7 @@ class sign_in_fragment : Fragment(R.layout.sign_in_fragment) {
             //binding.tvEmailPrompt.text = trying
 
             //test code to show the create goal page
-           var intent = Intent(activity, Create_Goal::class.java)
+           var intent = Intent(activity, Home_Activity::class.java)
             startActivity(intent)
 
 
