@@ -1,6 +1,9 @@
 package com.example.opsc_poe
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +20,7 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
 // onDestroyView.
     private val binding get() = _binding!!
 
+    @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,36 +32,29 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
 
         //-------------------------------------------------
         //code here
-
-        for (i in 1..10) {
-
+        val activityLayout = binding.llBars
+        for (i in GlobalClass().categories)
+        {
             //create new views
-            val activityLayout = binding.llBars
-            var newActivity = CustomActivity(activity)
+            var newCategory = CustomActivity(activity)
+            val catColour = ColorStateList.valueOf(Color.parseColor(i.colour))
+            var (actTotal, hourTotal) = GetActivitesData(newCategory.id)
 
             //set primary text
-            newActivity.binding.tvPrimaryText.text = "Category " + i.toString()
-
-            //set secondary text (if second line is not needed then set to null
-            newActivity.binding.tvSecondaryText.text = "Secondary " + i.toString()
-
+            newCategory.binding.tvPrimaryText.text = i.name
+            //set secondary text
+            newCategory.binding.tvSecondaryText.text = "No of activties: " + actTotal
             //set the color of the divider bar between the text and the activity color shape
-            newActivity.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Light_Green)
-
+            newCategory.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Light_Green)
             //set the activity color shape color
-            newActivity.binding.llBlockText.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Dark_Green)
-
+            newCategory.binding.llBlockText.backgroundTintList = catColour
             //set the activity color block text
-            newActivity.binding.tvBlockText.text = "Hours to go!"
-
+            newCategory.binding.tvBlockText.text = "Total Hours:"
             //set the activity color block time
-            newActivity.binding.tvBlockX.text = i.toString()
-
+            newCategory.binding.tvBlockX.text = hourTotal.toString()
             //add the new view
-            activityLayout.addView(newActivity)
-
+            activityLayout.addView(newCategory)
         }
-
         //-------------------------------------------------
 
 
@@ -68,4 +65,26 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
         super.onDestroyView()
         _binding = null
     }
+
+    fun GetActivitesData(catID: Int): Pair<Int, Int>
+    {
+        var totalAct = 0
+        var totalHour = 0
+        for (i in GlobalClass().activities)
+        {
+            if (i.categoryID == catID)
+            {
+                totalAct++
+                for (j in GlobalClass().logs)
+                {
+                    if (j.activityID == i.activityID)
+                    {
+                        totalHour = totalHour + j.hours
+                    }
+                }
+            }
+        }
+        return  Pair(totalAct, totalHour)
+    }
+
 }
