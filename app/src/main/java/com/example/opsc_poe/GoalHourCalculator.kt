@@ -19,8 +19,7 @@ class GoalHourCalculator
         var mingoal = data.goals[GetGoalIndex(minID)]
         var calcHour: String
         var goalText: String
-        var barColour: String = ""
-        val myColor = ColorStateList.valueOf(Color.parseColor("#FF0000"))
+        var barColour: String
 
         //check min
         val (minHour, minText) = CheckGoal(mingoal.interval, mingoal.amount)
@@ -54,15 +53,15 @@ class GoalHourCalculator
     //method to get the index of the goal using the ID
     public fun GetGoalIndex(id: Int): Int
     {
-        var goalID: Int = -1
-        for (goal in data.goals)
+        var index: Int = -1
+        for (i in 0..data.goals.size)
         {
-            if (goal.goalID == id)
+            if (data.goals[i].goalID == id)
             {
-                goalID = goal.goalID
+                index = i;
             }
         }
-        return  goalID
+        return index
     }
 
     //method to get the total hours logged in the specified interval

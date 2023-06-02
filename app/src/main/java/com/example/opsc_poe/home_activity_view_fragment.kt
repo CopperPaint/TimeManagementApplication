@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -20,6 +21,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
     // onDestroyView.
     private val binding get() = _binding!!
 
+    @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,40 +34,41 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
         //-------------------------------------------------
         //code here
 
-        for (i in 1..10) {
+        //global data
+        var data = GlobalClass()
 
-            //create new views
-            val activityLayout = binding.llBars
+        val activityLayout = binding.llBars
+        for (i in data.activities)
+        {
             var newActivity = CustomActivity(activity)
-
             //set primary text
-            newActivity.binding.tvPrimaryText.text = "Activity " + i.toString()
+            newActivity.binding.tvPrimaryText.text = i.name
+            //get activity category
+            var index = Temp_CategoryDataClass().GetIndex(i.categoryID, data.categories)
+            var category = data.categories[index]
+            //set secondary text
+            newActivity.binding.tvSecondaryText.text = category.name
+            //set the activity color shape color
+            val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
+            newActivity.binding.llBlockText.backgroundTintList = catColour
 
-            //set secondary text (if second line is not needed then set to null
-            newActivity.binding.tvSecondaryText.text = "Secondary " + i.toString()
+            //get activity goal data
+            var (hour, text, color) = GoalHourCalculator().CalculateHours(i.mingoalID, i.maxgoalID)
 
             //set the color of the divider bar between the text and the activity color shape
-            newActivity.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Light_Green)
-
-            //set the activity color shape color
-
-            val catColour = ColorStateList.valueOf(Color.parseColor("#FF0000"))
-            newActivity.binding.llBlockText.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Dark_Green)
+            val barColor = ColorStateList.valueOf(Color.parseColor(color))
+            newActivity.binding.vwBar.backgroundTintList = barColor
 
             //set the activity color block text
-            newActivity.binding.tvBlockText.text = "Hours to go!"
+            newActivity.binding.tvBlockText.text = text
 
             //set the activity color block time
-            newActivity.binding.tvBlockX.text = i.toString()
+            newActivity.binding.tvBlockX.text = hour
 
             //add the new view
             activityLayout.addView(newActivity)
-
         }
-
         //-------------------------------------------------
-
-
         return view
     }
 
