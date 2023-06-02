@@ -46,7 +46,10 @@ class CreateCategory : AppCompatActivity() {
                 description = binding.etDescription.text.toString(),
                 colour = intToColorString(defaultcolor)
             )
-            globaldata.categories.add(category)
+            GlobalClass().categories.add(category)
+
+
+
         }
     }
 
