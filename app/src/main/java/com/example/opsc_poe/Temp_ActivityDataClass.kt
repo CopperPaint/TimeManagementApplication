@@ -6,6 +6,6 @@ data class Temp_ActivityDataClass(
     var categoryID: Int = 0,
     var name: String = "",
     var description: String = "",
-    var maxgoal: String = "",
-    var mingoal: String = "",
+    var maxgoalID: Int = 0,
+    var mingoalID: Int = 0,
 )
