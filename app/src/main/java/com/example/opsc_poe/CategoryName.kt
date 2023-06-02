@@ -15,8 +15,7 @@ import com.example.opsc_poe.databinding.ActivityCategoryNameBinding
 import com.example.opsc_poe.databinding.HomeActivityViewFragmentBinding
 
 class CategoryName : AppCompatActivity() {
-    private var _binding: HomeActivityViewFragmentBinding? = null
-    private val binding get() = _binding!!
+
 
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {

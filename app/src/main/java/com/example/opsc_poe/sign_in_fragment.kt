@@ -36,9 +36,6 @@ class sign_in_fragment : Fragment(R.layout.sign_in_fragment) {
         binding.tvSignInButton.setOnClickListener {
 
 
-           // val test = ManageUser()
-           // var trying = test.logInUser(binding.etEmail.text.toString(), binding.etPassword.text.toString())
-            //binding.tvEmailPrompt.text = trying
 
             //test code to show the create goal page
             var intent = Intent(activity, Home_Activity::class.java)
