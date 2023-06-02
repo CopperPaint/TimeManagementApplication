@@ -17,7 +17,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
     private var _binding: HomeActivityViewFragmentBinding? = null
 
     // This property is only valid between onCreateView and
-// onDestroyView.
+    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -62,9 +62,6 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
             activityLayout.addView(newActivity)
 
         }
-
-
-
 
         //-------------------------------------------------
 

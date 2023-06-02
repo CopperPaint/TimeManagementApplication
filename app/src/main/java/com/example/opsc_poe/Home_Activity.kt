@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityHomeBinding
-import com.example.opsc_poe.databinding.ActivityMainBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -31,7 +30,7 @@ class Home_Activity : AppCompatActivity() {
         val fragmentControl = FragmentHandler()
 
         //set the activity view fragment to be the initial view
-        fragmentControl.replaceFragment(home_activity_view_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
+         fragmentControl.replaceFragment(home_activity_view_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
 
 
@@ -44,6 +43,8 @@ class Home_Activity : AppCompatActivity() {
         activityLayout.addView(customactivity)
 
          */
+
+
 
         fun CycleHomeFragmentView () {
 
@@ -66,13 +67,15 @@ class Home_Activity : AppCompatActivity() {
         }
 
 
-            binding.tvCycleViewLeft.setOnClickListener {
+        binding.imgCycleViewLeft.setOnClickListener {
             CycleHomeFragmentView()
-             }
+        }
 
-            binding.tvCycleViewRight.setOnClickListener {
+        binding.imgCycleViewRight.setOnClickListener {
             CycleHomeFragmentView()
-            }
+        }
+
+
 
 
 
