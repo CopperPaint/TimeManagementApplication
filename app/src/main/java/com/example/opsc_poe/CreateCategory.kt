@@ -18,8 +18,9 @@ class CreateCategory : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_category)
+        //setContentView(R.layout.activity_create_category)
         val binding = ActivityCreateCategoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
 
         //global data
@@ -40,7 +41,7 @@ class CreateCategory : AppCompatActivity() {
         {
             //create category object
             var category = Temp_CategoryDataClass(
-                userID = globaldata.user.userID,
+                userID = GlobalClass().user.userID,
                 name = binding.etName.text.toString(),
                 description = binding.etDescription.text.toString(),
                 colour = intToColorString(defaultcolor)

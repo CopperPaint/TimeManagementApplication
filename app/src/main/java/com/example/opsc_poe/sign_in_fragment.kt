@@ -36,10 +36,24 @@ class sign_in_fragment : Fragment(R.layout.sign_in_fragment) {
         binding.tvSignInButton.setOnClickListener {
 
 
+            val trySignIn  =  Temp_UserDataClass()
+            val trySubmitSignIn = trySignIn.ValidateUser(binding.etEmail.text.toString(),binding.etPassword.text.toString(), requireContext())
 
-            //test code to show the create goal page
-            var intent = Intent(activity, Home_Activity::class.java)
-            startActivity(intent)
+
+            if (trySubmitSignIn)
+            {
+                //if sign in is successful then send user to the the home view screen
+                var intent = Intent(activity, Home_Activity::class.java)
+                startActivity(intent)
+            }
+
+/*
+val alert = AlertDialog.Builder(this)
+        alert.setTitle(messageTitle)
+        alert.setMessage(messageText)
+        alert.setPositiveButton("OK", null)
+        alert.show()
+ */
 
 
 
