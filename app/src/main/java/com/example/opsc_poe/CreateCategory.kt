@@ -1,10 +1,13 @@
 package com.example.opsc_poe
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import yuku.ambilwarna.AmbilWarnaDialog
 
 class CreateCategory : AppCompatActivity() {
@@ -16,38 +19,37 @@ class CreateCategory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_category)
+        val binding = ActivityCreateCategoryBinding.inflate(layoutInflater)
+        supportActionBar?.hide()
 
         //global data
         var globaldata = GlobalClass()
 
-        //name
-        val name = findViewById<EditText>(R.id.etName)
-        //description
-        val description = findViewById<EditText>(R.id.etDescription)
 
         //colour picker
-        val pickcolourbutton = findViewById<Button>(R.id.pick_color_button)
         colorPreview = findViewById<View>(R.id.preview_selected_color)
-        pickcolourbutton?.setOnClickListener()
+        val picker = findViewById<Button>(R.id.pick_color_button)
+        picker.setOnClickListener()
         {
             openColorPickerDialogue()
         }
 
+
         //create category button
-        val creatbutton = findViewById<Button>(R.id.btnCreate)
-        creatbutton?.setOnClickListener()
+        binding.btnCreate.setOnClickListener()
         {
             //create category object
             var category = Temp_CategoryDataClass(
-
                 userID = globaldata.user.userID,
-                name = name.text.toString(),
-                description = description.text.toString(),
+                name = binding.etName.text.toString(),
+                description = binding.etDescription.text.toString(),
                 colour = intToColorString(defaultcolor)
             )
             globaldata.categories.add(category)
         }
     }
+
+
 
     fun openColorPickerDialogue()
     {
@@ -58,7 +60,9 @@ class CreateCategory : AppCompatActivity() {
                 }
                 override fun onOk(dialog: AmbilWarnaDialog?, color: Int) {
                     defaultcolor = color
-                    colorPreview?.setBackgroundColor(defaultcolor)
+                    var previewColor = ColorStateList.valueOf(Color.parseColor(intToColorString(defaultcolor)))
+                    colorPreview?.backgroundTintList = previewColor
+                    //colorPreview?.setBackgroundColor(defaultcolor)
                 }
             })
         colorPickerDialogue.show()

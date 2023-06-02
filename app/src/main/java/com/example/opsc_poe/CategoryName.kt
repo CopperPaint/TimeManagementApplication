@@ -11,15 +11,20 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import com.example.opsc_poe.databinding.ActivityCategoryNameBinding
 import com.example.opsc_poe.databinding.HomeActivityViewFragmentBinding
 
 class CategoryName : AppCompatActivity() {
     private var _binding: HomeActivityViewFragmentBinding? = null
     private val binding get() = _binding!!
+
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_name)
+
+        val binding = ActivityCategoryNameBinding.inflate(layoutInflater)
+        supportActionBar?.hide()
 
         //global data
         var globaldata = GlobalClass()
@@ -29,13 +34,10 @@ class CategoryName : AppCompatActivity() {
 
 
         //display category name
-        val CategoryName = findViewById<TextView>(R.id.tvCategoryName)
-        CategoryName.text = category.name
+        binding.tvCategoryName.text = category.name
 
         //display category descriptioin
-        val CategoryDescription = findViewById<TextView>(R.id.txtCategoryDescription)
-        CategoryDescription.text = category.description
-
+        binding.txtCategoryDescription.text = category.description
 
         //display category activites
         val activityLayout = findViewById<LinearLayout>(R.id.llactivitycontainer)
@@ -77,15 +79,13 @@ class CategoryName : AppCompatActivity() {
         }
 
         //add activity to category
-        val addactivityButton = findViewById<Button>(R.id.btnAddActvity)
-        addactivityButton?.setOnClickListener()
+        binding.btnAddActvity.setOnClickListener()
         {
             //go to add actvity page
         }
 
         //Edit Category
-        val editCategory = findViewById<Button>(R.id.btnEditCategory)
-        editCategory?.setOnClickListener()
+        binding.btnEditCategory.setOnClickListener()
         {
             //go to add actvity page
         }

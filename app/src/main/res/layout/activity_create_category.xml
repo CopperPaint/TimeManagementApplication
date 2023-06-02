@@ -126,10 +126,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@color/Activity_Yellow"/>
-
-
-
+                android:background="@drawable/rounded_rectangle"
+                android:backgroundTint="@color/Activity_Yellow"/>
 
 
         </LinearLayout>
