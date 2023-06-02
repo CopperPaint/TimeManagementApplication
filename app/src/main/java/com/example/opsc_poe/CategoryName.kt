@@ -1,5 +1,7 @@
 package com.example.opsc_poe
 
+import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +16,7 @@ import com.example.opsc_poe.databinding.HomeActivityViewFragmentBinding
 class CategoryName : AppCompatActivity() {
     private var _binding: HomeActivityViewFragmentBinding? = null
     private val binding get() = _binding!!
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_name)
@@ -55,7 +58,8 @@ class CategoryName : AppCompatActivity() {
                 newActivity.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(this, R.color.Light_Green)
 
                 //set the activity color shape color
-                //newActivity.binding.llBlockText.backgroundTintList = ContextCompat.getColorStateList(this, category.colour)
+                val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
+                newActivity.binding.llBlockText.backgroundTintList = catColour
 
                 //calculate block time and text
                 val (hour, text) = goalCalculator.CalculateHours(i.mingoalID, i.maxgoalID)
@@ -70,35 +74,20 @@ class CategoryName : AppCompatActivity() {
                 activityLayout.addView(newActivity)
 
             }
-
-
-
-
-
         }
 
-
-
-
-
-
-
-
-
-
+        //add activity to category
         val addactivityButton = findViewById<Button>(R.id.btnAddActvity)
         addactivityButton?.setOnClickListener()
         {
             //go to add actvity page
         }
 
+        //Edit Category
         val editCategory = findViewById<Button>(R.id.btnEditCategory)
-        addactivityButton?.setOnClickListener()
+        editCategory?.setOnClickListener()
         {
             //go to add actvity page
         }
-
-
-
     }
 }
