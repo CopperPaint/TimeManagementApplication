@@ -48,6 +48,8 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
             newActivity.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Light_Green)
 
             //set the activity color shape color
+
+            val catColour = ColorStateList.valueOf(Color.parseColor("#FF0000"))
             newActivity.binding.llBlockText.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Dark_Green)
 
             //set the activity color block text

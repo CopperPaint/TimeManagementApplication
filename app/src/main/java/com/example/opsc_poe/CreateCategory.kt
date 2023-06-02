@@ -20,7 +20,9 @@ class CreateCategory : AppCompatActivity() {
         //global data
         var globaldata = GlobalClass()
 
+        //name
         val name = findViewById<EditText>(R.id.etName)
+        //description
         val description = findViewById<EditText>(R.id.etDescription)
 
         //colour picker
@@ -37,15 +39,14 @@ class CreateCategory : AppCompatActivity() {
         {
             //create category object
             var category = Temp_CategoryDataClass(
-                userID = "set id of current user",
+
+                userID = globaldata.user.userID,
                 name = name.text.toString(),
                 description = description.text.toString(),
-                colour = defaultcolor
+                colour = intToColorString(defaultcolor)
             )
             globaldata.categories.add(category)
         }
-
-
     }
 
     fun openColorPickerDialogue()
@@ -61,5 +62,9 @@ class CreateCategory : AppCompatActivity() {
                 }
             })
         colorPickerDialogue.show()
+    }
+
+    fun intToColorString(color: Int): String {
+        return String.format("#%06X", 0xFFFFFF and color)
     }
 }

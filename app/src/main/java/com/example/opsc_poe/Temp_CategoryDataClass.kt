@@ -4,7 +4,7 @@ data class Temp_CategoryDataClass(
     var categoryID: Int = 0,
     var userID: Int = 0,
     var name: String = "",
-    var colour: Int = 255255255,
+    var colour: String = "",
     var description: String = ""
 )
 

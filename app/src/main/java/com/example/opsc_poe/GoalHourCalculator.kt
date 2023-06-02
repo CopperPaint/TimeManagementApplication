@@ -1,5 +1,7 @@
 package com.example.opsc_poe
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import java.time.LocalDate
 import java.time.temporal.WeekFields
 import java.util.*
@@ -8,119 +10,130 @@ private var data = GlobalClass()
 
 class GoalHourCalculator
 {
-
-}
-fun CalculateHours(minID: Int, maxID: Int): Pair<String, String>
-{
-    var maxgoal = data.goals[GetGoalIndex(maxID)]
-    var mingoal = data.goals[GetGoalIndex(minID)]
-    var calcHour: String
-    var goalText: String
-
-    //check min
-    val (minHour, minText) = CheckGoal(mingoal.interval, mingoal.amount)
-    if (minText.equals("Overtime")) //if over mingoal hours
+    var yellow = "#fcef5d"
+    var red = "#e81e1e"
+    var green = "40bf2a"
+    public fun CalculateHours(minID: Int, maxID: Int): Triple<String, String, String>
     {
-        //check max
-        val (maxHour, maxText) = CheckGoal(maxgoal.interval, maxgoal.amount)
-        if (maxText.equals("Hours to Go!")) //if under maxgoal hours
+        var maxgoal = data.goals[GetGoalIndex(maxID)]
+        var mingoal = data.goals[GetGoalIndex(minID)]
+        var calcHour: String
+        var goalText: String
+        var barColour: String = ""
+        val myColor = ColorStateList.valueOf(Color.parseColor("#FF0000"))
+
+        //check min
+        val (minHour, minText) = CheckGoal(mingoal.interval, mingoal.amount)
+        if (minText.equals("Overtime")) //if over mingoal hours
         {
-            calcHour = "✔"
-            goalText = "Goal Reached!"
+            //check max
+            val (maxHour, maxText) = CheckGoal(maxgoal.interval, maxgoal.amount)
+            if (maxText.equals("Hours to Go!")) //if under maxgoal hours
+            {
+                calcHour = "✔"
+                goalText = "Goal Reached!"
+                barColour = green
+            }
+            else
+            {
+                calcHour = maxHour
+                goalText = maxText
+                barColour = red
+            }
         }
         else
         {
-            calcHour = maxHour
-            goalText = maxText
+            calcHour = minHour
+            goalText = minText
+            barColour = yellow
         }
+        return Triple(calcHour, goalText, barColour)
     }
-    else
-    {
-        calcHour = minHour
-        goalText = minText
-    }
-    return Pair(calcHour, goalText)
-}
 
 
-//method to get the index of the goal using the ID
-fun GetGoalIndex(id: Int): Int
-{
-    var goalID: Int = -1
-    for (goal in data.goals)
+    //method to get the index of the goal using the ID
+    public fun GetGoalIndex(id: Int): Int
     {
-        if (goal.goalID == id)
+        var goalID: Int = -1
+        for (goal in data.goals)
         {
-            goalID = goal.goalID
-        }
-    }
-    return  goalID
-}
-
-//method to get the total hours logged in the specified interval
-fun GetHours(interval: String): Int
-{
-    var total: Int = 0
-    if (interval.equals("Daily"))
-    {
-        for (log in data.logs)
-        {
-            if (log.startDate == LocalDate.now())
+            if (goal.goalID == id)
             {
-                total = total + log.hours
+                goalID = goal.goalID
             }
         }
+        return  goalID
     }
-    else if (interval.equals("Weekly"))
+
+    //method to get the total hours logged in the specified interval
+    public fun GetHours(interval: String): Int
     {
-        val weekFields = WeekFields.of(Locale.UK)
-        val currentWeek = LocalDate.now().get(weekFields.weekOfWeekBasedYear())
-        for (log in data.logs)
+        var total: Int = 0
+        if (interval.equals("Daily"))
         {
-            val logWeek = log.startDate.get(weekFields.weekOfWeekBasedYear())
-            if (logWeek == currentWeek)
+            for (log in data.logs)
             {
-                total = total + log.hours
+                if (log.startDate == LocalDate.now())
+                {
+                    total = total + log.hours
+                }
             }
         }
-    }
-    else if (interval.equals("Monthly"))
-    {
-        val currentDate = LocalDate.now()
-        for (log in data.logs)
+        else if (interval.equals("Weekly"))
         {
-            if (log.startDate.month == currentDate.month && log.startDate.year == currentDate.year)
+            val weekFields = WeekFields.of(Locale.UK)
+            val currentWeek = LocalDate.now().get(weekFields.weekOfWeekBasedYear())
+            for (log in data.logs)
             {
-                total = total + log.hours
+                val logWeek = log.startDate.get(weekFields.weekOfWeekBasedYear())
+                if (logWeek == currentWeek)
+                {
+                    total = total + log.hours
+                }
             }
         }
+        else if (interval.equals("Monthly"))
+        {
+            val currentDate = LocalDate.now()
+            for (log in data.logs)
+            {
+                if (log.startDate.month == currentDate.month && log.startDate.year == currentDate.year)
+                {
+                    total = total + log.hours
+                }
+            }
+        }
+        return total
     }
-    return total
-}
 
 
-fun CheckGoal(interval: String, amount: Int): Pair<String, String>
-{
-    var hourToGo: String = ""
-    var hourText: String = ""
+    public fun CheckGoal(interval: String, amount: Int): Triple<String, String, String>
+    {
+        var hourToGo: String = ""
+        var hourText: String = ""
+        var barColor: String = ""
 
-    val total = GetHours(interval)
-    if (total == amount)
-    {
-        hourToGo = "✔"
-        hourText = "Goal Reached!"
+        val total = GetHours(interval)
+        if (total == amount)
+        {
+            hourToGo = "✔"
+            hourText = "Goal Reached!"
+            barColor = green
+        }
+        else if (total > amount)
+        {
+            hourToGo = (total - amount).toString()
+            hourText = "Overtime"
+            barColor = red
+        }
+        else
+        {
+            hourToGo = (amount - total).toString()
+            hourText = "Hours to Go!"
+            barColor = yellow
+        }
+        return Triple(hourToGo, hourText, barColor)
     }
-    else if (total > amount)
-    {
-        hourToGo = (total - amount).toString()
-        hourText = "Overtime"
-    }
-    else
-    {
-        hourToGo = (amount - total).toString()
-        hourText = "Hours to Go!"
-    }
-    return Pair(hourToGo, hourText)
 }
 
 
