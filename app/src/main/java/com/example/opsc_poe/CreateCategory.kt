@@ -62,7 +62,6 @@ class CreateCategory : AppCompatActivity() {
                     defaultcolor = color
                     var previewColor = ColorStateList.valueOf(Color.parseColor(intToColorString(defaultcolor)))
                     colorPreview?.backgroundTintList = previewColor
-                    //colorPreview?.setBackgroundColor(defaultcolor)
                 }
             })
         colorPickerDialogue.show()
