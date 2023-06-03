@@ -21,14 +21,7 @@ class AddLog : AppCompatActivity() {
         //save goal
         binding.btnAdd.setOnClickListener()
         {
-            var log = Temp_LogDataClass(
-                logID = GlobalClass.logs.size + 1,
-                activityID = activity.activityID,
-                userID = GlobalClass.user.userID,
-                //startDate = binding.etStartDate,
-                //endDate = binding.etEndDate,
-                //hours = binding.etHours.text
-            )
+            var log = Temp_LogDataClass()
 
         }
 

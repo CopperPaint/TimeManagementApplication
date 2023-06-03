@@ -8,7 +8,7 @@ data class Temp_LogDataClass(
     var logID: Int = 0,
     var activityID: Int = 0,
     var userID: Int = 0,
-    var startDate: LocalDate,
-    var endDate: LocalDate,
-    var hours: Int
+    var startDate: LocalDate = LocalDate.now(),
+    var endDate: LocalDate = LocalDate.now(),
+    var hours: Int = 0
 )
