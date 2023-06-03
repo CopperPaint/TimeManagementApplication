@@ -15,17 +15,14 @@ class CreateCategory : AppCompatActivity() {
     private var colorPreview: View? = null
     private var defaultcolor = 0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_create_category)
         val binding = ActivityCreateCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
 
         //global data
         var globaldata = GlobalClass()
-
 
         //colour picker
         colorPreview = findViewById<View>(R.id.preview_selected_color)
@@ -34,7 +31,6 @@ class CreateCategory : AppCompatActivity() {
         {
             openColorPickerDialogue()
         }
-
 
         //create category button
         binding.btnCreate.setOnClickListener()
@@ -47,9 +43,6 @@ class CreateCategory : AppCompatActivity() {
                 colour = intToColorString(defaultcolor)
             )
             GlobalClass().categories.add(category)
-
-
-
         }
     }
 
