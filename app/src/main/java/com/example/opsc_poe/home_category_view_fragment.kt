@@ -33,7 +33,7 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
         //-------------------------------------------------
         //code here
         val activityLayout = binding.llBars
-        for (i in GlobalClass().categories)
+        for (i in GlobalClass.categories)
         {
             //create new views
             var newCategory = CustomActivity(activity)
@@ -70,12 +70,12 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
     {
         var totalAct = 0
         var totalHour = 0
-        for (i in GlobalClass().activities)
+        for (i in GlobalClass.activities)
         {
             if (i.categoryID == catID)
             {
                 totalAct++
-                for (j in GlobalClass().logs)
+                for (j in GlobalClass.logs)
                 {
                     if (j.activityID == i.activityID)
                     {

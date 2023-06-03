@@ -21,8 +21,8 @@ class ViewActivity : AppCompatActivity() {
 
         //passed activity
         var activity = Temp_ActivityDataClass()
-        var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass().categories)
-        var category = GlobalClass().categories[catIndex]
+        var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
+        var category = GlobalClass.categories[catIndex]
         val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
 
         val goalContainer = findViewById<LinearLayout>(R.id.llgoalcontainer)
@@ -30,7 +30,7 @@ class ViewActivity : AppCompatActivity() {
         //get max index
         var maxIndex = GoalHourCalculator().GetGoalIndex(activity.maxgoalID)
         //set max goal
-        var maxGoal = GlobalClass().goals[maxIndex]
+        var maxGoal = GlobalClass.goals[maxIndex]
         //create custom goal
         var customMaxGoal = CustomActivity(this)
         //set primary text
@@ -55,7 +55,7 @@ class ViewActivity : AppCompatActivity() {
         //get max index
         var minIndex = GoalHourCalculator().GetGoalIndex(activity.maxgoalID)
         //set max goal
-        var minGoal = GlobalClass().goals[minIndex]
+        var minGoal = GlobalClass.goals[minIndex]
         //create custom goal
         var customMinGoal = CustomActivity(this)
         //set primary text

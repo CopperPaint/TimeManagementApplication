@@ -24,7 +24,7 @@ class CategoryName : AppCompatActivity() {
         supportActionBar?.hide()
 
         //global data
-        var globaldata = GlobalClass()
+       // var globaldata = GlobalClass
 
 
         //passed category
@@ -41,7 +41,7 @@ class CategoryName : AppCompatActivity() {
         val activityLayout = findViewById<LinearLayout>(R.id.llactivitycontainer)
         val goalCalculator = GoalHourCalculator() //goal calculator
 
-        for (i in globaldata.activities)
+        for (i in GlobalClass.activities)
         {
             if (i.categoryID == category.categoryID)
             {

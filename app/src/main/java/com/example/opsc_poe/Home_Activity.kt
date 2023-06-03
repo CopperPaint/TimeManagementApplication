@@ -33,7 +33,7 @@ class Home_Activity : AppCompatActivity() {
          fragmentControl.replaceFragment(home_activity_view_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
 
-        binding.tvUserUsername.text = GlobalClass().user.username
+        binding.tvUserUsername.text = GlobalClass.user.username
 
         /*
         val activityLayout = findViewById<LinearLayout>(R.id.activitycontainer)

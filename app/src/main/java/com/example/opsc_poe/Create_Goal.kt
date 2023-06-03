@@ -17,7 +17,7 @@ class Create_Goal : AppCompatActivity() {
        setContentView(binding.root)
 
 
-        var globalData = GlobalClass()
+        //var globalData = GlobalClass
 
         //passed activity
         var activity = Temp_ActivityDataClass()
@@ -57,8 +57,8 @@ class Create_Goal : AppCompatActivity() {
         binding.tvSaveButton.setOnClickListener()
         {
             var goal = Temp_GoalDataClass(
-                goalID = globalData.goals.size + 1,
-                userID = globalData.user.userID,
+                goalID = GlobalClass.goals.size + 1,
+                userID = GlobalClass.user.userID,
                 amount = binding.npHourGoal.value,
                 interval = binding.npTimeFrameGoal.displayedValues.get(binding.npTimeFrameGoal.value)
             )

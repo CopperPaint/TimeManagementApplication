@@ -6,7 +6,7 @@ import java.time.LocalDate
 import java.time.temporal.WeekFields
 import java.util.*
 
-private var data = GlobalClass()
+//private var data = GlobalClass
 
 class GoalHourCalculator
 {
@@ -15,8 +15,8 @@ class GoalHourCalculator
     var green = "40bf2a"
     public fun CalculateHours(minID: Int, maxID: Int): Triple<String, String, String>
     {
-        var maxgoal = data.goals[GetGoalIndex(maxID)]
-        var mingoal = data.goals[GetGoalIndex(minID)]
+        var maxgoal = GlobalClass.goals[GetGoalIndex(maxID)]
+        var mingoal = GlobalClass.goals[GetGoalIndex(minID)]
         var calcHour: String
         var goalText: String
         var barColour: String
@@ -54,9 +54,9 @@ class GoalHourCalculator
     public fun GetGoalIndex(id: Int): Int
     {
         var index: Int = -1
-        for (i in 0..data.goals.size)
+        for (i in 0..GlobalClass.goals.size)
         {
-            if (data.goals[i].goalID == id)
+            if (GlobalClass.goals[i].goalID == id)
             {
                 index = i;
             }
@@ -70,7 +70,7 @@ class GoalHourCalculator
         var total: Int = 0
         if (interval.equals("Daily"))
         {
-            for (log in data.logs)
+            for (log in GlobalClass.logs)
             {
                 if (log.startDate == LocalDate.now())
                 {
@@ -82,7 +82,7 @@ class GoalHourCalculator
         {
             val weekFields = WeekFields.of(Locale.UK)
             val currentWeek = LocalDate.now().get(weekFields.weekOfWeekBasedYear())
-            for (log in data.logs)
+            for (log in GlobalClass.logs)
             {
                 val logWeek = log.startDate.get(weekFields.weekOfWeekBasedYear())
                 if (logWeek == currentWeek)
@@ -94,7 +94,7 @@ class GoalHourCalculator
         else if (interval.equals("Monthly"))
         {
             val currentDate = LocalDate.now()
-            for (log in data.logs)
+            for (log in GlobalClass.logs)
             {
                 if (log.startDate.month == currentDate.month && log.startDate.year == currentDate.year)
                 {

@@ -35,17 +35,17 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
         //code here
 
         //global data
-        var data = GlobalClass()
+        //var data = GlobalClass
 
         val activityLayout = binding.llBars
-        for (i in data.activities)
+        for (i in GlobalClass.activities)
         {
             var newActivity = CustomActivity(activity)
             //set primary text
             newActivity.binding.tvPrimaryText.text = i.name
             //get activity category
-            var index = Temp_CategoryDataClass().GetIndex(i.categoryID, data.categories)
-            var category = data.categories[index]
+            var index = Temp_CategoryDataClass().GetIndex(i.categoryID, GlobalClass.categories)
+            var category = GlobalClass.categories[index]
             //set secondary text
             newActivity.binding.tvSecondaryText.text = category.name
             //set the activity color shape color

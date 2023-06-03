@@ -16,29 +16,30 @@ class Temp_UserDataClass{
         val PasswordManager = ManagePassword()
 
         //loop through users
-        for (i in GlobalClass().listUserEmail.indices) {
+        for (i in GlobalClass.listUserEmail.indices) {
             //if the entered email matches an existing email
-            if (userEmail == GlobalClass().listUserEmail[i]) {
+            if (userEmail == GlobalClass.listUserEmail[i]) {
 
                 //if user exists
 
                 val attemptedUserPasswordHash = PasswordManager.generateHash(
                     userPassword,
-                    GlobalClass().listUserPasswordSalt[i]
+                    GlobalClass.listUserPasswordSalt[i]
                 )
 
-                if (attemptedUserPasswordHash == GlobalClass().listUserPasswordHash[i]) {
+                if (attemptedUserPasswordHash == GlobalClass.listUserPasswordHash[i]) {
                     //if the user password is correct
-                    userID = GlobalClass().listUserUserID[i]
+                    userID = GlobalClass.listUserUserID[i]
                     email = userEmail
-                    username = GlobalClass().listUserUsername[i]
+                    username = GlobalClass.listUserUsername[i]
 
 
 
                     //assign the user data to the global class to share its information
-                    GlobalClass().user.userID = userID
-                    GlobalClass().user.email = email
-                    GlobalClass().user.username = username
+                    GlobalClass.user.userID = userID
+                    GlobalClass.user.email = email
+                    GlobalClass.user.username = username
+
 
 
 
@@ -61,7 +62,7 @@ class Temp_UserDataClass{
         {
 
             //user doesn't exist code goes here
-            GlobalClass().InformUser("Unable to Sign In", "Cannot find user with the given data", context)
+            GlobalClass.InformUser("Unable to Sign In", "Cannot find user with the given data", context)
 
             //return the user exists boolean as false
             return false
@@ -86,10 +87,10 @@ class Temp_UserDataClass{
 
 
             //loop through users
-            for(i in GlobalClass().listUserEmail.indices)
+            for(i in GlobalClass.listUserEmail.indices)
             {
                 //check to see if there is already a user with the given information
-                if (userEmail == GlobalClass().listUserEmail[i] || userUsername == GlobalClass().listUserUsername[i])
+                if (userEmail == GlobalClass.listUserEmail[i] || userUsername == GlobalClass.listUserUsername[i])
                 {
                     //if the user already exists
 
@@ -97,7 +98,7 @@ class Temp_UserDataClass{
                     userExists = true
 
                     //infrom user that the entered information is already registered to another user
-                    GlobalClass().InformUser("Unable to Sign Up", "A user with the provided data already exists", context)
+                    GlobalClass.InformUser("Unable to Sign Up", "A user with the provided data already exists", context)
 
                     //exit loop
                     break
@@ -120,18 +121,18 @@ class Temp_UserDataClass{
                     newUserPasswordSalt
                 )
 
-                val currentLastUserIDIndex = GlobalClass().listUserUserID.last()
+                val currentLastUserIDIndex = GlobalClass.listUserUserID.last()
                 var newUserUserIDIndex = currentLastUserIDIndex + 1
 
                 //add the new user to the user data lists
-                GlobalClass().listUserUserID.add(newUserUserIDIndex)
-                GlobalClass().listUserEmail.add(userEmail)
-                GlobalClass().listUserUsername.add(userUsername)
-                GlobalClass().listUserPasswordHash.add(newUserPasswordHash)
-                GlobalClass().listUserPasswordSalt.add(newUserPasswordSalt)
+                GlobalClass.listUserUserID.add(newUserUserIDIndex)
+                GlobalClass.listUserEmail.add(userEmail)
+                GlobalClass.listUserUsername.add(userUsername)
+                GlobalClass.listUserPasswordHash.add(newUserPasswordHash)
+                GlobalClass.listUserPasswordSalt.add(newUserPasswordSalt)
 
                 //inform the user that their account was successfully created
-                GlobalClass().InformUser("Account Created", "Your account has been registered, Please Log In", context)
+                GlobalClass.InformUser("Account Created", "Your account has been registered, Please Log In", context)
 
             }
 

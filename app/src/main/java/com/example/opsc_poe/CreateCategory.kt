@@ -22,7 +22,7 @@ class CreateCategory : AppCompatActivity() {
         supportActionBar?.hide()
 
         //global data
-        var globaldata = GlobalClass()
+        //var globaldata = GlobalClass
 
         //colour picker
         colorPreview = findViewById<View>(R.id.preview_selected_color)
@@ -37,12 +37,12 @@ class CreateCategory : AppCompatActivity() {
         {
             //create category object
             var category = Temp_CategoryDataClass(
-                userID = GlobalClass().user.userID,
+                userID = GlobalClass.user.userID,
                 name = binding.etName.text.toString(),
                 description = binding.etDescription.text.toString(),
                 colour = intToColorString(defaultcolor)
             )
-            GlobalClass().categories.add(category)
+            GlobalClass.categories.add(category)
         }
     }
 

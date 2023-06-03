@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity()
         fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
 
-
         //Sign in view activation
         binding.tvSignIn.setOnClickListener{
             //replaceFragment(sign_in_fragment())
