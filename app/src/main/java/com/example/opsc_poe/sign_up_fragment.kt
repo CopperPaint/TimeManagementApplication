@@ -31,12 +31,12 @@ class sign_up_fragment : Fragment(R.layout.sign_up_fragment){
         //sign in button
         binding.tvSignUpButton.setOnClickListener {
 
-/*
-            val test = ManageUser()
-            test.RegisterUser(binding.etEmail.text.toString(), binding.etUsername.text.toString(), binding.etPassword.text.toString())
 
 
- */
+            val trySignUp  =  Temp_UserDataClass()
+            trySignUp.RegisterUser(binding.etEmail.text.toString(), binding.etUsername.text.toString(), binding.etPassword.text.toString(), requireContext())
+
+
 
             //-------------------------------------------------
         }

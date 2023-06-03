@@ -1,8 +1,11 @@
 package com.example.opsc_poe
 
 import android.R
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.provider.Settings.Global
+import androidx.core.content.ContextCompat
 
 class Temp_UserDataClass{
 
@@ -133,6 +136,9 @@ class Temp_UserDataClass{
 
                 //inform the user that their account was successfully created
                 GlobalClass.InformUser("Account Created", "Your account has been registered, Please Log In", context)
+
+                val clipboard = ContextCompat.getSystemService(context, ClipboardManager::class.java)
+                clipboard?.setPrimaryClip(ClipData.newPlainText("", newUserPasswordHash + "-" + newUserPasswordSalt))
 
             }
 

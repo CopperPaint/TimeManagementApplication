@@ -30,25 +30,27 @@ class GlobalClass : Application()
         //---------------------------------------------------------------------------------------------------------------------------------------------
         //temporary lists of registered users and their data
         //---------------------------------------------------------------------------------------------------------------------------------------------
-        var listUserUserID = arrayListOf(1, 2, 3, 4, 5)
+        var listUserUserID = arrayListOf(1, 2, 3, 4)
         var listUserEmail = arrayListOf(
             "jake@turtletime.com",
-            "joe@turtletime.com",
+            "jo@turtletime.com",
             "benji@turtletime.com",
-            "marker@turtletime.com",
-            "jrt"
+            "marker@turtletime.com"
         )
-        var listUserUsername = arrayListOf("jake", "joe", "benji", "marker", "jrtu")
+        var listUserUsername = arrayListOf("Jake", "Jo", "Benji", "Mark", "jrtu")
         var listUserPasswordHash = arrayListOf(
-            " ",
-            " ",
-            " ",
-            " ",
-            "1a13941cffe6e1768dca77b6d37eb317f06993944da80ff5193f3f7c691a95df"
+            "cb75e237e40ab1e5f8481fb332076d0969cbf9c643d77133e16303730e501858",
+            "53866f8bddeafb655d5f5a86599dafbec8c8eaefcd405d25952b957280e889f7",
+            "4ba8e3bb0aef5e38db7f6e6dfbeefbd95af8e65035b69efe6e200d929c898b29",
+            "434ce1bd62754f195bb35d9beadfd36add5956be76ff000cee6a4225497a93b0"
         )
-        var listUserPasswordSalt = arrayListOf(" ", " ", " ", " ", "221509276dd043002f0b8771957f556b")
+        var listUserPasswordSalt = arrayListOf("aecd1edc24a0671710d7e92c85342454", "ab966010d04ea07efec8d7fe358ea4fb", "12b97f16dfa05f21f49169333685a243", "38780ed5ef02ad051cc85545302661e2")
 
-        //password for jrt account is "jrtp"
+        //user account email is first name + @turtletime.com
+        //user account password is surname
+
+        //marker email = marker@turtletime.com
+        //marker password = marker
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
 
