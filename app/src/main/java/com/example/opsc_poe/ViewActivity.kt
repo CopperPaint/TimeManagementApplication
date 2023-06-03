@@ -77,6 +77,23 @@ class ViewActivity : AppCompatActivity() {
         goalContainer.addView(customMinGoal)
 
 
+        //edit activity
+        binding.btnEditActivity.setOnClickListener()
+        {
+            //send activity data to edit page
+        }
+
+        //add log
+        binding.btnAddLog.setOnClickListener()
+        {
+            //add log to activity
+        }
+
+
+
+
+
+
 
     }
 }

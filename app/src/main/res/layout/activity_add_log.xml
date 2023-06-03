@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Light_Green"
+    tools:context=".AddLog">
+
+
+    <View
+        android:id="@+id/vwLogsBar"
+        android:layout_width="3dp"
+        android:layout_height="76dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Dark_Green"/>
+
+    <ImageView
+        android:id="@+id/imgBlackTurtle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/cogturtle"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="10dp"
+        android:rotation="-45"
+        />
+
+    <LinearLayout
+        android:id="@+id/llAddLog"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/vwLogsBar">
+
+        <TextView
+            android:id="@+id/tvCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:textColor="@color/Dark_Green"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log"
+            android:textColor="@color/Dark_Green"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vwEntryBackground"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:layout_below="@id/llAddLog"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/backing_shape"
+        android:backgroundTint="@color/Dark_Green" />
+
+    <LinearLayout
+        android:id="@+id/llLogInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llAddLog"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activity"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvActivityName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_rectangle"
+            android:text="Activity Name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvStartDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Start Date"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etStartDate"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_rectangle"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/tvEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="End Date"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_rectangle"
+            android:ems="10"
+            android:inputType="date" />
+
+        <TextView
+            android:id="@+id/tvHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Hours"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etHours"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_rectangle"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Muted_Green"
+            android:text="Add Log"
+            android:theme="@style/button_colour_green" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgBrown"
+        android:layout_below="@id/llLogInput"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:rotation="-35"
+        app:srcCompat="@drawable/brownturtle" />
+
+</RelativeLayout>
