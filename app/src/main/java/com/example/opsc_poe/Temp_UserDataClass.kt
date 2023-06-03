@@ -137,8 +137,12 @@ class Temp_UserDataClass{
                 //inform the user that their account was successfully created
                 GlobalClass.InformUser("Account Created", "Your account has been registered, Please Log In", context)
 
+                //temp method used to get the new user password hash and salt text values to hard code into application
+                /*
                 val clipboard = ContextCompat.getSystemService(context, ClipboardManager::class.java)
                 clipboard?.setPrimaryClip(ClipData.newPlainText("", newUserPasswordHash + "-" + newUserPasswordSalt))
+
+                 */
 
             }
 

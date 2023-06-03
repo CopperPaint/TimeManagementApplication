@@ -26,7 +26,7 @@ class GoalHourCalculator
         if (minText.equals("Overtime")) //if over mingoal hours
         {
             //check max
-            val (maxHour, maxText) = CheckGoal(maxgoal.interval, maxgoal.amount)
+            val (maxHour, maxText) = CheckGoal(maxgoal.interval, maxgoal.amount) //here
             if (maxText.equals("Hours to Go!")) //if under maxgoal hours
             {
                 calcHour = "✔"
@@ -54,7 +54,7 @@ class GoalHourCalculator
     public fun GetGoalIndex(id: Int): Int
     {
         var index: Int = -1
-        for (i in 0..GlobalClass.goals.size)
+        for (i in 0..GlobalClass.goals.size-1)//added -1
         {
             if (GlobalClass.goals[i].goalID == id)
             {

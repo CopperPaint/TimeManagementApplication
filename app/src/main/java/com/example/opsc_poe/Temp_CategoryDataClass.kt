@@ -11,7 +11,7 @@ class Temp_CategoryDataClass(
     public fun GetIndex(id: Int, categorites: ArrayList<Temp_CategoryDataClass>): Int
     {
         var index: Int = -1
-        for (i in 0..categorites.size)
+        for (i in 0..categorites.size-1) //added minus 1
         {
             if (categorites[i].categoryID == id)
             {
