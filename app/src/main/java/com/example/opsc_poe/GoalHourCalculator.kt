@@ -22,11 +22,11 @@ class GoalHourCalculator
         var barColour: String
 
         //check min
-        val (minHour, minText) = CheckGoal(mingoal.interval, mingoal.amount)
+        val (minHour, minText, minColor) = CheckGoal(mingoal.interval, mingoal.amount)
         if (minText.equals("Overtime")) //if over mingoal hours
         {
             //check max
-            val (maxHour, maxText) = CheckGoal(maxgoal.interval, maxgoal.amount) //here
+            val (maxHour, maxText, maxColor) = CheckGoal(maxgoal.interval, maxgoal.amount) //here
             if (maxText.equals("Hours to Go!")) //if under maxgoal hours
             {
                 calcHour = "✔"
@@ -37,14 +37,14 @@ class GoalHourCalculator
             {
                 calcHour = maxHour
                 goalText = maxText
-                barColour = red
+                barColour = maxColor
             }
         }
         else
         {
             calcHour = minHour
             goalText = minText
-            barColour = yellow
+            barColour = minColor
         }
         return Triple(calcHour, goalText, barColour)
     }

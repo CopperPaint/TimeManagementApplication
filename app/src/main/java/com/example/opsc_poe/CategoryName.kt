@@ -23,55 +23,66 @@ class CategoryName : AppCompatActivity() {
         val binding = ActivityCategoryNameBinding.inflate(layoutInflater)
         supportActionBar?.hide()
 
-        //global data
-       // var globaldata = GlobalClass
-
-
         //passed category
-        var category = Temp_CategoryDataClass()
-
+        var category = GlobalClass.categories[3]
+        GlobalClass.user.userID = category.userID
 
         //display category name
-        binding.tvCategoryName.text = category.name
+        binding.tvCategoryName.text = GlobalClass.categories[3].name
 
         //display category descriptioin
-        binding.txtCategoryDescription.text = category.description
+        binding.txtCategoryDescription.text = GlobalClass.categories[3].description
 
         //display category activites
         val activityLayout = findViewById<LinearLayout>(R.id.llactivitycontainer)
         val goalCalculator = GoalHourCalculator() //goal calculator
 
-        for (i in GlobalClass.activities)
+        //loop through activites
+        for (i in GlobalClass.activities.indices)
         {
-            if (i.categoryID == category.categoryID)
+            //if activity belongs to user
+            if (GlobalClass.user.userID == GlobalClass.activities[i].userID)
             {
-                //create new views
-                var newActivity = CustomActivity(this)
+                //if activity belongs to category
+                if (GlobalClass.activities[i].categoryID == category.categoryID)
+                {
+                    //create new custom activity
+                    var newActivity = CustomActivity(this)
+                    //set primary text
+                    newActivity.binding.tvPrimaryText.text = GlobalClass.activities[i].name
 
-                //set primary text
-                newActivity.binding.tvPrimaryText.text = i.name
+                    //set secondary text - set to null
+                    newActivity.binding.tvSecondaryText.text = null
 
-                //set secondary text (if second line is not needed then set to null
-                newActivity.binding.tvSecondaryText.text = null
+                    //set the activity color shape color
+                    val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
+                    newActivity.binding.llBlockText.backgroundTintList = catColour
 
-                //set the color of the divider bar between the text and the activity color shape
-                newActivity.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(this, R.color.Light_Green)
+                    var currentMaxGoal = 0
+                    var currentMinGoal = 0
 
-                //set the activity color shape color
-                val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
-                newActivity.binding.llBlockText.backgroundTintList = catColour
+                    for (j in GlobalClass.goals.indices)
+                    {
+                        if (GlobalClass.activities[i].maxgoalID == GlobalClass.goals[j].goalID)
+                        {
+                            currentMaxGoal = GlobalClass.goals[i].goalID
+                        }
 
-                //calculate block time and text
-                val (hour, text) = goalCalculator.CalculateHours(i.mingoalID, i.maxgoalID)
+                        if (GlobalClass.activities[i].mingoalID == GlobalClass.goals[j].goalID)
+                        {
+                            currentMinGoal = GlobalClass.goals[i].goalID
+                        }
+                    }
+                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal)
 
-                //set the activity color block text
-                newActivity.binding.tvBlockText.text = text
+                    val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                    newActivity.binding.vwBar.backgroundTintList = barColor
+                    newActivity.binding.tvBlockText.text = text
+                    newActivity.binding.tvBlockX.text = hour
 
-                //set the activity color block time
-                newActivity.binding.tvBlockX.text = hour
-
-                //add the new view
-                activityLayout.addView(newActivity)
+                    //add the new view
+                    activityLayout.addView(newActivity)
+                }
             }
         }
 
