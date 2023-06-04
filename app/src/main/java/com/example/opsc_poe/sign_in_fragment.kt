@@ -35,17 +35,25 @@ class sign_in_fragment : Fragment(R.layout.sign_in_fragment) {
         //sign in button
         binding.tvSignInButton.setOnClickListener {
 
-
-            val trySignIn  =  Temp_UserDataClass()
-            val trySubmitSignIn = trySignIn.ValidateUser(binding.etEmail.text.toString(),binding.etPassword.text.toString(), requireContext())
-
-
-            if (trySubmitSignIn)
+            if (binding.etEmail.text.isNotEmpty() &&  binding.etPassword.text.isNotEmpty())
             {
-                //if sign in is successful then send user to the the home view screen
-                var intent = Intent(activity, Home_Activity::class.java)
-                startActivity(intent)
+                val trySignIn  =  Temp_UserDataClass()
+                val trySubmitSignIn = trySignIn.ValidateUser(binding.etEmail.text.toString(),binding.etPassword.text.toString(), requireContext())
+
+
+                if (trySubmitSignIn)
+                {
+                    //if sign in is successful then send user to the the home view screen
+                    var intent = Intent(activity, Home_Activity::class.java)
+                    startActivity(intent)
+                }
             }
+            else
+            {
+                GlobalClass.InformUser("Input Error","Please fill in all fields", requireContext())
+            }
+
+
 
 /*
 val alert = AlertDialog.Builder(this)

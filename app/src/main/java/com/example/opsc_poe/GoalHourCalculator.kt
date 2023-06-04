@@ -46,6 +46,9 @@ class GoalHourCalculator
             goalText = minText
             barColour = minColor
         }
+
+        //test area
+        //barColour = "#a0c064"
         return Triple(calcHour, goalText, barColour)
     }
 
@@ -70,13 +73,13 @@ class GoalHourCalculator
         var total: Int = 0
         if (interval.equals("Daily"))
         {
-            for (log in GlobalClass.logs)
+            for (log in GlobalClass.logs.indices)
             {
-                if (log.activityID == activityID)
+                if (GlobalClass.logs[log].activityID == activityID) //this if statement is wrong //log activity id is wrong  //3 must be changed back to activityID
                 {
-                    if (log.startDate == LocalDate.now())
+                    if (GlobalClass.logs[log].startDate == LocalDate.now()) //ask what this does
                     {
-                        total = total + log.hours
+                        total = total + GlobalClass.logs[log].hours
                     }
                 }
             }
@@ -85,14 +88,14 @@ class GoalHourCalculator
         {
             val weekFields = WeekFields.of(Locale.UK)
             val currentWeek = LocalDate.now().get(weekFields.weekOfWeekBasedYear())
-            for (log in GlobalClass.logs)
+            for (log in GlobalClass.logs.indices)
             {
-                if (log.activityID == activityID)
+                if (GlobalClass.logs[log].activityID == activityID)
                 {
-                    val logWeek = log.startDate.get(weekFields.weekOfWeekBasedYear())
+                    val logWeek = GlobalClass.logs[log].startDate.get(weekFields.weekOfWeekBasedYear())
                     if (logWeek == currentWeek)
                     {
-                        total = total + log.hours
+                        total = total + GlobalClass.logs[log].hours
                     }
                 }
             }
@@ -100,13 +103,14 @@ class GoalHourCalculator
         else if (interval.equals("Monthly"))
         {
             val currentDate = LocalDate.now()
-            for (log in GlobalClass.logs)
+
+            for (log in GlobalClass.logs.indices)
             {
-                if (log.activityID == activityID)
+                if (GlobalClass.logs[log].activityID == activityID) //this if statement is wrong //log activity id is wrong  //3 must be changed back to activityID
                 {
-                    if (log.startDate.month == currentDate.month && log.startDate.year == currentDate.year)
+                    if (GlobalClass.logs[log].startDate.month == currentDate.month && GlobalClass.logs[log].startDate.year == currentDate.year)
                     {
-                        total = total + log.hours
+                        total = total + GlobalClass.logs[log].hours
                     }
                 }
             }

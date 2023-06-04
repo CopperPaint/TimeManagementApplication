@@ -12,4 +12,5 @@
     <color name="Muted_Green">#606D63</color>
     <color name="Input_Grey">#F7F7F7</color>
     <color name="Activity_Yellow">#FFE082</color>
+    <color name="Default_Charcoal_Grey">#333333</color>
 </resources>

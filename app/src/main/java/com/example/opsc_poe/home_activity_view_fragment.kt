@@ -133,7 +133,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                 //add the new view
                 activityLayout.addView(newActivity)
 
-                GlobalClass.InformUser("", "Activity Name: $GlobalClass.activities[i].name \n Category Name: $category.name \n Time Text: $text \n Hour: $hour \n Min Goal: ${GlobalClass.activities[i].mingoalID.toString()} \n Max Goal: ${GlobalClass.activities[i].maxgoalID.toString()}", requireContext())
+               // GlobalClass.InformUser("", "Activity Name: $GlobalClass.activities[i].name \n Category Name: $category.name \n Time Text: $text \n Hour: $hour \n Min Goal: ${GlobalClass.activities[i].mingoalID.toString()} \n Max Goal: ${GlobalClass.activities[i].maxgoalID.toString()}", requireContext())
             }
         }
         //-------------------------------------------------

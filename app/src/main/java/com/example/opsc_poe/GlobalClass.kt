@@ -33,11 +33,12 @@ class GlobalClass : Application()
         //---------------------------------------------------------------------------------------------------------------------------------------------
         var listUserUserID = arrayListOf(1, 2, 3, 4)
         var listUserEmail = arrayListOf(
-            "jake@turtletime.com",
+            "jake",
             "jo@turtletime.com",
             "benji@turtletime.com",
             "marker@turtletime.com"
         )
+        //@turtletime.com
         var listUserUsername = arrayListOf("Jake", "Jo", "Benji", "Mark", "jrtu")
         var listUserPasswordHash = arrayListOf(
             "cb75e237e40ab1e5f8481fb332076d0969cbf9c643d77133e16303730e501858",

@@ -1,11 +1,9 @@
 package com.example.opsc_poe
 
-import android.R
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
-import android.provider.Settings.Global
-import androidx.core.content.ContextCompat
+import android.text.TextUtils
+import android.util.Patterns
+
 
 class Temp_UserDataClass{
 
@@ -84,19 +82,89 @@ class Temp_UserDataClass{
 
 
 
-        fun ValidateUserPassword(attemptedPassword : String): Boolean
+    fun ValidateUserEmail(attemptedEmail: CharSequence?): Boolean {
+        return if (TextUtils.isEmpty(attemptedEmail)) {
+            false
+        } else {
+            Patterns.EMAIL_ADDRESS.matcher(attemptedEmail).matches()
+        }
+    }
+
+
+
+        fun ValidateUserPassword(attemptedPassword : String, context: Context): Boolean
         {
 
+            var validationErrors = ArrayList<String>()
 
-            /*
-            if (attemptedPassword)
+
+
+
+                 if (attemptedPassword.length < 8)
+                 {
+                    validationErrors.add("Password too short, needs to be 8 or more characters")
+                 }
+
+                 if (attemptedPassword.count(Char::isDigit) == 0)
+                 {
+                     validationErrors.add("Password needs to contain at least 1 digit")
+                 }
+
+                if (attemptedPassword.any(Char::isLowerCase))
+                {
+
+                }
+                else
+                {
+                    validationErrors.add("Password needs to contain at least 1 lower case character")
+                }
+
+                if (attemptedPassword.any(Char::isUpperCase))
+                {
+
+                }
+            else
+                {
+                    validationErrors.add("Password needs to contain at least 1 upper case character")
+                }
+
+
+                if (attemptedPassword[0].isUpperCase())
+                    {
+
+                    }
+            else
+                {
+                    validationErrors.add("Password needs start with an upper case character")
+                }
+
+
+                if (attemptedPassword.any { it in "-?!@#£$%&+=" })
+                {
+
+                }
+            else
+                {
+                    validationErrors.add("Password needs to include one of the following special characters: -?!@#£$%&+=")
+                }
+
+
+            if (validationErrors.isEmpty())
             {
+                return true
+            }
+            else
+            {
+                var passwordErrors = ""
+                for (i in validationErrors) {
+                    passwordErrors+= "$i\n"
+                }
 
+                GlobalClass.InformUser("Invalid Password", passwordErrors, context)
+                return false
             }
 
-             */
 
-            return true
         }
 
         fun RegisterUser(userEmail: String, userUsername : String, userPassword: String, context: Context)

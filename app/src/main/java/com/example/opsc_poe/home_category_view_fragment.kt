@@ -49,7 +49,7 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
                 //set secondary text
                 newCategory.binding.tvSecondaryText.text = "No of activties: " + actTotal
                 //set the color of the divider bar between the text and the activity color shape
-                newCategory.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Light_Green)
+                newCategory.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Default_Charcoal_Grey)
                 //set the activity color shape color
                 newCategory.binding.llBlockText.backgroundTintList = catColour
                 //set the activity color block text
