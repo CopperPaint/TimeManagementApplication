@@ -27,6 +27,8 @@ class ViewActivity : AppCompatActivity() {
         binding.tvActivity.text = activity.name
         binding.tvCategory.text = category.name
         binding.tvDescription.text = activity.description
+        binding.vBackColor.backgroundTintList = catColour
+        binding.vLogColor.backgroundTintList = catColour
 
 
         //get goal indexes
