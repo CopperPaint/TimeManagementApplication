@@ -70,7 +70,7 @@ class GlobalClass : Application()
         //---------------------------------------------------------------------------------------------------------------------------------------------
         var listGoalGoalID = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24)
         var listGoalUserID = arrayListOf(1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4)
-        var listGoalAmount = arrayListOf(1, 11, 1, 11, 10, 20, 2, 12, 2, 12, 2, 12, 3, 13, 3, 13, 3, 13, 4, 14, 4, 14, 4, 14)
+        var listGoalAmount = arrayListOf(4, 6, 1, 11, 10, 20, 2, 12, 2, 12, 2, 12, 3, 13, 3, 13, 3, 13, 4, 14, 4, 14, 4, 14)
         var listGoalInterval = arrayListOf("Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly", "Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly", "Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly", "Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly")
         //---------------------------------------------------------------------------------------------------------------------------------------------
 

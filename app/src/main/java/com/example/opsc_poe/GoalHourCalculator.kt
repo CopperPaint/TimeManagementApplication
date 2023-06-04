@@ -12,11 +12,11 @@ class GoalHourCalculator
 {
     var yellow = "#fcef5d"
     var red = "#e81e1e"
-    var green = "40bf2a"
+    var green = "#40bf2a"
     public fun CalculateHours(minIndex: Int, maxIndex: Int, activityID: Int): Triple<String, String, String>
     {
-        var maxgoal = GlobalClass.goals[minIndex]
-        var mingoal = GlobalClass.goals[maxIndex]
+        var mingoal = GlobalClass.goals[minIndex]
+        var maxgoal = GlobalClass.goals[maxIndex]
         var calcHour: String
         var goalText: String
         var barColour: String
