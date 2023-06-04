@@ -99,46 +99,6 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/tvActivtyDateHeading"
-            android:layout_width="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:text="Date" />
-
-        <EditText
-            android:id="@+id/txtDate"
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
-            android:id="@+id/tvActivtyStartEndHeading"
-            android:layout_width="160dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:text="Start/End Times" />
-
-        <EditText
-            android:id="@+id/txtStartEndDate"
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <TextView
             android:id="@+id/tvActivtyDescriptionHeading"
             android:layout_width="120dp"
             android:layout_marginLeft="20dp"
