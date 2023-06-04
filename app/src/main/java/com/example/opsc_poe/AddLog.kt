@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
+import java.time.LocalDate
 
 class AddLog : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,7 @@ class AddLog : AppCompatActivity() {
         supportActionBar?.hide()
 
         //passed activity
-        var activity = Temp_ActivityDataClass()
+        var activity = GlobalClass.activities[3]
 
         //show activity name
         binding.tvActivityName.text = activity.name
@@ -21,22 +22,18 @@ class AddLog : AppCompatActivity() {
         //save goal
         binding.btnAdd.setOnClickListener()
         {
-            var log = Temp_LogDataClass()
-
+            var log = Temp_LogDataClass(
+                logID = GlobalClass.logs.size + 1,
+                activityID = activity.activityID,
+                userID = GlobalClass.user.userID,
+                startDate = LocalDate.of(
+                    binding.dpStartDate.year,
+                    binding.dpStartDate.month,
+                    binding.dpStartDate.dayOfMonth),
+                endDate = LocalDate.now(),
+                hours = binding.etHours.text.toString().toInt()
+            )
+            GlobalClass.logs.add(log)
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
