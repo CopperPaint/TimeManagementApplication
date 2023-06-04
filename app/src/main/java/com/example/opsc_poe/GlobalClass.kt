@@ -61,7 +61,7 @@ class GlobalClass : Application()
         var listCategoryCategoryID = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8)
         var listCategoryUserID = arrayListOf(1, 1, 2, 2, 3, 3, 4, 4)
         var listCategoryName = arrayListOf("Category Name 1", "Category Name 2", "Category Name 3", "Category Name 4", "Category Name 5", "Category Name 6", "Category Name 7", "Category Name 8")
-        var listCategoryColor = arrayListOf("#5c37d7", "#1e4a53", "#60fabc", "#ed2eb9", "#357afc", "#b92c74", "#f9eb0f", "#6c3470")
+        var listCategoryColor = arrayListOf("#5c37d7", "#9c56a7", "#60fabc", "#ed2eb9", "#357afc", "#b92c74", "#f9eb0f", "#6c3470")
         var listCategoryDescription = arrayListOf("Category Description 1", "Category Description 2", "Category Description 3", "Category Description 4", "Category Description 5", "Category Description 6", "Category Description 7", "Category Description 8")
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ class GlobalClass : Application()
         //---------------------------------------------------------------------------------------------------------------------------------------------
         var listGoalGoalID = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24)
         var listGoalUserID = arrayListOf(1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4)
-        var listGoalAmount = arrayListOf(1, 11, 1, 11, 1, 11, 2, 12, 2, 12, 2, 12, 3, 13, 3, 13, 3, 13, 4, 14, 4, 14, 4, 14)
+        var listGoalAmount = arrayListOf(1, 11, 1, 11, 10, 20, 2, 12, 2, 12, 2, 12, 3, 13, 3, 13, 3, 13, 4, 14, 4, 14, 4, 14)
         var listGoalInterval = arrayListOf("Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly", "Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly", "Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly", "Daily", "Daily", "Weekly", "Weekly", "Monthly", "Monthly")
         //---------------------------------------------------------------------------------------------------------------------------------------------
 

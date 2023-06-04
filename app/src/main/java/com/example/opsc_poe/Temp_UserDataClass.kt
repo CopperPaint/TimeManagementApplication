@@ -83,6 +83,22 @@ class Temp_UserDataClass{
     }
 
 
+
+        fun ValidateUserPassword(attemptedPassword : String): Boolean
+        {
+
+
+            /*
+            if (attemptedPassword)
+            {
+
+            }
+
+             */
+
+            return true
+        }
+
         fun RegisterUser(userEmail: String, userUsername : String, userPassword: String, context: Context)
         {
             val PasswordManager = ManagePassword()
