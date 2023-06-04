@@ -31,10 +31,44 @@ class sign_up_fragment : Fragment(R.layout.sign_up_fragment){
         //sign in button
         binding.tvSignUpButton.setOnClickListener {
 
+            if (binding.etEmail.text.isNotEmpty() && binding.etUsername.text.isNotEmpty() && binding.etPassword.text.isNotEmpty())
+            {
+
+                //
+
+                val trySignUp  =  Temp_UserDataClass()
+
+                var tryValidateUserEmail = trySignUp.ValidateUserEmail(binding.etEmail.text.toString())
+
+                if (tryValidateUserEmail)
+                {
+                    if (trySignUp.ValidateUserPassword(binding.etPassword.text.toString(), requireContext())) {
+
+                        trySignUp.RegisterUser(
+                            binding.etEmail.text.toString(),
+                            binding.etUsername.text.toString(),
+                            binding.etPassword.text.toString(),
+                            requireContext()
+                        )
+                    }
+                }
+                else
+                {
+                    GlobalClass.InformUser("Invalid Password", "Invalid email", requireContext())
+                }
 
 
-            val trySignUp  =  Temp_UserDataClass()
-            trySignUp.RegisterUser(binding.etEmail.text.toString(), binding.etUsername.text.toString(), binding.etPassword.text.toString(), requireContext())
+            }
+            else
+            {
+                GlobalClass.InformUser("Input Error","Please fill in all fields", requireContext())
+            }
+
+
+
+
+
+
 
 
 
