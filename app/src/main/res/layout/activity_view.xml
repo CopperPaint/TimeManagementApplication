@@ -73,11 +73,11 @@
 
     <LinearLayout
         android:id="@+id/llViewActivityDetails"
-        android:layout_below="@id/llViewActivity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llViewActivity"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
 
@@ -91,7 +91,7 @@
             <LinearLayout
                 android:id="@+id/llBackandLogButtons"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -136,7 +136,7 @@
                 <RelativeLayout
                     android:id="@+id/rlViewLogs"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/rlBack"
                     android:layout_marginTop="15dp">
 
@@ -180,19 +180,19 @@
 
 
             <ImageView
-                android:id="@+id/imgPlaceholder"
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/brownturtle" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llgoalcontainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
-
 
         </LinearLayout>
 
@@ -211,7 +211,6 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
             android:text="Description" />
-
 
 
         <LinearLayout

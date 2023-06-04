@@ -19,82 +19,82 @@ class ViewActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         //passed activity
-        var activity = GlobalClass.activities[2]
+        var activity = GlobalClass.activities[1]
         var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
         var category = GlobalClass.categories[catIndex]
         val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
 
-        val goalContainer = findViewById<LinearLayout>(R.id.llgoalcontainer)
-        /*
-        //MAX ---------------------------------------------------------------------------
-        //get max index
-        var maxIndex = GoalHourCalculator().GetGoalIndex(activity.maxgoalID)
-        //set max goal
-        var maxGoal = GlobalClass.goals[maxIndex]
-        //create custom goal
-        var customMaxGoal = CustomActivity(this)
-        //set primary text
-        customMaxGoal.binding.tvPrimaryText.text = "Maximum Goal"
-        //set secondary text
-        customMaxGoal.binding.tvSecondaryText.text = maxGoal.interval
-        //set block color
-        customMaxGoal.binding.vwBarBacking.backgroundTintList = catColour
-        //get max goal data
-        var (maxHour, maxText, maxColor) = GoalHourCalculator().CheckGoal(maxGoal.interval, maxGoal.amount)
-        //set bar color
-        val maxbarColor = ColorStateList.valueOf(Color.parseColor(maxColor))
-        customMaxGoal.binding.vwBar.backgroundTintList = maxbarColor
-        //set block text
-        customMaxGoal.binding.tvBlockText.text = maxText
-        //set block hours
-        customMaxGoal.binding.tvBlockX.text = maxHour
-        //add to container
-        goalContainer.addView(customMaxGoal)
-
-        //MIN ---------------------------------------------------------------------------
-        //get max index
-        var minIndex = GoalHourCalculator().GetGoalIndex(activity.maxgoalID)
-        //set max goal
-        var minGoal = GlobalClass.goals[minIndex]
-        //create custom goal
-        var customMinGoal = CustomActivity(this)
-        //set primary text
-        customMinGoal.binding.tvPrimaryText.text = "Minimum Goal"
-        //set secondary text
-        customMinGoal.binding.tvSecondaryText.text = minGoal.interval
-        //set block color
-        customMinGoal.binding.vwBarBacking.backgroundTintList = catColour
-        //get max goal data
-        var (minHour, minText, minColor) = GoalHourCalculator().CheckGoal(minGoal.interval, minGoal.amount)
-        //set bar color
-        val minbarColor = ColorStateList.valueOf(Color.parseColor(minColor))
-        customMinGoal.binding.vwBar.backgroundTintList = minbarColor
-        //set block text
-        customMinGoal.binding.tvBlockText.text = minText
-        //set block hours
-        customMinGoal.binding.tvBlockX.text = minHour
-        //add to container
-        goalContainer.addView(customMinGoal)
-
-         */
+        binding.tvActivity.text = activity.name
+        binding.tvCategory.text = category.name
+        binding.tvDescription.text = activity.description
 
 
-        //edit activity
-        binding.btnEditActivity.setOnClickListener()
+        //get goal indexes
+        var currentMaxGoal = -1
+        var currentMinGoal = -1
+
+        for (j in GlobalClass.goals.indices)
         {
-            //send activity data to edit page
-        }
+            if (activity.maxgoalID == GlobalClass.goals[j].goalID)
+            {
+                currentMaxGoal = j
+            }
 
-        //add log
-        binding.btnAddLog.setOnClickListener()
-        {
-            //add log to activity
+            if (activity.mingoalID == GlobalClass.goals[j].goalID)
+            {
+                currentMinGoal = j
+            }
         }
 
 
+        //MAX GOAL
+        //------------------------------------------------
+        var maxGoalCustom = CustomActivity(this)
+        maxGoalCustom.binding.tvPrimaryText.text = "Maximum Goal"
+        maxGoalCustom.binding.llBlockText.backgroundTintList = catColour
+
+        if (currentMaxGoal == -1)
+        {
+            maxGoalCustom.binding.tvSecondaryText.text = "Goal Not Set"
+            maxGoalCustom.binding.tvBlockText.text = "Hours"
+            maxGoalCustom.binding.tvBlockX.text = "X"
+        }
+        else
+        {
+            var maxGoal = GlobalClass.goals[currentMaxGoal]
+            maxGoalCustom.binding.tvSecondaryText.text = maxGoal.interval
+            var (maxhour, maxText, maxColor) = GoalHourCalculator().CheckGoal(maxGoal.interval, maxGoal.amount, activity.activityID)
+            val maxBarColor = ColorStateList.valueOf(Color.parseColor(maxColor))
+            maxGoalCustom.binding.vwBar.backgroundTintList = maxBarColor
+            maxGoalCustom.binding.tvBlockText.text = maxText
+            maxGoalCustom.binding.tvBlockX.text = maxhour
+
+        }
+        binding.llgoalcontainer.addView(maxGoalCustom)
 
 
-
+        //MIN GOAL
+        //------------------------------------------------
+        var minGoalCustom = CustomActivity(this)
+        minGoalCustom.binding.tvPrimaryText.text = "Minimum Goal"
+        minGoalCustom.binding.llBlockText.backgroundTintList = catColour
+        if (currentMinGoal == -1)
+        {
+            minGoalCustom.binding.tvSecondaryText.text = "Goal Not Set"
+            minGoalCustom.binding.tvBlockText.text = "Hours"
+            minGoalCustom.binding.tvBlockX.text = "X"
+        }
+        else
+        {
+            var minGoal = GlobalClass.goals[currentMinGoal]
+            minGoalCustom.binding.tvSecondaryText.text = minGoal.interval
+            var (hour, text, color) = GoalHourCalculator().CheckGoal(minGoal.interval, minGoal.amount, activity.activityID)
+            val maxBarColor = ColorStateList.valueOf(Color.parseColor(color))
+            minGoalCustom.binding.vwBar.backgroundTintList = maxBarColor
+            minGoalCustom.binding.tvBlockText.text = text
+            minGoalCustom.binding.tvBlockX.text = hour
+        }
+        binding.llgoalcontainer.addView(minGoalCustom)
 
 
     }
