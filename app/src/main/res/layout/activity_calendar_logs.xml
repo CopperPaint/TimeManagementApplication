@@ -95,15 +95,16 @@
             android:layout_marginTop="5dp"
             android:ems="10"
             android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:text="2023-06-1" />
 
         <CalendarView
             android:id="@+id/cvCalendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@color/white"
-            android:layout_marginTop="20dp"/>
-
+            android:clickable="true"
+            tools:ignore="DuplicateClickableBoundsCheck" />
 
     </LinearLayout>
 
