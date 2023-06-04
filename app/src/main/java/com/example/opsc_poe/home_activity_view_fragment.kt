@@ -61,11 +61,9 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                 newActivity.binding.llBlockText.backgroundTintList = catColour
                 //newActivity.binding.llBlockText.backgroundTintList =  ColorStateList.valueOf(Color.parseColor("#5c37d7"))
 
-                var minGoalID = GoalHourCalculator().GetGoalIndex(GlobalClass.activities[i].mingoalID)
-                var maxGoalID = GoalHourCalculator().GetGoalIndex(GlobalClass.activities[i].maxgoalID)
 
-                var currentMaxGoal = 0
-                var currentMinGoal = 0
+                var currentMaxGoal = -1
+                var currentMinGoal = -1
 
                 for (j in GlobalClass.goals.indices)
                 {
@@ -79,13 +77,24 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                         currentMinGoal = GlobalClass.goals[i].goalID
                     }
                 }
-                var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal)
+                var hour = ""
+                var text = ""
+                var color = ""
+                if (currentMaxGoal == -1 || currentMinGoal == -1)
+                {
+                    newActivity.binding.vwBar.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#5c37d7"))
+                    newActivity.binding.tvBlockText.text = "No Goal Set"
+                    newActivity.binding.tvBlockX.text = ""
+                }
+                else
+                {
+                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal)
 
-                val barColor = ColorStateList.valueOf(Color.parseColor(color))
-                newActivity.binding.vwBar.backgroundTintList = barColor
-                newActivity.binding.tvBlockText.text = text
-                newActivity.binding.tvBlockX.text = hour
-
+                    val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                    newActivity.binding.vwBar.backgroundTintList = barColor
+                    newActivity.binding.tvBlockText.text = text
+                    newActivity.binding.tvBlockX.text = hour
+                }
                 //add the new view
                 activityLayout.addView(newActivity)
 
