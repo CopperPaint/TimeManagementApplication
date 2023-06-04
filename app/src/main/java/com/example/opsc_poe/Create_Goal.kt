@@ -11,22 +11,14 @@ import com.example.opsc_poe.databinding.ActivityCreateGoalBinding
 class Create_Goal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_create_goal)
-
         val binding = ActivityCreateGoalBinding.inflate(layoutInflater)
-       setContentView(binding.root)
-
-
-        //var globalData = GlobalClass
+        setContentView(binding.root)
+        supportActionBar?.hide()
 
         //passed activity
-        var activity = Temp_ActivityDataClass()
+        var activity = GlobalClass.activities[3]
         //set activity name
         binding.tvActivity.text = activity.name
-
-
-        //Hide the action bar
-        supportActionBar?.hide()
 
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
@@ -52,7 +44,6 @@ class Create_Goal : AppCompatActivity() {
             }
         }
 
-
         //save goal
         binding.tvSaveButton.setOnClickListener()
         {
@@ -62,6 +53,7 @@ class Create_Goal : AppCompatActivity() {
                 amount = binding.npHourGoal.value,
                 interval = binding.npTimeFrameGoal.displayedValues.get(binding.npTimeFrameGoal.value)
             )
+            GlobalClass.goals.add(goal)
         }
     }
 }
