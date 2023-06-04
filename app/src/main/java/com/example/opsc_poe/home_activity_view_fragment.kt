@@ -61,6 +61,8 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                 newActivity.binding.llBlockText.backgroundTintList = catColour
                 //newActivity.binding.llBlockText.backgroundTintList =  ColorStateList.valueOf(Color.parseColor("#5c37d7"))
 
+                var hour = ""
+                var text = ""
 
                 var currentMaxGoal = -1
                 var currentMinGoal = -1
@@ -77,23 +79,57 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                         currentMinGoal = j
                     }
                 }
-                var hour = ""
-                var text = ""
-                if (currentMaxGoal == -1 || currentMinGoal == -1)
+                if (currentMinGoal != -1)
                 {
-                    newActivity.binding.vwBar.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#5c37d7"))
-                    newActivity.binding.tvBlockText.text = "No Goal Set"
-                    newActivity.binding.tvBlockX.text = ""
+                    if (currentMaxGoal != -1) //both goals
+                    {
+                        var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
+                        val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                        newActivity.binding.vwBar.backgroundTintList = barColor
+                        newActivity.binding.tvBlockText.text = text
+                        newActivity.binding.tvBlockX.text = hour
+                    }
+                    else //min only
+                    {
+                        var goal = GlobalClass.goals[currentMinGoal]
+                        var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
+                        val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                        newActivity.binding.vwBar.backgroundTintList = barColor
+                        newActivity.binding.tvBlockText.text = text
+                        newActivity.binding.tvBlockX.text = hour
+                    }
                 }
                 else
                 {
-                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
-
-                    val barColor = ColorStateList.valueOf(Color.parseColor(color))
-                    newActivity.binding.vwBar.backgroundTintList = barColor
-                    newActivity.binding.tvBlockText.text = text
-                    newActivity.binding.tvBlockX.text = hour
+                    if (currentMaxGoal != -1) //max only
+                    {
+                        var goal = GlobalClass.goals[currentMaxGoal]
+                        var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
+                        val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                        newActivity.binding.vwBar.backgroundTintList = barColor
+                        newActivity.binding.tvBlockText.text = text
+                        newActivity.binding.tvBlockX.text = hour
+                    }
+                    else //no goals
+                    {
+                        var total = 0
+                        for (k in GlobalClass.logs.indices)
+                        {
+                            if (GlobalClass.logs[k].activityID == GlobalClass.activities[i].activityID)
+                            {
+                                total = total + GlobalClass.logs[k].hours
+                            }
+                        }
+                        newActivity.binding.tvBlockText.text = "Total Hours:"
+                        newActivity.binding.tvBlockX.text = total.toString()
+                    }
                 }
+
+
+
+
+
+
                 //add the new view
                 activityLayout.addView(newActivity)
 

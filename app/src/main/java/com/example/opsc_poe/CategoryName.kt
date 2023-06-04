@@ -18,9 +18,8 @@ class CategoryName : AppCompatActivity() {
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category_name)
-
         val binding = ActivityCategoryNameBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
 
         //passed category
@@ -28,14 +27,13 @@ class CategoryName : AppCompatActivity() {
         GlobalClass.user.userID = category.userID
 
         //display category name
-        binding.tvCategoryName.text = GlobalClass.categories[3].name
+        binding.tvCategoryName.text = category.name
 
-        //display category descriptioin
-        binding.txtCategoryDescription.text = GlobalClass.categories[3].description
+        //display category description
+        binding.txtCategoryDescription.text = category.description
 
         //display category activites
         val activityLayout = findViewById<LinearLayout>(R.id.llactivitycontainer)
-        val goalCalculator = GoalHourCalculator() //goal calculator
 
         //loop through activites
         for (i in GlobalClass.activities.indices)
@@ -58,8 +56,8 @@ class CategoryName : AppCompatActivity() {
                     val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
                     newActivity.binding.llBlockText.backgroundTintList = catColour
 
-                    var currentMaxGoal = 0
-                    var currentMinGoal = 0
+                    var currentMaxGoal = -1
+                    var currentMinGoal = -1
 
                     for (j in GlobalClass.goals.indices)
                     {
@@ -73,12 +71,58 @@ class CategoryName : AppCompatActivity() {
                             currentMinGoal = j
                         }
                     }
-                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
+                    if (currentMinGoal != -1)
+                    {
+                        if (currentMaxGoal != -1) //both goals
+                        {
+                            var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
+                            val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                            newActivity.binding.vwBar.backgroundTintList = barColor
+                            newActivity.binding.tvBlockText.text = text
+                            newActivity.binding.tvBlockX.text = hour
+                        }
+                        else //min only
+                        {
+                            var goal = GlobalClass.goals[currentMinGoal]
+                            var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
+                            val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                            newActivity.binding.vwBar.backgroundTintList = barColor
+                            newActivity.binding.tvBlockText.text = text
+                            newActivity.binding.tvBlockX.text = hour
+                        }
+                    }
+                    else
+                    {
+                        if (currentMaxGoal != -1) //max only
+                        {
+                            var goal = GlobalClass.goals[currentMaxGoal]
+                            var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
+                            val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                            newActivity.binding.vwBar.backgroundTintList = barColor
+                            newActivity.binding.tvBlockText.text = text
+                            newActivity.binding.tvBlockX.text = hour
+                        }
+                        else //no goals
+                        {
+                            var total = 0
+                            for (k in GlobalClass.logs.indices)
+                            {
+                                if (GlobalClass.logs[k].activityID == GlobalClass.activities[i].activityID)
+                                {
+                                    total = total + GlobalClass.logs[k].hours
+                                }
+                            }
+                            newActivity.binding.tvBlockText.text = "Total Hours:"
+                            newActivity.binding.tvBlockX.text = total.toString()
+                        }
+                    }
 
-                    val barColor = ColorStateList.valueOf(Color.parseColor(color))
-                    newActivity.binding.vwBar.backgroundTintList = barColor
-                    newActivity.binding.tvBlockText.text = text
-                    newActivity.binding.tvBlockX.text = hour
+
+
+
+
+
+
 
                     //add the new view
                     activityLayout.addView(newActivity)
