@@ -69,17 +69,16 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                 {
                     if (GlobalClass.activities[i].maxgoalID == GlobalClass.goals[j].goalID)
                     {
-                        currentMaxGoal = GlobalClass.goals[i].goalID
+                        currentMaxGoal = j
                     }
 
                     if (GlobalClass.activities[i].mingoalID == GlobalClass.goals[j].goalID)
                     {
-                        currentMinGoal = GlobalClass.goals[i].goalID
+                        currentMinGoal = j
                     }
                 }
                 var hour = ""
                 var text = ""
-                var color = ""
                 if (currentMaxGoal == -1 || currentMinGoal == -1)
                 {
                     newActivity.binding.vwBar.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#5c37d7"))
@@ -88,7 +87,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                 }
                 else
                 {
-                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal)
+                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
 
                     val barColor = ColorStateList.valueOf(Color.parseColor(color))
                     newActivity.binding.vwBar.backgroundTintList = barColor
