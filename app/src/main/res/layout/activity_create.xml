@@ -233,13 +233,6 @@
         android:rotation="40"
         app:srcCompat="@drawable/greenturtle" />
 
-    <androidx.camera.view.PreviewView
-        android:id="@+id/previewView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        />
-
-
 </RelativeLayout>
 
 
