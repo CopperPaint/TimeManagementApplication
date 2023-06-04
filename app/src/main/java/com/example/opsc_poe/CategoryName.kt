@@ -65,15 +65,15 @@ class CategoryName : AppCompatActivity() {
                     {
                         if (GlobalClass.activities[i].maxgoalID == GlobalClass.goals[j].goalID)
                         {
-                            currentMaxGoal = GlobalClass.goals[i].goalID
+                            currentMaxGoal = j
                         }
 
                         if (GlobalClass.activities[i].mingoalID == GlobalClass.goals[j].goalID)
                         {
-                            currentMinGoal = GlobalClass.goals[i].goalID
+                            currentMinGoal = j
                         }
                     }
-                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal)
+                    var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
 
                     val barColor = ColorStateList.valueOf(Color.parseColor(color))
                     newActivity.binding.vwBar.backgroundTintList = barColor
