@@ -13,7 +13,7 @@ class GoalHourCalculator
     var yellow = "#fcef5d"
     var red = "#e81e1e"
     var green = "40bf2a"
-    public fun CalculateHours(minID: Int, maxID: Int): Triple<String, String, String>
+    public fun CalculateHours(minID: Int, maxID: Int, activityID: Int): Triple<String, String, String>
     {
         var maxgoal = GlobalClass.goals[GetGoalIndex(maxID)]
         var mingoal = GlobalClass.goals[GetGoalIndex(minID)]
@@ -22,11 +22,11 @@ class GoalHourCalculator
         var barColour: String
 
         //check min
-        val (minHour, minText, minColor) = CheckGoal(mingoal.interval, mingoal.amount)
+        val (minHour, minText, minColor) = CheckGoal(mingoal.interval, mingoal.amount, activityID)
         if (minText.equals("Overtime")) //if over mingoal hours
         {
             //check max
-            val (maxHour, maxText, maxColor) = CheckGoal(maxgoal.interval, maxgoal.amount) //here
+            val (maxHour, maxText, maxColor) = CheckGoal(maxgoal.interval, maxgoal.amount, activityID) //here
             if (maxText.equals("Hours to Go!")) //if under maxgoal hours
             {
                 calcHour = "✔"
@@ -65,16 +65,19 @@ class GoalHourCalculator
     }
 
     //method to get the total hours logged in the specified interval
-    public fun GetHours(interval: String): Int
+    public fun GetHours(interval: String, activityID: Int): Int
     {
         var total: Int = 0
         if (interval.equals("Daily"))
         {
             for (log in GlobalClass.logs)
             {
-                if (log.startDate == LocalDate.now())
+                if (log.activityID == activityID)
                 {
-                    total = total + log.hours
+                    if (log.startDate == LocalDate.now())
+                    {
+                        total = total + log.hours
+                    }
                 }
             }
         }
@@ -84,10 +87,13 @@ class GoalHourCalculator
             val currentWeek = LocalDate.now().get(weekFields.weekOfWeekBasedYear())
             for (log in GlobalClass.logs)
             {
-                val logWeek = log.startDate.get(weekFields.weekOfWeekBasedYear())
-                if (logWeek == currentWeek)
+                if (log.activityID == activityID)
                 {
-                    total = total + log.hours
+                    val logWeek = log.startDate.get(weekFields.weekOfWeekBasedYear())
+                    if (logWeek == currentWeek)
+                    {
+                        total = total + log.hours
+                    }
                 }
             }
         }
@@ -96,9 +102,12 @@ class GoalHourCalculator
             val currentDate = LocalDate.now()
             for (log in GlobalClass.logs)
             {
-                if (log.startDate.month == currentDate.month && log.startDate.year == currentDate.year)
+                if (log.activityID == activityID)
                 {
-                    total = total + log.hours
+                    if (log.startDate.month == currentDate.month && log.startDate.year == currentDate.year)
+                    {
+                        total = total + log.hours
+                    }
                 }
             }
         }
@@ -106,13 +115,13 @@ class GoalHourCalculator
     }
 
 
-    public fun CheckGoal(interval: String, amount: Int): Triple<String, String, String>
+    public fun CheckGoal(interval: String, amount: Int, activityID: Int): Triple<String, String, String>
     {
         var hourToGo: String = ""
         var hourText: String = ""
         var barColor: String = ""
 
-        val total = GetHours(interval)
+        val total = GetHours(interval, activityID)
         if (total == amount)
         {
             hourToGo = "✔"
