@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -15,14 +16,12 @@ class CreateCategory : AppCompatActivity() {
     private var colorPreview: View? = null
     private var defaultcolor = 0
 
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityCreateCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-
-        //global data
-        //var globaldata = GlobalClass
 
         //colour picker
         colorPreview = findViewById<View>(R.id.preview_selected_color)
@@ -37,6 +36,7 @@ class CreateCategory : AppCompatActivity() {
         {
             //create category object
             var category = Temp_CategoryDataClass(
+                categoryID = GlobalClass.categories.size + 1,
                 userID = GlobalClass.user.userID,
                 name = binding.etName.text.toString(),
                 description = binding.etDescription.text.toString(),
