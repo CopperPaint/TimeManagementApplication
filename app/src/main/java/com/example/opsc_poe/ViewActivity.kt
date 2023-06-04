@@ -18,14 +18,14 @@ class ViewActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-
         //passed activity
-        var activity = Temp_ActivityDataClass()
+        var activity = GlobalClass.activities[2]
         var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
         var category = GlobalClass.categories[catIndex]
         val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
 
         val goalContainer = findViewById<LinearLayout>(R.id.llgoalcontainer)
+        /*
         //MAX ---------------------------------------------------------------------------
         //get max index
         var maxIndex = GoalHourCalculator().GetGoalIndex(activity.maxgoalID)
@@ -75,6 +75,8 @@ class ViewActivity : AppCompatActivity() {
         customMinGoal.binding.tvBlockX.text = minHour
         //add to container
         goalContainer.addView(customMinGoal)
+
+         */
 
 
         //edit activity
