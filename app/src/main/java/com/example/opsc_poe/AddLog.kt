@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -19,6 +20,7 @@ import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import java.time.LocalDate
 import java.util.Timer
+import kotlin.math.round
 import kotlin.math.roundToInt
 
 class AddLog : AppCompatActivity() {
@@ -42,7 +44,6 @@ class AddLog : AppCompatActivity() {
         //set hour picker
         binding.dpHours.setIs24HourView(true)
         var isStopWatch = true
-
 
         //SPINNER
         //------------------------------------------------------------------------------------
@@ -97,16 +98,14 @@ class AddLog : AppCompatActivity() {
             var inputTime = 0.0
             if (isStopWatch)
             {
-                inputTime = time/60.0
-
+                inputTime = round((time/60.0) * 100) / 100
             }
             else
             {
                 val hour = binding.dpHours.hour
                 val min = binding.dpHours.minute
                 val timeInHours = hour + (min / 60.0)
-                val timeAsDouble = timeInHours.toDouble()
-                inputTime = timeAsDouble
+                inputTime = round(timeInHours * 100) / 100
             }
             var log = Temp_LogDataClass(
                 logID = GlobalClass.logs.size + 1,
@@ -120,8 +119,6 @@ class AddLog : AppCompatActivity() {
                 hours = inputTime
             )
             GlobalClass.logs.add(log)
-            var testLog = GlobalClass.logs[GlobalClass.logs.size -1]
-            binding.tvLog.text = testLog.hours.toString()
         }
     }
 
@@ -143,13 +140,13 @@ class AddLog : AppCompatActivity() {
             startTimer()
     }
 
+
     private fun startTimer()
     {
         serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
         startService(serviceIntent)
         binding.btnStartStop.text = "Stop"
         binding.btnStartStop.setCompoundDrawablesWithIntrinsicBounds(R.drawable.pause, 0, 0, 0)
-        //binding.btnStartStop.setBackgroundResource(R.style.button_colour_start)
         timerStarted = true
     }
 

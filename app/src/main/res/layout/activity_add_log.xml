@@ -167,7 +167,7 @@
                     android:text="Reset"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:theme="@style/button_colour_reset" />
+                    android:theme="@style/button_colour_stop" />
             </LinearLayout>
         </LinearLayout>
 
