@@ -1,6 +1,7 @@
 package com.example.opsc_poe
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -10,16 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
+import java.text.SimpleDateFormat
 import java.time.LocalDate
-import java.util.Timer
+import java.util.*
 import kotlin.math.round
 import kotlin.math.roundToInt
 
@@ -28,6 +26,7 @@ class AddLog : AppCompatActivity() {
     private lateinit var serviceIntent: Intent
     private var time = 0.0
     private lateinit var binding: ActivityAddLogBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +43,36 @@ class AddLog : AppCompatActivity() {
         //set hour picker
         binding.dpHours.setIs24HourView(true)
         var isStopWatch = true
+
+
+
+        //DATE PICKER
+        //---------------------------------------------------------------------------------
+        val calendar = Calendar.getInstance()
+
+        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            var dateText = updateLable(calendar)
+            binding.tvDate.text = dateText
+        }
+
+        binding.btnDate.setOnClickListener {
+            DatePickerDialog(this, datePicker,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+
+
+
+
+
+
+
+
 
         //SPINNER
         //------------------------------------------------------------------------------------
@@ -111,15 +140,20 @@ class AddLog : AppCompatActivity() {
                 logID = GlobalClass.logs.size + 1,
                 activityID = activity.activityID,
                 userID = GlobalClass.user.userID,
-                startDate = LocalDate.of(
-                    binding.dpStartDate.year,
-                    binding.dpStartDate.month,
-                    binding.dpStartDate.dayOfMonth),
+                startDate = LocalDate.now(),
                 endDate = LocalDate.now(),
                 hours = inputTime
             )
             GlobalClass.logs.add(log)
         }
+    }
+
+    //Date Format Method
+    private fun updateLable(calendar: Calendar) : String {
+        val dateFormat = "dd-MM-yyyy"
+        val sdf = SimpleDateFormat(dateFormat, Locale.UK)
+        var dateText = sdf.format(calendar.time)
+        return dateText
     }
 
 
