@@ -68,9 +68,9 @@ class GoalHourCalculator
     }
 
     //method to get the total hours logged in the specified interval
-    public fun GetHours(interval: String, activityID: Int): Int
+    public fun GetHours(interval: String, activityID: Int): Double
     {
-        var total: Int = 0
+        var total: Double = 0.0
         if (interval.equals("Daily"))
         {
             for (log in GlobalClass.logs.indices)
@@ -125,14 +125,15 @@ class GoalHourCalculator
         var hourText: String = ""
         var barColor: String = ""
 
+
         val total = GetHours(interval, activityID)
-        if (total == amount)
+        if (total == amount.toDouble())
         {
             hourToGo = "✔"
             hourText = "Goal Reached!"
             barColor = green
         }
-        else if (total > amount)
+        else if (total > amount.toDouble())
         {
             hourToGo = (total - amount).toString()
             hourText = "Overtime"
@@ -140,7 +141,7 @@ class GoalHourCalculator
         }
         else
         {
-            hourToGo = (amount - total).toString()
+            hourToGo = (amount.toDouble() - total).toString()
             hourText = "Hours to Go!"
             barColor = yellow
         }

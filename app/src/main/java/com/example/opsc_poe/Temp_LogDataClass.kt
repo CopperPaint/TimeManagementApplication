@@ -10,5 +10,5 @@ data class Temp_LogDataClass(
     var userID: Int = 0,
     var startDate: LocalDate = LocalDate.now(),
     var endDate: LocalDate = LocalDate.now(),
-    var hours: Int = 0
+    var hours: Double = 0.0
 )

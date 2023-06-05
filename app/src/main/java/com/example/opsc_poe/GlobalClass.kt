@@ -101,7 +101,7 @@ class GlobalClass : Application()
         var listLogEndDate = arrayListOf("2-6-2023", "3-6-2023", "3-6-2023", "5-6-2023", "6-6-2023", "6-6-2023", "2-7-2023", "3-7-2023", "3-7-2023", "5-7-2023", "6-7-2023", "6-7-2023")//Year-Month-Day
 
 
-        var listLogHours = arrayListOf(2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1)//
+        var listLogHours = arrayListOf(2.0, 3.0, 1.0, 2.0, 3.0, 1.0, 2.0, 3.0, 1.0, 2.0, 3.0, 1.0)//
 
 
 

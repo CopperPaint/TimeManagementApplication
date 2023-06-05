@@ -71,10 +71,10 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
         _binding = null
     }
 
-    fun GetActivitesData(catID: Int): Pair<Int, Int>
+    fun GetActivitesData(catID: Int): Pair<Int, Double>
     {
         var totalAct = 0
-        var totalHour = 0
+        var totalHour = 0.0
         for (i in GlobalClass.activities)
         {
             if (i.categoryID == catID)

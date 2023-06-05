@@ -129,9 +129,9 @@ class LogsCategory : AppCompatActivity() {
     }
 
 
-    fun GetActivitesData(catID: Int): Int
+    fun GetActivitesData(catID: Int): Double
     {
-        var totalHour = 0
+        var totalHour = 0.0
         for (i in GlobalClass.activities)
         {
             if (i.categoryID == catID)

@@ -104,7 +104,7 @@ class CategoryName : AppCompatActivity() {
                         }
                         else //no goals
                         {
-                            var total = 0
+                            var total = 0.0
                             for (k in GlobalClass.logs.indices)
                             {
                                 if (GlobalClass.logs[k].activityID == GlobalClass.activities[i].activityID)

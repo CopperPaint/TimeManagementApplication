@@ -108,7 +108,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                     }
                     else //no goals
                     {
-                        var total = 0
+                        var total = 0.0
                         for (k in GlobalClass.logs.indices)
                         {
                             if (GlobalClass.logs[k].activityID == GlobalClass.activities[i].activityID)

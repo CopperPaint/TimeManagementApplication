@@ -39,6 +39,13 @@ class AddLog : AppCompatActivity() {
         //show activity name
         binding.tvActivityName.text = activity.name
 
+        //set hour picker
+        binding.dpHours.setIs24HourView(false)
+        var isStopWatch = true
+
+
+        //SPINNER
+        //------------------------------------------------------------------------------------
         //set spinner items
         val items = arrayOf("Stopwatch", "Input Hours")
         val spinner = findViewById<Spinner>(R.id.spWatchOption)
@@ -48,27 +55,21 @@ class AddLog : AppCompatActivity() {
             spinner.adapter = adapter
         }
 
-
-
-
-
-
-
-
-
-
-
-
         //spinner is changed
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 when (selectedItem) {
                     "Stopwatch" -> {
-                        // Code to execute when "Stopwatch" is selected
+                        binding.llStopWatch.visibility = View.VISIBLE
+                        binding.llInputHours.visibility = View.GONE
+                        isStopWatch = true
                     }
                     "Input Hours" -> {
                         // Code to execute when "Input Hours" is selected
+                        binding.llStopWatch.visibility = View.GONE
+                        binding.llInputHours.visibility = View.VISIBLE
+                        isStopWatch = false
                     }
                 }
             }
@@ -79,7 +80,7 @@ class AddLog : AppCompatActivity() {
 
 
         //TIMER
-        //----------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------
         binding.btnStartStop.setOnClickListener() {startStopTimer()}
         binding.btnReset.setOnClickListener() {resetTimer()}
 
@@ -88,10 +89,24 @@ class AddLog : AppCompatActivity() {
 
 
 
-
+        //SAVE
+        //--------------------------------------------------------------------------------------
         //save goal
         binding.btnAdd.setOnClickListener()
         {
+            var inputTime = 0.0
+            if (isStopWatch)
+            {
+                inputTime = time
+            }
+            else
+            {
+                var hour = binding.dpHours.hour
+                var min = binding.dpHours.minute
+                val timeInMinutes = hour * 60 + min
+                val timeAsDouble = timeInMinutes.toDouble()
+                inputTime = timeAsDouble
+            }
             var log = Temp_LogDataClass(
                 logID = GlobalClass.logs.size + 1,
                 activityID = activity.activityID,
@@ -100,12 +115,16 @@ class AddLog : AppCompatActivity() {
                     binding.dpStartDate.year,
                     binding.dpStartDate.month,
                     binding.dpStartDate.dayOfMonth),
-                endDate = LocalDate.now()
+                endDate = LocalDate.now(),
+                hours = inputTime
             )
             GlobalClass.logs.add(log)
         }
     }
 
+
+    //TIMER METHODS
+    //------------------------------------------------------------------------------------
     private fun resetTimer()
     {
         stopTimer()
