@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import com.example.opsc_poe.databinding.ActivityViewBinding
 
@@ -16,10 +17,18 @@ class ViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Hide the action bar
         supportActionBar?.hide()
 
+        //set status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
+
         //passed activity
-        var activity = GlobalClass.activities[1]
+
+        val activityIDIndex = intent.getIntExtra("activityIDIndex", 0)
+
+        var activity = GlobalClass.activities[activityIDIndex]
         var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
         var category = GlobalClass.categories[catIndex]
         val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
