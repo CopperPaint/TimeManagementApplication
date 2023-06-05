@@ -40,7 +40,7 @@ class AddLog : AppCompatActivity() {
         binding.tvActivityName.text = activity.name
 
         //set hour picker
-        binding.dpHours.setIs24HourView(false)
+        binding.dpHours.setIs24HourView(true)
         var isStopWatch = true
 
 
@@ -97,14 +97,15 @@ class AddLog : AppCompatActivity() {
             var inputTime = 0.0
             if (isStopWatch)
             {
-                inputTime = time
+                inputTime = time/60.0
+
             }
             else
             {
-                var hour = binding.dpHours.hour
-                var min = binding.dpHours.minute
-                val timeInMinutes = hour * 60 + min
-                val timeAsDouble = timeInMinutes.toDouble()
+                val hour = binding.dpHours.hour
+                val min = binding.dpHours.minute
+                val timeInHours = hour + (min / 60.0)
+                val timeAsDouble = timeInHours.toDouble()
                 inputTime = timeAsDouble
             }
             var log = Temp_LogDataClass(
@@ -119,6 +120,8 @@ class AddLog : AppCompatActivity() {
                 hours = inputTime
             )
             GlobalClass.logs.add(log)
+            var testLog = GlobalClass.logs[GlobalClass.logs.size -1]
+            binding.tvLog.text = testLog.hours.toString()
         }
     }
 
