@@ -61,10 +61,11 @@ class CreateActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap?
+            
             imageView.setImageBitmap(imageBitmap)
-
-            // Save the image locally
+            //Save the image locally
             saveImageLocally(imageBitmap)
+
         }
     }
 
