@@ -31,7 +31,7 @@ class AddLog : AppCompatActivity() {
                     binding.dpStartDate.month,
                     binding.dpStartDate.dayOfMonth),
                 endDate = LocalDate.now(),
-                hours = binding.etHours.text.toString().toInt()
+               // hours = binding.etHours.text.toString().toInt()
             )
             GlobalClass.logs.add(log)
         }

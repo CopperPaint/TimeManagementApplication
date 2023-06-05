@@ -83,6 +83,7 @@ class GlobalClass : Application()
         var listActivityCategoryID = arrayListOf(1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 8)
         var listActivityName = arrayListOf("Activity Name 1", "Activity Name 2", "Activity Name 3", "Activity Name 4", "Activity Name 5", "Activity Name 6", "Activity Name 7", "Activity Name 8", "Activity Name 9", "Activity Name 10", "Activity Name 11", "Activity Name 12")
         var listActivityDescription = arrayListOf("Activity Description 1", "Activity Description 2", "Activity Description 3", "Activity Description 4", "Activity Description 5", "Activity Description 6", "Activity Description 7", "Activity Description 8", "Activity Description 9", "Activity Description 10", "Activity Description 11", "Activity Description 12")
+       // var listActivityPhoto = arrayListOf<>()
         var listActivityMaxGoalID = arrayListOf(2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24)
         var listActivityMinGoalID = arrayListOf(1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23)
         //---------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,5 +1,10 @@
 package com.example.opsc_poe
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+
+
 data class Temp_ActivityDataClass(
     var activityID: Int = 0,
     var userID: Int = 0,
@@ -8,4 +13,5 @@ data class Temp_ActivityDataClass(
     var description: String = "",
     var maxgoalID: Int = 0,
     var mingoalID: Int = 0,
+    //var photo : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.blackturtle)
 )
