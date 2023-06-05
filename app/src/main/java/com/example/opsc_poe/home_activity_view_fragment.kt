@@ -1,17 +1,13 @@
 package com.example.opsc_poe
 
 import android.annotation.SuppressLint
-import android.content.ContentProvider
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.provider.Settings.Global
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.opsc_poe.databinding.HomeActivityViewFragmentBinding
 
@@ -127,8 +123,11 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
 
 
 
-
-
+                newActivity.setOnClickListener(){
+                    var intent = Intent(activity, ViewActivity::class.java)
+                    intent.putExtra("activityIDIndex", i)
+                    startActivity(intent)
+                }
 
                 //add the new view
                 activityLayout.addView(newActivity)
@@ -136,6 +135,10 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                // GlobalClass.InformUser("", "Activity Name: $GlobalClass.activities[i].name \n Category Name: $category.name \n Time Text: $text \n Hour: $hour \n Min Goal: ${GlobalClass.activities[i].mingoalID.toString()} \n Max Goal: ${GlobalClass.activities[i].maxgoalID.toString()}", requireContext())
             }
         }
+
+
+
+
         //-------------------------------------------------
         return view
     }
