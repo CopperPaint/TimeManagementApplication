@@ -16,6 +16,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.opsc_poe.databinding.ActivityCreateBinding
+import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -32,8 +34,9 @@ class CreateActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create)
-
+        val binding = ActivityCreateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar?.hide()
         imageView = findViewById(R.id.imgCamera)
         val CameraImage: Button = findViewById(R.id.btnInsertImage)
 
@@ -44,7 +47,20 @@ class CreateActivity : AppCompatActivity() {
             {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
             }
+
+            binding.btnClick.setOnClickListener()
+            {
+                //create activity object
+                var activities = Temp_ActivityDataClass(
+                    activityID = GlobalClass.activities.size + 1,
+                    userID = GlobalClass.user.userID,
+                    name = binding.txtActivtyName.text.toString(),
+                    description = binding.txtDescription.text.toString(),
+                )
+                GlobalClass.activities.add(activities)
+            }
         }
+
 
         }
     private fun startCamera()
@@ -61,15 +77,13 @@ class CreateActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap?
-            
             imageView.setImageBitmap(imageBitmap)
             //Save the image locally
             saveImageLocally(imageBitmap)
-
         }
     }
 
-    //save image locally //
+    //save image locally
     private fun saveImageLocally(imageBitmap: Bitmap?) {
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val imageFileName = "IMG_$timeStamp.jpg"
