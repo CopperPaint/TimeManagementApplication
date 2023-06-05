@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OPSC_POE"
         tools:targetApi="31">
+        <activity
+            android:name=".View_Activity_Logs_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".View_Activity_Details_Fragment"
+            android:exported="false" />
         <activity
             android:name=".CalendarLogs"
             android:exported="true" />

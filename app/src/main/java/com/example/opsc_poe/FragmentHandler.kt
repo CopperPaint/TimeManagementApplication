@@ -18,6 +18,7 @@ class FragmentHandler {
         //begin transition to desired fragment
         val fragmentTransaction = fragmentManager.beginTransaction()
 
+        //var to hold animation
         var chosenAnim = 0
 
         //choose a fragment animation
@@ -34,9 +35,13 @@ class FragmentHandler {
             "Right" -> {
                 chosenAnim = com.example.opsc_poe.R.anim.slide_right
             }
+            "Left_Half" -> {
+                chosenAnim = com.example.opsc_poe.R.anim.slide_left_half
+            }
+            "Right_Half" -> {
+                chosenAnim = com.example.opsc_poe.R.anim.slide_right_half
+            }
         }
-
-
 
         //define fragment animations
         fragmentTransaction.setCustomAnimations(

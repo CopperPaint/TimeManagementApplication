@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity()
         //Sign in view activation
         binding.tvSignIn.setOnClickListener{
             //replaceFragment(sign_in_fragment())
-            fragmentControl.replaceFragmentAnim(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager, "Left")
+            fragmentControl.replaceFragmentAnim(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager, "Left_Half")
 
             //val i = Intent(this, sign_in_fragment::class.java)
 
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity()
         //Sign up view activation
         binding.tvSignUp.setOnClickListener{
             //replaceFragment(sign_up_fragment())
-            fragmentControl.replaceFragmentAnim(sign_up_fragment(), R.id.fcFragmentContainer, supportFragmentManager, "Right")
+            fragmentControl.replaceFragmentAnim(sign_up_fragment(), R.id.fcFragmentContainer, supportFragmentManager, "Right_Half")
         }
 
 
