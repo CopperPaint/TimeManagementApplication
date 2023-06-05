@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature android:name="android.hardware.camera" android:required="true" />
-    <uses-permiswsion android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permiwssion.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".GlobalClass"
@@ -40,7 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".CreateActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Create_Goal"
             android:exported="false" />
