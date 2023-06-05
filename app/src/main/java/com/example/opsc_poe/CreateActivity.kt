@@ -69,7 +69,7 @@ class CreateActivity : AppCompatActivity() {
         }
     }
 
-    //save image locally
+    //save image locally //
     private fun saveImageLocally(imageBitmap: Bitmap?) {
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
         val imageFileName = "IMG_$timeStamp.jpg"
