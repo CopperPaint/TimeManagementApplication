@@ -13,4 +13,7 @@
     <color name="Input_Grey">#F7F7F7</color>
     <color name="Activity_Yellow">#FFE082</color>
     <color name="Default_Charcoal_Grey">#333333</color>
+    <color name="start_green">#87bf3d</color>
+    <color name="stop_red">#c4472b</color>
+    <color name="reset_blue">#2B9DC3</color>
 </resources>

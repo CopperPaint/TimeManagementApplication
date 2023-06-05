@@ -19,4 +19,13 @@
     <style name="button_colour_white">
         <item name="colorPrimary">@color/Input_Grey</item>
     </style>
+    <style name="button_colour_start">
+        <item name="colorPrimary">@color/start_green</item>
+    </style>
+    <style name="button_colour_stop">
+        <item name="colorPrimary">@color/stop_red</item>
+    </style>
+    <style name="button_colour_reset">
+        <item name="colorPrimary">@color/reset_blue</item>
+    </style>
 </resources>

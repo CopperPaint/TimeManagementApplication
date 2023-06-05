@@ -40,7 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".CreateActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Create_Goal"
             android:exported="false" />
@@ -59,6 +59,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".TimerService"></service>
     </application>
 
 </manifest>
