@@ -115,6 +115,17 @@
             android:calendarViewShown="false"
             android:datePickerMode="spinner" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="275dp"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
     </LinearLayout>
 
     <TextView
@@ -148,9 +159,9 @@
 
     <ImageView
         android:id="@+id/imgTurtle"
-        android:layout_width="100dp"
-        android:layout_height="118dp"
-        android:layout_marginTop="605dp"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="665dp"
         android:layout_marginLeft="20dp"
         android:rotation="-45"
         app:srcCompat="@drawable/cyanturtle" />
@@ -159,8 +170,8 @@
         android:id="@+id/imgTurtle2"
         android:layout_width="70dp"
         android:layout_height="48dp"
-        android:layout_marginTop="655dp"
-        android:layout_marginLeft="330dp"
+        android:layout_marginTop="675dp"
+        android:layout_marginLeft="317dp"
         app:srcCompat="@drawable/greenturtle" />
 
 
