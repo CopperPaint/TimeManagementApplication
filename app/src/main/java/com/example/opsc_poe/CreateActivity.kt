@@ -44,7 +44,8 @@ class CreateActivity : AppCompatActivity() {
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
-        var activityIDIndex = intent.getIntExtra("activityIDIndex", 0)
+        var activityIDIndex = intent.getIntExtra("activityIDIndex", -1)
+
         binding.tvCategoryName.text = activityIDIndex.toString()
 
         //Spinner
@@ -84,7 +85,7 @@ class CreateActivity : AppCompatActivity() {
 
 
 
-        if (activityIDIndex == 0) //activity does not exist
+        if (activityIDIndex == -1) //activity does not exist
         {
             binding.btnClick.setOnClickListener()
             {
@@ -163,6 +164,14 @@ class CreateActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        binding.tvNeedHelp.setOnClickListener(){
+            var intent = Intent(this, Help::class.java)
+            intent.putExtra("previousScreen", "Create_Activity")
+            intent.putExtra("activityIDIndex", activityIDIndex)
+            startActivity(intent)
+        }
+
         }
 
     private fun startCamera()
