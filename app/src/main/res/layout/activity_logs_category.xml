@@ -77,84 +77,91 @@
             android:background="@drawable/rounded_rectangle"
             android:backgroundTint="@color/Muted_Green" />
 
-        <TextView
-            android:id="@+id/tvCalendarDateHeading"
-            android:layout_width="200dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+        <LinearLayout
+            android:id="@+id/llStartDate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:text="Start Date/End Date" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/txtDate"
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:inputType="date"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <Button
+                android:id="@+id/btnStartDate"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rectangle"
+                android:text="Set Start Date"
+                android:textColor="#FFFFFF"
+                android:theme="@style/button_colour_green" />
+
+            <TextView
+                android:id="@+id/tvStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rectangle"
+                android:gravity="center_horizontal"
+                android:text="--/--/----"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llEndDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEndDate"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rectangle"
+                android:text="Set End Date"
+                android:textColor="#FFFFFF"
+                android:theme="@style/button_colour_green" />
+
+            <TextView
+                android:id="@+id/tvEndDate"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rectangle"
+                android:gravity="center_horizontal"
+                android:text="--/--/----"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </LinearLayout>
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_rectangle">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        </com.github.mikephil.charting.charts.PieChart>
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/pieChart"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:layout_marginTop="10dp"
+            android:text="Category Information"
+            android:textColor="#FFFFFF" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/rounded_item_box"
-                android:drawableTint="@color/purple_200"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Android"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/rounded_item_box"
-                android:drawableTint="@color/Activity_Yellow"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Apple"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/rounded_item_box"
-                android:drawableTint="@color/teal_200"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Microsoft"
-                android:textAlignment="center"
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-
-
-
+        <TextView
+            android:id="@+id/tvCategoryInformation"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/rounded_rectangle"
+            android:gravity="center"
+            android:text="No Category Selected" />
 
 
     </LinearLayout>
