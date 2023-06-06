@@ -11,9 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Environment
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityCreateBinding
@@ -39,6 +37,25 @@ class CreateActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        //Spinner
+        //----------------------------------------------------------------------------------
+        val items = arrayListOf<String>()
+        val indexes = arrayListOf<Int>()
+        for (i in GlobalClass.categories.indices)
+        {
+            //if category belongs to user
+            if (GlobalClass.categories[i].userID == GlobalClass.user.userID)
+            {
+                items.add(GlobalClass.categories[i].name)
+                indexes.add(i)
+            }
+        }
+        val spinner = findViewById<Spinner>(R.id.spCategory)
+        if (spinner != null) {
+            val adapter = ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, items)
+            spinner.adapter = adapter
+        }
 
         imageView = findViewById(R.id.imgCamera)
         val CameraImage: Button = findViewById(R.id.btnInsertImage)
@@ -50,12 +67,14 @@ class CreateActivity : AppCompatActivity() {
             {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
             }
-
-
         }
 
         binding.btnClick.setOnClickListener()
         {
+            //code to get selected category
+            var selectedItem = spinner.selectedItemPosition
+            var category = GlobalClass.categories[indexes[selectedItem]]
+
             //create activity object
             var activities = Temp_ActivityDataClass(
                 //activityID = GlobalClass.activities.size + 1,
@@ -77,6 +96,8 @@ class CreateActivity : AppCompatActivity() {
             //return user to the home view screen
             var intent = Intent(this, Home_Activity::class.java)
             startActivity(intent)
+
+
         }
 
         }
