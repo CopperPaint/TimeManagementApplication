@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityHelpBinding
 import com.example.opsc_poe.databinding.ActivitySettingsViewBinding
 
+
 class Help : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +27,19 @@ class Help : AppCompatActivity() {
 
         var previousScreen = intent.getStringExtra("previousScreen")
 
+        when (previousScreen)
+        {
+            "Create_Goal" -> {
+               binding.tvHelpMessage.text = getString(R.string.CreateGoalHelp)
+            }
+            "Create_Activity" -> {
+                binding.tvHelpMessage.text = getString(R.string.CreateActivityHelp)
+            }
+
+        }
+
+
+
         fun GoBack(previousScreenVar: String)
         {
 
@@ -39,11 +53,8 @@ class Help : AppCompatActivity() {
                     intent.putExtra("currentActivityID", returningActivityID)
                     startActivity(intent)
                 }
-
-
                 "Create_Activity" -> {
-                    var returningActivityID = intent.getIntExtra("currentDataID", 0)
-
+                    var returningActivityID = intent.getIntExtra("currentActivityID", 0)
 
                     //return user to the initial view screen
                     var intent = Intent(this, CreateActivity::class.java)

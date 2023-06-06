@@ -21,6 +21,15 @@
         android:theme="@style/Theme.OPSC_POE"
         tools:targetApi="31">
         <activity
+            android:name=".global_logs_category_fragment"
+            android:exported="false" />
+        <activity
+            android:name=".global_logs_list_fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Global_Logs"
+            android:exported="false" />
+        <activity
             android:name=".Help"
             android:exported="false" />
         <activity

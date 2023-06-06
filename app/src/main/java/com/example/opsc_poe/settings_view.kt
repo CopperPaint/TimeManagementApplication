@@ -80,7 +80,13 @@ class settings_view : AppCompatActivity() {
 
         binding.tvViewLogsText.setOnClickListener()
         {
-            var intent = Intent(this, LogsList::class.java)
+            var intent = Intent(this, Global_Logs::class.java)
+            startActivity(intent)
+        }
+
+        binding.imgViewLogsIndicator.setOnClickListener()
+        {
+            var intent = Intent(this, Global_Logs::class.java)
             startActivity(intent)
         }
 

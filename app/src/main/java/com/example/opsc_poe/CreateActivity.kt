@@ -44,7 +44,7 @@ class CreateActivity : AppCompatActivity() {
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
-        var activityIDIndex = intent.getIntExtra("activityIDIndex", 0)
+        var activityIDIndex = intent.getIntExtra("activityIDIndex", -1)
 
         //Spinner
         //----------------------------------------------------------------------------------
@@ -172,7 +172,16 @@ class CreateActivity : AppCompatActivity() {
         }
 
 
+        binding.tvNeedHelp.setOnClickListener()
+        {
 
+            var intent = Intent(this, Help::class.java) //ViewActivity
+
+            intent.putExtra("previousScreen", "Create_Activity")
+            intent.putExtra("currentActivityID", activityIDIndex)
+            startActivity(intent)
+
+        }
 
 
 

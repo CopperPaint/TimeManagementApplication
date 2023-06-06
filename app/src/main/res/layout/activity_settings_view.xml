@@ -45,7 +45,7 @@
         <View
             android:id="@+id/vwEntryBackground"
             android:layout_width="match_parent"
-            android:layout_height="668dp"
+            android:layout_height="688dp"
             android:layout_marginTop="14dp"
             android:layout_below="@id/tvSettingsHeader"
             android:background="@drawable/backing_shape"
@@ -85,7 +85,7 @@
             android:layout_marginTop="-57dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="@color/Muted_Green"
             android:clickable="true"
             android:onClick="onClick"
             android:paddingVertical="13dp"
@@ -117,7 +117,7 @@
             android:layout_marginTop="-57dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="@color/Muted_Green"
             android:clickable="true"
             android:onClick="onClick"
             android:paddingVertical="13dp"
@@ -149,7 +149,7 @@
             android:layout_marginTop="-57dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_rectangle"
-            android:backgroundTint="@color/purple_200"
+            android:backgroundTint="@color/Muted_Green"
             android:clickable="true"
             android:onClick="onClick"
             android:paddingVertical="13dp"
@@ -166,10 +166,10 @@
         android:id="@+id/vwSectionDivider"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:layout_marginHorizontal="26dp"
+        android:layout_marginHorizontal="80dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/Light_Green"
+        android:backgroundTint="@color/Muted_Green"
         android:layout_below="@id/llSettingsOptions"/>
 
     <LinearLayout
@@ -216,7 +216,7 @@
                 android:onClick="onClick"
                 android:paddingVertical="18dp"
                 android:paddingLeft="80dp"
-                android:text="View Logs"
+                android:text="All Logs"
                 android:textSize="20dp" />
 
             <ImageView
@@ -226,7 +226,7 @@
                 android:layout_marginLeft="-368dp"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/rounded_rectangle"
-                android:backgroundTint="@color/purple_200"
+                android:backgroundTint="@color/Muted_Green"
                 android:clickable="true"
                 android:onClick="onClick"
                 android:paddingVertical="13dp"
@@ -243,7 +243,7 @@
                 android:layout_marginLeft="126dp"
                 android:layout_marginTop="7dp"
                 android:background="@drawable/rounded_rectangle"
-                android:backgroundTint="@color/purple_200"
+                android:backgroundTint="@color/Muted_Green"
                 android:clickable="true"
                 android:onClick="onClick"
                 android:paddingVertical="13dp"
@@ -287,5 +287,26 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgGreenTurtle"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:rotation="-50"
+        app:srcCompat="@drawable/greenturtle"
+        android:layout_below="@id/llSettingsNavigation"/>
+
+    <ImageView
+        android:id="@+id/imgbrownTurtle"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:rotation="130"
+        app:srcCompat="@drawable/brownturtle"
+        android:layout_below="@id/llSettingsNavigation"
+        android:layout_toRightOf="@id/imgGreenTurtle"/>
 
 </RelativeLayout>
