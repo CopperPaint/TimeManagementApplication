@@ -81,6 +81,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                 var maxGoal = GlobalClass.goals[currentMaxGoal]
 
 
+
                 if (minGoal.isSet)
                 {
                     if (maxGoal.isSet) //both goals
@@ -126,6 +127,17 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                         newActivity.binding.tvBlockX.text = total.toString()
                     }
                 }
+
+
+
+
+
+
+
+
+
+
+
 
 
                 newActivity.setOnClickListener(){
