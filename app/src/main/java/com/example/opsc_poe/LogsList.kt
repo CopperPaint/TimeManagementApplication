@@ -26,8 +26,10 @@ class LogsList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_logs_list)
 
+        //Date Pickers
+        //-----------------------------------------------------------------------------------------
         val calendar = Calendar.getInstance()
-        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+        val StartdatePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -38,14 +40,14 @@ class LogsList : AppCompatActivity() {
 
         binding.btnStartDate.setOnClickListener {
             val calendar = Calendar.getInstance()
-            DatePickerDialog(this, datePicker,
+            DatePickerDialog(this, StartdatePicker,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show()
 
         }
 
-        val datePicker2 = DatePickerDialog.OnDateSetListener {view, year, month, dayOfMonth ->
+        val EnddatePicker = DatePickerDialog.OnDateSetListener {view, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -58,72 +60,65 @@ class LogsList : AppCompatActivity() {
             val calendar2 = Calendar.getInstance()
             calendar2.set(2023, Calendar.JUNE, 1)
 
-            DatePickerDialog(this, datePicker2,
+            DatePickerDialog(this, EnddatePicker,
                 calendar2.get(Calendar.YEAR),
                 calendar2.get(Calendar.MONTH),
                 calendar2.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-        val activityLayout = binding.llLogsCategory
-
-        for (l in GlobalClass.activities.indices)
+        for (i in GlobalClass.activities.indices)
         {
-            for (i in GlobalClass.logs.indices) {
-                //if the activity belongs to the signed in user
-                if (GlobalClass.logs[i].activityID == GlobalClass.activities[l].activityID &&
-                    (GlobalClass.logs[i].startDate.isAfter(StartDate))
-                    && (GlobalClass.logs[i].endDate.isBefore(EndDate)))
+            //if activity belongs to user
+            if (GlobalClass.activities[i].userID == GlobalClass.user.userID)
+            {
+                for (j in GlobalClass.logs.indices)
                 {
-                    //create new custom activity
-                    var newLog = CustomActivity(this)
-                    //set primary text
-                    newLog.binding.tvPrimaryText.text = GlobalClass.activities[l].name
+                    if (GlobalClass.logs[j].startDate.isAfter(StartDate) && (GlobalClass.logs[j].endDate.isBefore(EndDate)))
+                    {
+                        //create new custom activity
+                        var newLog = CustomActivity(this)
+                        //set primary text
+                        newLog.binding.tvPrimaryText.text = GlobalClass.activities[i].name
 
-                    //get activity category
-                    // var index = Temp_CategoryDataClass().GetIndex(GlobalClass.activities[i].categoryID, GlobalClass.categories)
-                    // var category = GlobalClass.categories[index]
+                        //set secondary text
+                        newLog.binding.tvSecondaryText.text = GlobalClass.logs[j].startDate.toString()
 
-                    //set secondary text
-                    newLog.binding.tvSecondaryText.text = GlobalClass.logs[i].startDate.toString()//category.name
+                        //change the text sizes
+                        newLog.binding.tvPrimaryText.textSize = 14F
+                        newLog.binding.tvSecondaryText.textSize = 20F
 
-                    //change the text sizes
-                    newLog.binding.tvPrimaryText.textSize = 14F
-                    newLog.binding.tvSecondaryText.textSize = 20F
+                        var catIndex = Temp_CategoryDataClass().GetIndex(
+                            GlobalClass.activities[i].categoryID,
+                            GlobalClass.categories
+                        )
+                        var category = GlobalClass.categories[catIndex]
+                        //set the activity color shape color
+                        val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
+                        //ColorStateList.valueOf(Color.parseColor(category.colour))
+                        newLog.binding.llBlockText.backgroundTintList = catColour
 
-                    var catIndex = Temp_CategoryDataClass().GetIndex(
-                        GlobalClass.activities[l].categoryID,
-                        GlobalClass.categories
-                    )
-                    var category = GlobalClass.categories[catIndex]
+                        //set bar color
+                        val barColor = ContextCompat.getColorStateList(
+                            this,
+                            R.color.Default_Charcoal_Grey
+                        )
+                        newLog.binding.vwBar.backgroundTintList = barColor
 
-                    //set the activity color shape color
-                    val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
+                        newLog.binding.tvBlockText.text = "Hours Logged"
 
-                    //ColorStateList.valueOf(Color.parseColor(category.colour))
-                    newLog.binding.llBlockText.backgroundTintList = catColour
+                        newLog.binding.tvBlockX.text = GlobalClass.DoubleToTime(GlobalClass.logs[i].hours.toString())
 
-
-                    val barColor = ContextCompat.getColorStateList(
-                        this,
-                        R.color.Default_Charcoal_Grey
-                    )
-
-                    newLog.binding.vwBar.backgroundTintList = barColor
-                    newLog.binding.tvBlockText.text = "Hours Logged"
-                    newLog.binding.tvBlockX.text =
-                        GlobalClass.DoubleToTime(GlobalClass.logs[i].hours.toString())
-                    //newActivity.binding.llBlockText.backgroundTintList =  ColorStateList.valueOf(Color.parseColor("#5c37d7"))
-
-                    //add the new view
-                    activityLayout.addView(newLog)
+                        binding.llLogContainer.addView(newLog)
+                    }
                 }
             }
         }
     }
-    private fun updateTable(calendar: Calendar) : String {
-        val dateFormat = "dd-MM-yyyy"
-        val sdf = SimpleDateFormat(dateFormat, Locale.UK)
-        var dateText = sdf.format(calendar.time)
-        return dateText
-    }
+
+        private fun updateTable(calendar: Calendar) : String {
+            val dateFormat = "dd-MM-yyyy"
+            val sdf = SimpleDateFormat(dateFormat, Locale.UK)
+            var dateText = sdf.format(calendar.time)
+            return dateText
+        }
 }
