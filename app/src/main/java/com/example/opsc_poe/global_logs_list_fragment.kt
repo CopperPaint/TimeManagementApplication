@@ -111,6 +111,8 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
 
         for (i in loglist.indices)
         {
+
+
             if (loglist[i].userID == GlobalClass.user.userID)
             {
                 var activityIndex = 0
@@ -128,6 +130,7 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
                 {
                     if (EndDate != null) //both dates
                     {
+
                         if (loglist[i].startDate.isAfter(StartDate) && (loglist[i].endDate.isBefore(EndDate)))
                         {
                             AddLogView(loglist[i], activity)
@@ -171,6 +174,11 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
     {
         //create new custom activity
         var newLog = CustomActivity(requireActivity())
+
+        val logParam: ViewGroup.MarginLayoutParams = newLog.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
+        logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
+        newLog.binding.vwBar.layoutParams = logParam
+
         //set primary text
         newLog.binding.tvPrimaryText.text = activity.name
 

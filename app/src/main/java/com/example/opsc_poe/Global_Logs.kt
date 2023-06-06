@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -46,6 +47,13 @@ class Global_Logs : AppCompatActivity() {
 
         }
 
+        fun ExitLogs()
+        {
+            //return user to the home view screen
+            var intent = Intent(this, Home_Activity::class.java) //ViewActivity
+            startActivity(intent)
+        }
+
         binding.imgCycleViewLeft.setOnClickListener()
         {
             CycleHomeFragmentView()
@@ -54,6 +62,16 @@ class Global_Logs : AppCompatActivity() {
         binding.imgCycleViewRight.setOnClickListener()
         {
             CycleHomeFragmentView()
+        }
+
+        binding.tvBackText.setOnClickListener()
+        {
+            ExitLogs()
+        }
+
+        binding.imgBackIndicator.setOnClickListener()
+        {
+            ExitLogs()
         }
 
 
