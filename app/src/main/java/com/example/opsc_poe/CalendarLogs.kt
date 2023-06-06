@@ -22,9 +22,12 @@ class CalendarLogs : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+
         val calendar = Calendar.getInstance()
 
-        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+        setCalendarViewDate()
+
+        val datePicker = DatePickerDialog.OnDateSetListener {view, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -39,9 +42,20 @@ class CalendarLogs : AppCompatActivity() {
                 calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
 
+        val datePicker2 = DatePickerDialog.OnDateSetListener {view, year, month, dayOfMonth ->
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            var dateText = updateTable(calendar)
+            binding.tvDate2.text = dateText
+        }
 
-
-        setCalendarViewDate()
+        binding.btnDateEnd.setOnClickListener {
+            DatePickerDialog(this, datePicker2,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
 
     }
 
