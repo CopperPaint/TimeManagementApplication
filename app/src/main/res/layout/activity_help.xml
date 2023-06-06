@@ -80,20 +80,31 @@
         app:srcCompat="@drawable/greenturtle" />
 
     <LinearLayout
-        android:layout_width="match_parent"
         android:id="@+id/llHelp"
+        android:layout_width="match_parent"
         android:layout_height="520dp"
         android:layout_below="@id/llScreenHeading"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvHelpMessage"
             android:layout_width="389dp"
-            android:layout_height="252dp"
+            android:layout_height="450dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/rounded_rectangle"
             android:text="Help Message" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/rounded_item_box"
+            android:theme="@style/button_colour_green"
+            android:text="Back" />
+
     </LinearLayout>
 
 
