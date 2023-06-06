@@ -141,8 +141,11 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="275dp"
-            tools:ignore="SpeakableTextPresentCheck">
+            android:layout_height="match_parent"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:layout_centerHorizontal="true"
+            android:requiresFadingEdge="vertical"
+            android:fadingEdgeLength="10dp">
 
             <LinearLayout
                 android:id="@+id/llLogContainer"
