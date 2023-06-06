@@ -145,7 +145,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_rectangle"
-            app:srcCompat="@drawable/cyanturtle"
+            app:srcCompat="@drawable/plusturtle"
             android:layout_weight="1"
             android:layout_marginRight="5dp"
             android:clickable="true"
@@ -159,7 +159,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_rectangle"
-            app:srcCompat="@drawable/brownturtle"
+            app:srcCompat="@drawable/editturtle"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             />

@@ -55,7 +55,7 @@
         android:layout_below="@+id/llLogsHeader"
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
-        android:layout_height="680dp"
+        android:layout_height="700dp"
         android:background="@drawable/backing_shape"
         android:backgroundTint="@color/Dark_Green"/>
 

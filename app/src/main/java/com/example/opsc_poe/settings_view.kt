@@ -91,5 +91,15 @@ class settings_view : AppCompatActivity() {
         }
 
 
+        binding.tvSignOutText.setOnClickListener()
+        {
+            SignOut()
+        }
+        binding.imgSignOutIndicator.setOnClickListener()
+        {
+            SignOut()
+        }
+
+
     }
 }

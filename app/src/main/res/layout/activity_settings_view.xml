@@ -45,7 +45,7 @@
         <View
             android:id="@+id/vwEntryBackground"
             android:layout_width="match_parent"
-            android:layout_height="688dp"
+            android:layout_height="700dp"
             android:layout_marginTop="14dp"
             android:layout_below="@id/tvSettingsHeader"
             android:background="@drawable/backing_shape"

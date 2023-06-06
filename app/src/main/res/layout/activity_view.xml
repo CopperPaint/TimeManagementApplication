@@ -67,7 +67,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
-        android:layout_height="680dp"
+        android:layout_height="700dp"
         android:id="@+id/fcFragmentContainer"
         android:layout_below="@id/llViewActivity"
         android:layout_marginTop="16dp"
