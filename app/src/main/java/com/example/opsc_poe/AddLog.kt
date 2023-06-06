@@ -33,7 +33,14 @@ class AddLog : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddLogBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Hide the action bar
         supportActionBar?.hide()
+
+        //set status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
+
+        binding.dpHours.descendantFocusability = ViewGroup.FOCUS_BLOCK_DESCENDANTS
 
         //get extra value
         val activityIDIndex = intent.getIntExtra("activityIDIndex", 0)

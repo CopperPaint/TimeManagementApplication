@@ -67,7 +67,7 @@
         android:layout_below="@id/llCreateEditActivity"
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
-        android:layout_height="640dp"
+        android:layout_height="660dp"
         android:background="@drawable/backing_shape"
         android:backgroundTint="@color/Dark_Green"/>
 
@@ -97,8 +97,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
-            android:text="Enter Activity Name"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:text=""
+            tools:ignore="TouchTargetSizeCheck"
+            android:paddingHorizontal="5dp"/>
 
         <TextView
             android:id="@+id/tvActivtyDescriptionHeading"
@@ -117,7 +118,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
-            android:text="Enter Activity Description" />
+            android:text=""
+            android:padding="5dp"
+            android:gravity="top"/>
 
         <TextView
             android:id="@+id/tvCategoryHeading"
@@ -137,7 +140,8 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
             android:spinnerMode="dropdown"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:paddingHorizontal="5dp"/>
 
         <ImageView
             android:id="@+id/imgCamera"
@@ -173,7 +177,7 @@
             android:theme="@style/button_colour_green" />
 
         <TextView
-            android:id="@+id/txtNeedHelp"
+            android:id="@+id/tvNeedHelp"
             android:layout_width="120dp"
             android:layout_marginLeft="133dp"
             android:layout_marginTop="5dp"

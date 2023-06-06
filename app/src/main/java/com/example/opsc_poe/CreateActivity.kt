@@ -37,7 +37,12 @@ class CreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityCreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Hide the action bar
         supportActionBar?.hide()
+
+        //set status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
         //Spinner
         //----------------------------------------------------------------------------------
@@ -117,6 +122,16 @@ class CreateActivity : AppCompatActivity() {
 
 
         }
+
+        /*
+        binding.tvNeedHelp.setOnClickListener()
+        {
+            var intent = Intent(this, CategoryName::class.java)
+            intent.putExtra("", returningCategoryID)
+            startActivity(intent)
+        }
+         */
+
 
         }
 

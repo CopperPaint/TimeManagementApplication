@@ -67,7 +67,7 @@
     <View
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
-        android:layout_height="620dp"
+        android:layout_height="640dp"
         android:layout_below="@id/llAddLog"
         android:layout_marginTop="10dp"
         android:background="@drawable/backing_shape"
