@@ -81,7 +81,7 @@ class LogsList : AppCompatActivity() {
 
                     //get activity category
                     // var index = Temp_CategoryDataClass().GetIndex(GlobalClass.activities[i].categoryID, GlobalClass.categories)
-                    //  var category = GlobalClass.categories[index]
+                    // var category = GlobalClass.categories[index]
 
                     //set secondary text
                     newLog.binding.tvSecondaryText.text =
