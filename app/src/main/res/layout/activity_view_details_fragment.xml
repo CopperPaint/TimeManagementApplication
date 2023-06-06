@@ -173,7 +173,7 @@
                 />
 
             <ImageView
-                android:id="@+id/imgEditCategory"
+                android:id="@+id/imgEditActivity"
                 android:layout_marginTop="12dp"
                 android:layout_width="180dp"
                 android:layout_height="50dp"

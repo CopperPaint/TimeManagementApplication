@@ -51,21 +51,37 @@ class CreateActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
             }
 
-            binding.btnClick.setOnClickListener()
-            {
-                //create activity object
-                var activities = Temp_ActivityDataClass(
-                    activityID = GlobalClass.activities.size + 1,
-                    userID = GlobalClass.user.userID,
-                    name = binding.txtActivtyName.text.toString(),
-                    description = binding.txtDescription.text.toString(),
-                    photo = tempImage,
-                )
-                GlobalClass.activities.add(activities)
-            }
+
+        }
+
+        binding.btnClick.setOnClickListener()
+        {
+            //create activity object
+            var activities = Temp_ActivityDataClass(
+                //activityID = GlobalClass.activities.size + 1,
+               // userID = GlobalClass.user.userID,
+               // name = binding.txtActivtyName.text.toString(),
+               // description = binding.txtDescription.text.toString(),
+                //photo = tempImage
+                activityID = GlobalClass.activities.size + 1,
+            userID = GlobalClass.user.userID,
+            categoryID = 1, //get current category ID
+            name =  binding.txtActivtyName.text.toString(),
+            description = binding.txtDescription.text.toString(),
+            maxgoalID = 1, //wrong value, might need to make new goal objects with blank data? placeholder?
+            mingoalID = 2, //wrong value, might need to make new goal objects with blank data? placeholder?
+            photo = tempImage   //bitmap?
+            )
+            GlobalClass.activities.add(activities)
+
+            //return user to the home view screen
+            var intent = Intent(this, Home_Activity::class.java)
+            startActivity(intent)
         }
 
         }
+
+
     private fun startCamera()
     {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)

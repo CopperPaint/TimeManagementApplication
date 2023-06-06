@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -54,8 +56,17 @@ class CategoryName : AppCompatActivity() {
                 {
                     //create new custom activity
                     var newActivity = CustomActivity(this)
+
                     //set primary text
                     newActivity.binding.tvPrimaryText.text = GlobalClass.activities[i].name
+
+                    //bold the primary text
+                    newActivity.binding.tvPrimaryText.typeface = Typeface.DEFAULT_BOLD
+
+                    //change the position of the primary text on the custom component
+                    val activityParam: ViewGroup.MarginLayoutParams = newActivity.binding.tvPrimaryText.layoutParams as ViewGroup.MarginLayoutParams
+                    activityParam.setMargins(activityParam.leftMargin, 56, activityParam.rightMargin, activityParam.bottomMargin)
+                    newActivity.binding.tvPrimaryText.layoutParams = activityParam
 
                     //set secondary text - set to null
                     newActivity.binding.tvSecondaryText.text = null
@@ -127,8 +138,12 @@ class CategoryName : AppCompatActivity() {
 
 
 
-
-
+                    //set the click function of the activity to load the activity detail view
+                    newActivity.setOnClickListener(){
+                        var intent = Intent(this, ViewActivity::class.java)
+                        intent.putExtra("activityIDIndex", i)
+                        startActivity(intent)
+                    }
 
 
 
@@ -139,15 +154,19 @@ class CategoryName : AppCompatActivity() {
         }
 
         //add activity to category
-        binding.imgAddLog.setOnClickListener()
+        binding.imgAddActivity.setOnClickListener()
         {
             //go to add actvity page
+            var intent = Intent(this, CreateActivity::class.java)
+            startActivity(intent)
         }
 
         //Edit Category
         binding.imgEditCategory.setOnClickListener()
         {
-            //go to add actvity page
+            //go to add create category page
+            var intent = Intent(this, CreateCategory::class.java)
+            startActivity(intent)
         }
 
 

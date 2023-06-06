@@ -107,6 +107,15 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
             maxGoalCustom.binding.tvBlockX.text = maxhour
 
         }
+
+        maxGoalCustom.setOnClickListener()
+        {
+            //go to edit/create goal screen for maximum goal
+            var intent = Intent(requireContext(), Create_Goal::class.java)
+            intent.putExtra("currentMaxGoalIDIndex", currentMaxGoal)
+            startActivity(intent)
+        }
+
         binding.llgoalcontainer.addView(maxGoalCustom)
 
 
@@ -139,6 +148,15 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
             minGoalCustom.binding.tvBlockText.text = text
             minGoalCustom.binding.tvBlockX.text = hour
         }
+
+        minGoalCustom.setOnClickListener()
+        {
+            //go to edit/create goal screen for minimum goal
+            var intent = Intent(requireContext(), Create_Goal::class.java)
+            intent.putExtra("currentMinGoalIDIndex", currentMinGoal)
+            startActivity(intent)
+        }
+
         binding.llgoalcontainer.addView(minGoalCustom)
 
 
@@ -169,6 +187,7 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
             fragmentControl.replaceFragmentAnim(View_Activity_Logs_Fragment(), R.id.fcFragmentContainer, parentFragmentManager, "Up")
         }
 
+
         binding.imgBackIndicator.setOnClickListener()
         {
             goBackToHomeScreen()
@@ -187,6 +206,18 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         binding.tvLogsAmount.setOnClickListener()
         {
             goToLogs()
+        }
+
+        binding.imgAddLog.setOnClickListener()
+        {
+            var intent = Intent(requireContext(), AddLog::class.java)
+            startActivity(intent)
+        }
+
+        binding.imgEditActivity.setOnClickListener()
+        {
+            var intent = Intent(requireContext(), CreateActivity::class.java)
+            startActivity(intent)
         }
 
             //-------------------------------------------------

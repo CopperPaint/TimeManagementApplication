@@ -15,10 +15,29 @@ class Create_Goal : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        val currentMaxGoalIDIndex = intent.getIntExtra("currentMaxGoalIDIndex", 0)//intent.extras.getInt("activityIDIndex")
+        val currentMinGoalIDIndex = intent.getIntExtra("currentMinGoalIDIndex", 0)//intent.extras.getInt("activityIDIndex")
+        var currentGoalID = 0
+        //find the one thats not 0, then use that value to get the goal data
+        binding.tvScreenSubject.text = currentMinGoalIDIndex.toString() + " " + currentMaxGoalIDIndex.toString()
+
+        if (currentMaxGoalIDIndex == 0)
+        {
+            currentGoalID = currentMinGoalIDIndex
+        }
+        else
+        {
+            currentGoalID = currentMaxGoalIDIndex
+        }
+
+        val currentGoal = GlobalClass.goals[currentGoalID]
+
+
         //passed activity
-        var activity = GlobalClass.activities[3]
+       // var activity = GlobalClass.activities[]
+
         //set activity name
-        binding.tvActivity.text = activity.name
+       // binding.tvActivity.text = activity.name
 
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)

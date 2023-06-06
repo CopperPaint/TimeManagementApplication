@@ -23,11 +23,7 @@ class CreateCategory : AppCompatActivity() {
         val binding = ActivityCreateCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //create local fragment controller
-        val fragmentControl = FragmentHandler()
 
-        //set the sign in fragment to be the initial view
-        fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
 
         //colour picker

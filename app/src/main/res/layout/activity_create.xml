@@ -97,7 +97,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
-            android:text="" />
+            android:text="test" />
 
         <TextView
             android:id="@+id/tvActivtyDescriptionHeading"
@@ -116,7 +116,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
-            android:text="" />
+            android:text="test" />
 
         <TextView
             android:id="@+id/tvCategoryHeading"
