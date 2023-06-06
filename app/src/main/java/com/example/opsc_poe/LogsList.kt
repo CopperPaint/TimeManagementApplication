@@ -84,8 +84,7 @@ class LogsList : AppCompatActivity() {
                     // var category = GlobalClass.categories[index]
 
                     //set secondary text
-                    newLog.binding.tvSecondaryText.text =
-                        GlobalClass.logs[i].startDate.toString()//category.name
+                    newLog.binding.tvSecondaryText.text = GlobalClass.logs[i].startDate.toString()//category.name
 
                     //change the text sizes
                     newLog.binding.tvPrimaryText.textSize = 14F

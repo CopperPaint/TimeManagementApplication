@@ -97,7 +97,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
-            android:text="Enter Activity Name" />
+            android:text="Enter Activity Name"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/tvActivtyDescriptionHeading"
