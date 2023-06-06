@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">OPSC_POE</string>
+    <string name ="CreateActivityHelp">Welcome to CreateActivity Help, Create Activity Page is where you will create new activities, where you are required to enter name, description,
+        category, and an image to create a new Activity</string>
+    <string name ="CreateGoalHelp">Welcome to CreateGoal Help, Create Goal Page is where you will create goals to your inputted activitiy,
+        you will need to select hours and a time frame</string>
 </resources>

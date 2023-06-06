@@ -8,8 +8,10 @@ import com.example.opsc_poe.databinding.ActivityHelpBinding
 import com.example.opsc_poe.databinding.ActivitySettingsViewBinding
 
 class Help : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         //Set view binding
         val binding = ActivityHelpBinding.inflate(layoutInflater)
