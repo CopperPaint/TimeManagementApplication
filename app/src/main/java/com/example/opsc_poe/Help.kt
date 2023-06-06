@@ -30,9 +30,11 @@ class Help : AppCompatActivity() {
         when (previousScreen)
         {
             "Create_Goal" -> {
+                binding.tvHelpName.text = getString(R.string.CreateGoalHelpHeading)
                binding.tvHelpMessage.text = getString(R.string.CreateGoalHelp)
             }
             "Create_Activity" -> {
+                binding.tvHelpName.text = getString(R.string.CreateActivityHelpHeading)
                 binding.tvHelpMessage.text = getString(R.string.CreateActivityHelp)
             }
 
