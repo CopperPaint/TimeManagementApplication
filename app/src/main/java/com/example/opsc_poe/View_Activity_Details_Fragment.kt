@@ -3,14 +3,16 @@ package com.example.opsc_poe
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
-import android.provider.Settings.Global
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.opsc_poe.databinding.ActivityViewDetailsFragmentBinding
+
 
 class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_fragment) {
 
@@ -20,6 +22,7 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
     private val binding get() = _binding!!
 
 
+    @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,11 +41,7 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
 
 
         var Activity = GlobalClass.activities[GlobalClass.activities.size -1]
-
-        Activity.photo
-
-
-
+        binding.imageView.setImageBitmap(Activity.photo)
 
         var activity = GlobalClass.activities[activityIDIndex]
         var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)

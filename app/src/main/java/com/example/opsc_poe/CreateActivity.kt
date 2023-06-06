@@ -38,6 +38,8 @@ class CreateActivity : AppCompatActivity() {
         val binding = ActivityCreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+
         imageView = findViewById(R.id.imgCamera)
         val CameraImage: Button = findViewById(R.id.btnInsertImage)
 
