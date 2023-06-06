@@ -13,5 +13,17 @@ data class Temp_ActivityDataClass(
     var description: String = "",
     var maxgoalID: Int = 0,
     var mingoalID: Int = 0,
-    //var photo : Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.blackturtle)
+    var photo : Bitmap? = null,   //bitmap?
 )
+//fun saveImage(image: Bitmap)
+//{
+  //  photo = image
+//}
+
+//fun getSavedImage(): Bitmap?
+//{
+ //   return photo
+//}
+
+
+

@@ -27,6 +27,7 @@ import java.util.*
 class CreateActivity : AppCompatActivity() {
 
     private lateinit var imageView: ImageView
+    private lateinit var tempImage : Bitmap
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
@@ -56,11 +57,11 @@ class CreateActivity : AppCompatActivity() {
                     userID = GlobalClass.user.userID,
                     name = binding.txtActivtyName.text.toString(),
                     description = binding.txtDescription.text.toString(),
+                    photo = tempImage,
                 )
                 GlobalClass.activities.add(activities)
             }
         }
-
 
         }
     private fun startCamera()
@@ -76,31 +77,17 @@ class CreateActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CAMERA_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap?
+            val imageBitmap = data?.extras?.get("data") as Bitmap
             imageView.setImageBitmap(imageBitmap)
             //Save the image locally
             saveImageLocally(imageBitmap)
         }
     }
-
     //save image locally
-    private fun saveImageLocally(imageBitmap: Bitmap?) {
-        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-        val imageFileName = "IMG_$timeStamp.jpg"
+    private fun saveImageLocally(imageBitmap: Bitmap) {
 
-        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        val imageFile = File(storageDir, imageFileName)
+        tempImage = imageBitmap
 
-        try {
-            val fileOutputStream = FileOutputStream(imageFile)
-            imageBitmap?.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
-            fileOutputStream.close()
-
-            Toast.makeText(this, "Image saved successfully", Toast.LENGTH_SHORT).show()
-        } catch (e: IOException) {
-            e.printStackTrace()
-            Toast.makeText(this, "Failed to save image", Toast.LENGTH_SHORT).show()
-        }
     }
 
 

@@ -77,25 +77,69 @@
             android:background="@drawable/rounded_rectangle"
             android:backgroundTint="@color/Muted_Green" />
 
-        <TextView
-            android:id="@+id/tvCalendarDateHeading"
-            android:layout_width="200dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
+        <LinearLayout
+            android:id="@+id/llDate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:text="Start Date/End Date" />
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/txtDate"
-            android:layout_width="280dp"
-            android:layout_height="48dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:inputType="date"
-            android:text="2023-06-1" />
+            <Button
+                android:id="@+id/btnDate"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rectangle"
+                android:text="Start Date"
+                android:textColor="#FFFFFF"
+                android:theme="@style/button_colour_green"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_rectangle"
+                android:gravity="center_horizontal"
+                android:text="--/--/----"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDate2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDateEnd"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_rectangle"
+                android:text="End Date"
+                android:textColor="#FFFFFF"
+                android:theme="@style/button_colour_green"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:id="@+id/tvDate2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_rectangle"
+                android:gravity="center_horizontal"
+                android:text="--/--/----"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </LinearLayout>
 
         <CalendarView
             android:id="@+id/cvCalendar"

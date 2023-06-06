@@ -37,6 +37,13 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         //code here
 
 
+        var Activity = GlobalClass.activities[GlobalClass.activities.size -1]
+
+        Activity.photo
+
+
+
+
         var activity = GlobalClass.activities[activityIDIndex]
         var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
         var category = GlobalClass.categories[catIndex]
