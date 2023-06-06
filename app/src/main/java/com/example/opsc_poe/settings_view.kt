@@ -78,6 +78,13 @@ class settings_view : AppCompatActivity() {
 
         }
 
+        binding.imgBackIndicator.setOnClickListener()
+        {
+            if (previousScreen != null) {
+                GoBack(previousScreen)
+            }
+        }
+
         binding.tvViewLogsText.setOnClickListener()
         {
             var intent = Intent(this, Global_Logs::class.java)
