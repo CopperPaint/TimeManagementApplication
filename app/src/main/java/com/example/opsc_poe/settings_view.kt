@@ -33,6 +33,7 @@ class settings_view : AppCompatActivity() {
             startActivity(intent)
         }
 
+
         fun GoBack(previousScreenVar: String)
         {
 

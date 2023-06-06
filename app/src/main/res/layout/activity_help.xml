@@ -55,7 +55,7 @@
         android:layout_marginTop="10dp"
         android:id="@+id/vwBackingBoard"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="680dp"
         android:background="@drawable/backing_shape"
         android:backgroundTint="@color/Dark_Green"/>
 
