@@ -5,6 +5,7 @@ import android.graphics.Color
 import java.time.LocalDate
 import java.time.temporal.WeekFields
 import java.util.*
+import kotlin.math.roundToInt
 
 //private var data = GlobalClass
 
@@ -147,6 +148,9 @@ class GoalHourCalculator
         }
         return Triple(hourToGo, hourText, barColor)
     }
+
+
+
 }
 
 

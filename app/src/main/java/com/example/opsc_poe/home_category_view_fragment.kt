@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.opsc_poe.GlobalClass.Companion.DoubleToTime
 import com.example.opsc_poe.databinding.HomeCategoryViewFragmentBinding
 
 class home_category_view_fragment : Fragment(R.layout.home_category_view_fragment) {
@@ -55,7 +56,8 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
                 //set the activity color block text
                 newCategory.binding.tvBlockText.text = "Total Hours:"
                 //set the activity color block time
-                newCategory.binding.tvBlockX.text = hourTotal.toString()
+                newCategory.binding.tvBlockX.text =  hourTotal.toString()
+                newCategory.binding.tvBlockX.text = DoubleToTime(hourTotal.toString())
 
                 newCategory.setOnClickListener(){
                     var intent = Intent(activity, CategoryName::class.java)

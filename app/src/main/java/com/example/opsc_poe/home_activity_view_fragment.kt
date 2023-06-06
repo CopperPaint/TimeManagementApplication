@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.opsc_poe.GlobalClass.Companion.DoubleToTime
 import com.example.opsc_poe.databinding.HomeActivityViewFragmentBinding
 
 class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragment) {
@@ -83,7 +84,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                         val barColor = ColorStateList.valueOf(Color.parseColor(color))
                         newActivity.binding.vwBar.backgroundTintList = barColor
                         newActivity.binding.tvBlockText.text = text
-                        newActivity.binding.tvBlockX.text = hour
+                        newActivity.binding.tvBlockX.text = DoubleToTime(hour)
                     }
                     else //min only
                     {

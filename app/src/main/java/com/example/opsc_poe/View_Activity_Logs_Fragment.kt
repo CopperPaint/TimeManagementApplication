@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.opsc_poe.GlobalClass.Companion.DoubleToTime
 import com.example.opsc_poe.databinding.ActivityViewDetailsFragmentBinding
 import com.example.opsc_poe.databinding.ActivityViewLogsFragmentBinding
 
@@ -74,7 +75,7 @@ class View_Activity_Logs_Fragment : Fragment(R.layout.activity_view_logs_fragmen
 
                 newLog.binding.vwBar.backgroundTintList = barColor
                 newLog.binding.tvBlockText.text = "Hours Logged"
-                newLog.binding.tvBlockX.text = GlobalClass.logs[i].hours.toString()
+                newLog.binding.tvBlockX.text = DoubleToTime(GlobalClass.logs[i].hours.toString())
                 //newActivity.binding.llBlockText.backgroundTintList =  ColorStateList.valueOf(Color.parseColor("#5c37d7"))
 
                 //add the new view

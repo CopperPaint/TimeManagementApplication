@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import com.example.opsc_poe.GlobalClass.Companion.DoubleToTime
 import com.example.opsc_poe.databinding.ActivityCategoryNameBinding
 import com.example.opsc_poe.databinding.HomeActivityViewFragmentBinding
 
@@ -98,7 +99,7 @@ class CategoryName : AppCompatActivity() {
                             val barColor = ColorStateList.valueOf(Color.parseColor(color))
                             newActivity.binding.vwBar.backgroundTintList = barColor
                             newActivity.binding.tvBlockText.text = text
-                            newActivity.binding.tvBlockX.text = hour
+                            newActivity.binding.tvBlockX.text = DoubleToTime(hour)
                         }
                         else //min only
                         {
@@ -107,7 +108,7 @@ class CategoryName : AppCompatActivity() {
                             val barColor = ColorStateList.valueOf(Color.parseColor(color))
                             newActivity.binding.vwBar.backgroundTintList = barColor
                             newActivity.binding.tvBlockText.text = text
-                            newActivity.binding.tvBlockX.text = hour
+                            newActivity.binding.tvBlockX.text = DoubleToTime(hour)
                         }
                     }
                     else
@@ -119,7 +120,7 @@ class CategoryName : AppCompatActivity() {
                             val barColor = ColorStateList.valueOf(Color.parseColor(color))
                             newActivity.binding.vwBar.backgroundTintList = barColor
                             newActivity.binding.tvBlockText.text = text
-                            newActivity.binding.tvBlockX.text = hour
+                            newActivity.binding.tvBlockX.text = DoubleToTime(hour)
                         }
                         else //no goals
                         {
@@ -132,7 +133,7 @@ class CategoryName : AppCompatActivity() {
                                 }
                             }
                             newActivity.binding.tvBlockText.text = "Total Hours:"
-                            newActivity.binding.tvBlockX.text = total.toString()
+                            newActivity.binding.tvBlockX.text = DoubleToTime(total.toString())
                         }
                     }
 

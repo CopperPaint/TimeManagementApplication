@@ -4,8 +4,10 @@ import android.app.AlertDialog
 import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
+import androidx.core.text.isDigitsOnly
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
 
 
 class GlobalClass : Application()
@@ -27,6 +29,27 @@ class GlobalClass : Application()
             alert.setMessage(messageText)
             alert.setPositiveButton("OK", null)
             alert.show()
+        }
+
+        fun DoubleToTime(currentDouble: String): String {
+
+            if (currentDouble.toDoubleOrNull() == null) {
+                return currentDouble
+
+            }
+            else
+            {
+                var splitCurrentDouble = currentDouble.split(".")
+                var currentHours = splitCurrentDouble[0].toInt()
+                var minutesFraction = "0." + splitCurrentDouble[1]
+                var currentMinutes = (minutesFraction.toDouble() * 60)
+                return "$currentHours:${currentMinutes.roundToInt()}"
+            }
+
+            //GlobalClass.InformUser("", "Hours Split: $currentHours Minutes Split: ${currentMinutes.roundToInt()}", requireContext())
+            //GlobalClass.InformUser("", "", requireContext())
+            //GlobalClass.InformUser("", "Hours Split: $tt", requireContext())
+
         }
 
         //---------------------------------------------------------------------------------------------------------------------------------------------
