@@ -35,8 +35,11 @@ class AddLog : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        //get extra value
+        val activityIDIndex = intent.getIntExtra("activityIDIndex", 0)
+
         //passed activity
-        var activity = GlobalClass.activities[3]
+        var activity = GlobalClass.activities[activityIDIndex]
 
         //show activity name
         binding.tvActivityName.text = activity.name
@@ -135,8 +138,12 @@ class AddLog : AppCompatActivity() {
                 hours = inputTime
             )
             GlobalClass.logs.add(log)
-            var testLog = GlobalClass.logs[GlobalClass.logs.size-1]
-            binding.tvLog.text = testLog.hours.toString()
+
+
+            var intent = Intent(this, Home_Activity::class.java)
+            startActivity(intent)
+            //var testLog = GlobalClass.logs[GlobalClass.logs.size-1]
+            //binding.tvLog.text = testLog.hours.toString()
         }
     }
 

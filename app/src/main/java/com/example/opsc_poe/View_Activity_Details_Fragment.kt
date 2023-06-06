@@ -216,6 +216,7 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         binding.imgAddLog.setOnClickListener()
         {
             var intent = Intent(requireContext(), AddLog::class.java)
+            intent.putExtra("activityIDIndex", activityIDIndex)
             startActivity(intent)
         }
 
