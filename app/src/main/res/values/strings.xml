@@ -4,4 +4,6 @@
         category, and an image to create a new Activity</string>
     <string name ="CreateGoalHelp">Welcome to CreateGoal Help \n\nCreate Goal Page is where you will create goals to your inputted activity,
         you will need to select hours and a time frame</string>
+    <string name="CreateGoalHelpHeading">CreateGoalHelp</string>
+    <string name="CreateActivityHelpHeading">CreateActivityHelp</string>
 </resources>
