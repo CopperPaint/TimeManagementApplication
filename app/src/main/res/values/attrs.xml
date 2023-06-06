@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="customactivitystyle">
+        <attr name="primarytext" format="string"/>
+        <attr name="secondarytext" format="string"/>
+        <attr name="blocktext" format="string"/>
+        <attr name="blockcolour" format="color"/>
+        <attr name="xtext" format="string"/>
+    </declare-styleable>
+</resources>

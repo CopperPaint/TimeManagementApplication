@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/Light_Green">
+
+    <View
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/vwLogsBar"
+        android:layout_width="4dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Dark_Green"/>
+
+    <ImageView
+        android:id="@+id/imgBlackTurtle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/cogturtle"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="10dp"
+        android:rotation="-35"
+        />
+
+
+
+        <TextView
+            android:id="@+id/tvCategoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="18dp"
+            android:text="{CategoryName}!"
+            android:textColor="@color/Dark_Green"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
+    <View
+        android:layout_below="@+id/tvCategoryName"
+        android:layout_marginTop="12dp"
+        android:id="@+id/vwEntryBackground"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:background="@drawable/backing_shape"
+        android:backgroundTint="@color/Dark_Green"/>
+
+
+    <TextView
+        android:id="@+id/tvDescriptionPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:text="Description"
+        android:textColor="@color/Input_Grey"
+        android:layout_marginHorizontal="18dp"
+        android:layout_below="@id/tvSectionTitle"/>
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginTop="5dp"
+        android:textSize="15dp"
+        android:layout_below="@id/tvDescriptionPrompt"
+        android:background="@drawable/rounded_rectangle"
+        android:text="Description"
+        android:padding="5dp"
+        android:layout_marginHorizontal="18dp"/>
+
+
+
+
+
+    <TextView
+        android:id="@+id/tvSectionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Activities"
+        android:textSize="30dp"
+        android:layout_marginTop="26dp"
+        android:textAlignment="center"
+        android:textColor="@color/Input_Grey"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Muted_Green"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:layout_below="@id/tvCategoryName"/>
+
+
+    <ImageView
+        android:id="@+id/imgBackIndicator"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:srcCompat="@drawable/navigation_arrow"
+        app:tint="@color/Input_Grey"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:layout_below="@id/tvCategoryName"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:id="@+id/svBars"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:requiresFadingEdge="vertical"
+        android:fadingEdgeLength="10dp"
+        android:layout_below="@id/tvDescription">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/llBars"
+            android:layout_gravity="center_horizontal"
+            >
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/llCategoryButton"
+        android:orientation="horizontal"
+        android:layout_below="@id/svBars"
+        android:layout_marginHorizontal="20dp"
+        android:clickable="true"
+        android:onClick="onClick">
+
+        <ImageView
+            android:id="@+id/imgAddActivity"
+            android:layout_marginTop="12dp"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_rectangle"
+            app:srcCompat="@drawable/cyanturtle"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:onClick="onClick"
+            />
+
+        <ImageView
+            android:id="@+id/imgEditCategory"
+            android:layout_marginTop="12dp"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_rectangle"
+            app:srcCompat="@drawable/brownturtle"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

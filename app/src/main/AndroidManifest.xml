@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
+        android:name=".GlobalClass"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,6 +21,48 @@
         android:theme="@style/Theme.OPSC_POE"
         tools:targetApi="31">
         <activity
+            android:name=".settings_view"
+            android:exported="false" />
+        <activity
+            android:name=".View_Activity_Logs_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".View_Activity_Details_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarLogs"
+            android:exported="true" />
+        <activity
+            android:name=".AddLog"
+            android:exported="false" />
+        <activity
+            android:name=".HomeScreen"
+            android:exported="false" />
+        <activity
+            android:name=".LogsCategory"
+            android:exported="false" />
+        <activity
+            android:name=".LogsList"
+            android:exported="false" />
+        <activity
+            android:name=".CategoryName"
+            android:exported="false" />
+        <activity
+            android:name=".CreateCategory"
+            android:exported="false" />
+        <activity
+            android:name=".CreateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Create_Goal"
+            android:exported="false" />
+        <activity
+            android:name=".ViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home_Activity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -20,6 +71,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".TimerService" />
     </application>
 
 </manifest>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Light_Green"
+    tools:context=".CreateCategory">
+
+    <View
+        android:id="@+id/vwLogsBar"
+        android:layout_width="3dp"
+        android:layout_height="76dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Dark_Green"/>
+
+    <ImageView
+        android:id="@+id/imgBlackTurtle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/cogturtle"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="10dp"
+        android:rotation="-45"
+        />
+
+    <LinearLayout
+        android:id="@+id/llCreateCategory"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/vwLogsBar">
+
+        <TextView
+            android:id="@+id/tvCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            android:textColor="@color/Dark_Green"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textColor="@color/Dark_Green"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vwEntryBackground"
+        android:layout_width="match_parent"
+        android:layout_height="640dp"
+        android:layout_below="@id/llCreateCategory"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/backing_shape"
+        android:backgroundTint="@color/Dark_Green" />
+
+    <LinearLayout
+        android:id="@+id/llCategoryInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llCreateCategory"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20dp"
+            android:textColor="@color/Input_Grey" />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Input_Grey"
+            android:ems="10"
+            android:textSize="14dp"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:padding="5dp"/>
+
+        <TextView
+            android:id="@+id/tvColour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Colour"
+            android:textSize="20dp"
+            android:textColor="@color/Input_Grey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/pick_color_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle"
+                android:text="Pick Color"
+                android:textColor="#000000"
+                android:theme="@style/button_colour_white" />
+
+            <View
+                android:id="@+id/preview_selected_color"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/rounded_rectangle"
+                android:backgroundTint="@color/Activity_Yellow" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Description"
+            android:textSize="20dp"
+            android:textColor="@color/Input_Grey" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Input_Grey"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Description"
+            android:textSize="14dp"
+            android:gravity="top"
+            android:padding="5dp"/>
+
+
+
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Muted_Green"
+            android:text="Create"
+            android:textSize="20sp"
+            android:theme="@style/button_colour_green" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgBrown"
+        android:layout_below="@id/llCategoryInput"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:rotation="-35"
+        app:srcCompat="@drawable/brownturtle" />
+
+
+</RelativeLayout>
