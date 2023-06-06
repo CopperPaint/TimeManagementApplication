@@ -34,7 +34,9 @@ class Create_Goal : AppCompatActivity() {
 
 
         //passed activity
-       // var activity = GlobalClass.activities[]
+
+       // for (i in GlobalClass.activities)
+      //  var activity = GlobalClass.activities[]
 
         //set activity name
        // binding.tvActivity.text = activity.name

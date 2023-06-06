@@ -40,8 +40,7 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         //code here
 
 
-        var Activity = GlobalClass.activities[GlobalClass.activities.size -1]
-        binding.imageView.setImageBitmap(Activity.photo)
+
 
         var activity = GlobalClass.activities[activityIDIndex]
         var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
@@ -174,6 +173,12 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
 
             binding.tvLogsAmount.text = currentUserGoalCount.toString()
 
+        //display activities image
+        binding.imgActivityImage.setImageBitmap(activity.photo)
+
+
+       // var activity = GlobalClass.activities[GlobalClass.activities.size -1]
+        //binding.imageView.setImageBitmap(activity.photo)
 
         fun goBackToHomeScreen ()
         {
