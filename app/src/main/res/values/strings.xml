@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">OPSC_POE</string>
-    <string name ="CreateActivityHelp">Welcome to CreateActivity Help \nCreate Activity Page is where you will create new activities, where you are required to enter name, description,
+    <string name ="CreateActivityHelp">Welcome to CreateActivity Help \n\nCreate Activity Page is where you will create new activities, where you are required to enter name, description,
         category, and an image to create a new Activity</string>
-    <string name ="CreateGoalHelp">Welcome to CreateGoal Help \nCreate Goal Page is where you will create goals to your inputted activity,
+    <string name ="CreateGoalHelp">Welcome to CreateGoal Help \n\nCreate Goal Page is where you will create goals to your inputted activity,
         you will need to select hours and a time frame</string>
 </resources>
