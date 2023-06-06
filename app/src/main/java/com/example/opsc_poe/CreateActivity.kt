@@ -27,7 +27,7 @@ import java.util.*
 class CreateActivity : AppCompatActivity() {
 
     private lateinit var imageView: ImageView
-    private lateinit var tempImage : Bitmap
+    private var tempImage : Bitmap? = null
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
@@ -44,7 +44,8 @@ class CreateActivity : AppCompatActivity() {
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
-        var activityIDIndex = intent.getIntExtra("activityIDIndex", -1)
+        var activityIDIndex = intent.getIntExtra("activityIDIndex", 0)
+        binding.tvCategoryName.text = activityIDIndex.toString()
 
         //Spinner
         //----------------------------------------------------------------------------------
@@ -161,33 +162,8 @@ class CreateActivity : AppCompatActivity() {
                 var intent = Intent(this, Home_Activity::class.java)
                 startActivity(intent)
             }
-
-
-
-
-
-
-
-
         }
-
-
-        binding.tvNeedHelp.setOnClickListener()
-        {
-
-            var intent = Intent(this, Help::class.java) //ViewActivity
-
-            intent.putExtra("previousScreen", "Create_Activity")
-            intent.putExtra("currentActivityID", activityIDIndex)
-            startActivity(intent)
-
         }
-
-
-
-
-        }
-
 
     private fun startCamera()
     {
