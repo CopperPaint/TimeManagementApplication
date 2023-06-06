@@ -126,8 +126,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:background="@drawable/rounded_rectangle"
-                android:backgroundTint="@color/Activity_Yellow"/>
+                android:backgroundTint="@color/Activity_Yellow" />
 
 
         </LinearLayout>
