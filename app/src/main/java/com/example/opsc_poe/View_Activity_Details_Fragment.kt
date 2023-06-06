@@ -224,6 +224,7 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         binding.imgEditActivity.setOnClickListener()
         {
             var intent = Intent(requireContext(), CreateActivity::class.java)
+            intent.putExtra("activityIDIndex", activityIDIndex)
             startActivity(intent)
         }
 
