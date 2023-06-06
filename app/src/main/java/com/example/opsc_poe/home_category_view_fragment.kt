@@ -56,6 +56,13 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
                 newCategory.binding.tvBlockText.text = "Total Hours:"
                 //set the activity color block time
                 newCategory.binding.tvBlockX.text = hourTotal.toString()
+
+                newCategory.setOnClickListener(){
+                    var intent = Intent(activity, CategoryName::class.java)
+                    intent.putExtra("categoryIDIndex", i)
+                    startActivity(intent)
+                }
+
                 //add the new view
                 activityLayout.addView(newCategory)
             }

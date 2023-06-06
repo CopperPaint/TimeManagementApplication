@@ -1,6 +1,7 @@
 package com.example.opsc_poe
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -20,20 +21,27 @@ class CategoryName : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityCategoryNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Hide the action bar
         supportActionBar?.hide()
 
+        //set status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
+
+        val categoryIDIndex = intent.getIntExtra("categoryIDIndex", 0)
+
         //passed category
-        var category = GlobalClass.categories[3]
+        var category = GlobalClass.categories[categoryIDIndex]
         GlobalClass.user.userID = category.userID
 
         //display category name
         binding.tvCategoryName.text = category.name
 
         //display category description
-        binding.txtCategoryDescription.text = category.description
+        binding.tvDescription.text = category.description
 
         //display category activites
-        val activityLayout = findViewById<LinearLayout>(R.id.llactivitycontainer)
+        val activityLayout = binding.llBars
 
         //loop through activites
         for (i in GlobalClass.activities.indices)
@@ -131,15 +139,23 @@ class CategoryName : AppCompatActivity() {
         }
 
         //add activity to category
-        binding.btnAddActvity.setOnClickListener()
+        binding.imgAddLog.setOnClickListener()
         {
             //go to add actvity page
         }
 
         //Edit Category
-        binding.btnEditCategory.setOnClickListener()
+        binding.imgEditCategory.setOnClickListener()
         {
             //go to add actvity page
+        }
+
+
+        binding.imgBackIndicator.setOnClickListener()
+        {
+            //return user back to home view
+            var intent = Intent(this, Home_Activity::class.java)
+            startActivity(intent)
         }
     }
 }
