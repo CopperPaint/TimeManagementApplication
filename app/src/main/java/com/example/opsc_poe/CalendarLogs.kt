@@ -10,12 +10,16 @@ import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import com.example.opsc_poe.databinding.ActivityCalendarLogsBinding
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.*
 
 class CalendarLogs : AppCompatActivity() {
 
     private lateinit var cvCalendar: CalendarView
     private lateinit var binding: ActivityCalendarLogsBinding
+    var StartDate: LocalDate? = null
+    var EndDate: LocalDate? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCalendarLogsBinding.inflate(layoutInflater)
@@ -33,13 +37,18 @@ class CalendarLogs : AppCompatActivity() {
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             var dateText = updateTable(calendar)
             binding.tvDate.text = dateText
+            StartDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+
         }
 
         binding.btnDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
             DatePickerDialog(this, datePicker,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show()
+
+            cvCalendar.setDate(calendar.timeInMillis,true,true)
         }
 
         val datePicker2 = DatePickerDialog.OnDateSetListener {view, year, month, dayOfMonth ->
@@ -48,13 +57,19 @@ class CalendarLogs : AppCompatActivity() {
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             var dateText = updateTable(calendar)
             binding.tvDate2.text = dateText
+            //EndDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
         }
 
         binding.btnDateEnd.setOnClickListener {
+            val calendar2 = Calendar.getInstance()
+            calendar2.set(2023, Calendar.JUNE, 1)
+
             DatePickerDialog(this, datePicker2,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)).show()
+                calendar2.get(Calendar.YEAR),
+                calendar2.get(Calendar.MONTH),
+                calendar2.get(Calendar.DAY_OF_MONTH)).show()
+
+            cvCalendar.setDate(calendar2.timeInMillis,true,true)
         }
 
     }

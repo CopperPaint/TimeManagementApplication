@@ -180,5 +180,13 @@ class CategoryName : AppCompatActivity() {
             var intent = Intent(this, Home_Activity::class.java)
             startActivity(intent)
         }
+
+        binding.imgSettingsButton.setOnClickListener()
+        {
+            var intent = Intent(this, settings_view::class.java)
+            intent.putExtra("previousScreen", "Category_View")
+            intent.putExtra("currentDataID", categoryIDIndex)
+            startActivity(intent)
+        }
     }
 }

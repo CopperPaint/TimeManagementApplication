@@ -24,7 +24,7 @@
             android:layout_marginLeft="328dp"
             android:layout_marginTop="6dp"
             android:rotation="-45"
-            app:srcCompat="@drawable/cogturtle" />
+            app:srcCompat="@drawable/blackturtle" />
 
 
 
@@ -74,7 +74,7 @@
             android:onClick="onClick"
             android:paddingVertical="18dp"
             android:paddingLeft="82dp"
-            android:text="Delete Account"
+            android:text="Delete Account (Coming Soon)"
             android:textSize="20dp" />
 
         <ImageView
@@ -106,7 +106,7 @@
             android:onClick="onClick"
             android:paddingVertical="18dp"
             android:paddingLeft="82dp"
-            android:text="Export Data"
+            android:text="Export Data (Coming Soon)"
             android:textSize="20dp" />
 
         <ImageView

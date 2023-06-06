@@ -145,5 +145,4 @@ class CreateActivity : AppCompatActivity() {
         tempImage = imageBitmap
     }
 
-
 }

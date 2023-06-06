@@ -96,9 +96,12 @@ class Home_Activity : AppCompatActivity() {
 
         }
 
-
-
-
+        binding.imgSettingsButton.setOnClickListener()
+        {
+            var intent = Intent(this, settings_view::class.java)
+            intent.putExtra("previousScreen", "Home_View")
+            startActivity(intent)
+        }
 
 
 
