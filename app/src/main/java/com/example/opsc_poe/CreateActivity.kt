@@ -132,10 +132,7 @@ class CreateActivity : AppCompatActivity() {
     }
     //save image locally
     private fun saveImageLocally(imageBitmap: Bitmap) {
-
         tempImage = imageBitmap
-
     }
-
 
 }

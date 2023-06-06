@@ -92,7 +92,8 @@
                 android:background="@drawable/rounded_rectangle"
                 android:text="Set Start Date"
                 android:textColor="#FFFFFF"
-                android:theme="@style/button_colour_green" />
+                android:theme="@style/button_colour_green"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/tvStartDate"
@@ -122,7 +123,8 @@
                 android:background="@drawable/rounded_rectangle"
                 android:text="Set End Date"
                 android:textColor="#FFFFFF"
-                android:theme="@style/button_colour_green" />
+                android:theme="@style/button_colour_green"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/tvEndDate"
