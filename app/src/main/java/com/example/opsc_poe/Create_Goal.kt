@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.NumberPicker.OnValueChangeListener
@@ -18,8 +19,6 @@ class Create_Goal : AppCompatActivity() {
         val currentMaxGoalIDIndex = intent.getIntExtra("currentMaxGoalIDIndex", 0)//intent.extras.getInt("activityIDIndex")
         val currentMinGoalIDIndex = intent.getIntExtra("currentMinGoalIDIndex", 0)//intent.extras.getInt("activityIDIndex")
         var currentGoalID = 0
-        //find the one thats not 0, then use that value to get the goal data
-        binding.tvScreenSubject.text = currentMinGoalIDIndex.toString() + " " + currentMaxGoalIDIndex.toString()
 
         if (currentMaxGoalIDIndex == 0)
         {
@@ -32,14 +31,19 @@ class Create_Goal : AppCompatActivity() {
 
         val currentGoal = GlobalClass.goals[currentGoalID]
 
-
         //passed activity
 
-       // for (i in GlobalClass.activities)
-      //  var activity = GlobalClass.activities[]
+        var activity = Temp_ActivityDataClass()
+        for (i in GlobalClass.activities.indices)
+        {
+            if (GlobalClass.activities[i].maxgoalID == currentGoal.goalID || GlobalClass.activities[i].mingoalID == currentGoal.goalID)
+            {
+                activity = GlobalClass.activities[i]
+            }
+        }
 
         //set activity name
-       // binding.tvActivity.text = activity.name
+        binding.tvActivity.text = activity.name
 
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
@@ -55,6 +59,16 @@ class Create_Goal : AppCompatActivity() {
         binding.npTimeFrameGoal.displayedValues = timeFrame
         binding.npTimeFrameGoal.descendantFocusability = ViewGroup.FOCUS_BLOCK_DESCENDANTS
 
+        var currentInterval = 0
+
+         when (currentGoal.interval){
+             "Daily" -> currentInterval = 1
+             "Weekly" -> currentInterval = 2
+             "Monthly" -> currentInterval = 3
+         }
+
+        binding.npTimeFrameGoal.value = currentInterval
+
         binding.npTimeFrameGoal.setOnValueChangedListener { picker, oldVal, newVal ->
 
             when (newVal) {
@@ -65,9 +79,28 @@ class Create_Goal : AppCompatActivity() {
             }
         }
 
+
+        binding.npHourGoal.value = currentGoal.amount
+
         //save goal
         binding.tvSaveButton.setOnClickListener()
         {
+
+            var intervalText = ""
+            when (binding.npTimeFrameGoal.value) {
+                1 -> {intervalText = "Daily"}
+                2 -> {intervalText = "Weekly"}
+                3 -> {intervalText = "Monthly"}
+                else -> {intervalText = "Daily"}
+            }
+            currentGoal.interval = intervalText
+            currentGoal.amount = binding.npHourGoal.value
+
+            //return user to the home view screen
+            var intent = Intent(this, Home_Activity::class.java) //ViewActivity
+            startActivity(intent)
+
+            /*
             var goal = Temp_GoalDataClass(
                 goalID = GlobalClass.goals.size + 1,
                 userID = GlobalClass.user.userID,
@@ -75,6 +108,12 @@ class Create_Goal : AppCompatActivity() {
                 interval = binding.npTimeFrameGoal.displayedValues.get(binding.npTimeFrameGoal.value)
             )
             GlobalClass.goals.add(goal)
+             */
         }
+
+
+
+
+
     }
 }
