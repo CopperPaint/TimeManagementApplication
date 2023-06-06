@@ -76,6 +76,26 @@ class Home_Activity : AppCompatActivity() {
             CycleHomeFragmentView()
         }
 
+        //add new entry depending on if category or activity is selected
+        binding.imgAddEntry.setOnClickListener{
+
+            if (binding.tvSectionTitle.text == "Activities") {
+
+                //load add activity
+                var intent = Intent(this, CreateActivity::class.java)
+                startActivity(intent)
+
+            } else {
+
+                //load add category view
+                var intent = Intent(this, CreateCategory::class.java)
+                startActivity(intent)
+
+
+            }
+
+        }
+
 
 
 

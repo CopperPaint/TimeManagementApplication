@@ -128,7 +128,7 @@
 
     <ImageView
         android:layout_marginTop="12dp"
-        android:id="@+id/imgTurtle"
+        android:id="@+id/imgAddEntry"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
