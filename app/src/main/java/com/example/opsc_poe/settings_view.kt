@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,12 +22,64 @@ class settings_view : AppCompatActivity() {
         val binding = ActivitySettingsViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //get the extra
+        var previousScreen = intent.getStringExtra("previousScreen")
 
 
         fun SignOut()
         {
             //return user to the initial view screen
             var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        fun GoBack(previousScreenVar: String)
+        {
+
+            when (previousScreenVar)
+            {
+                "Home_View" -> {
+                    //return user to the initial view screen
+                    var intent = Intent(this, Home_Activity::class.java)
+                    startActivity(intent)
+                }
+                "Category_View" -> {
+                    var returningCategoryID = intent.getIntExtra("currentDataID", 0)
+
+                    //GlobalClass.InformUser("", returningCategoryID.toString(), this)
+
+                    //return user to the initial view screen
+                    var intent = Intent(this, CategoryName::class.java)
+                    intent.putExtra("categoryIDIndex", returningCategoryID)
+                    startActivity(intent)
+                }
+                "Activity_View" -> {
+                    var returningActivityID = intent.getIntExtra("currentDataID", 0)
+
+                    //GlobalClass.InformUser("", returningActivityID.toString(), this)
+
+                    //return user to the initial view screen
+                    var intent = Intent(this, ViewActivity::class.java)
+                    intent.putExtra("activityIDIndex", returningActivityID)
+                    startActivity(intent)
+                }
+
+            }
+
+
+        }
+        binding.tvBackText.setOnClickListener()
+        {
+
+            if (previousScreen != null) {
+                GoBack(previousScreen)
+            }
+
+        }
+
+        binding.tvViewLogsText.setOnClickListener()
+        {
+            var intent = Intent(this, LogsList::class.java)
             startActivity(intent)
         }
 

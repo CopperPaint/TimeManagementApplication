@@ -45,7 +45,14 @@ class ViewActivity : AppCompatActivity() {
         //set the sign in fragment to be the initial view
         fragmentControl.replaceFragment(View_Activity_Details_Fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
-
+        binding.imgSettingsButton.setOnClickListener()
+        {
+            var intent = Intent(this, settings_view::class.java)
+            intent.putExtra("previousScreen", "Activity_View")
+            intent.putExtra("currentDataID", activityIDIndex)
+            //GlobalClass.InformUser("", activity.activityID.toString(), this)
+            startActivity(intent)
+        }
 
     }
 }

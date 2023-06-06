@@ -18,7 +18,7 @@
         android:backgroundTint="@color/Dark_Green" />
 
     <ImageView
-        android:id="@+id/imgBlackTurtle"
+        android:id="@+id/imgSettingsButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginLeft="300dp"

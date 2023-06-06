@@ -17,7 +17,7 @@
         android:backgroundTint="@color/Dark_Green"/>
 
     <ImageView
-        android:id="@+id/imgBlackTurtle"
+        android:id="@+id/imgSettingsButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:srcCompat="@drawable/cogturtle"
