@@ -17,6 +17,7 @@ import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.ZoneId
 import java.util.*
 import kotlin.math.round
 import kotlin.math.roundToInt
@@ -43,7 +44,6 @@ class AddLog : AppCompatActivity() {
         //set hour picker
         binding.dpHours.setIs24HourView(true)
         var isStopWatch = true
-
 
 
         //DATE PICKER
@@ -140,7 +140,7 @@ class AddLog : AppCompatActivity() {
                 logID = GlobalClass.logs.size + 1,
                 activityID = activity.activityID,
                 userID = GlobalClass.user.userID,
-                startDate = LocalDate.now(),
+                startDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                 endDate = LocalDate.now(),
                 hours = inputTime
             )
