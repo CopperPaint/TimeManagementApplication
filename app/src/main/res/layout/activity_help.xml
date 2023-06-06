@@ -73,20 +73,6 @@
         android:backgroundTint="@color/Dark_Green"/>
 
 
-    <TextView
-        android:id="@+id/tvGoalHeading"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="64dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="20dp"
-        android:textColor="@color/Input_Grey"
-        android:text="Goal"
-        android:textAlignment="center"
-        />
-
-
     <ImageView
         android:id="@+id/imgCyanTurtle"
         android:layout_width="64dp"
