@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Global_Logs"
     android:background="@color/Light_Green">
 
     <View
@@ -124,9 +124,40 @@
         android:layout_below="@id/llSectionSelectorBar"
         />
 
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/fcFragmentContainer"
+        android:layout_marginTop="5dp"
+        android:id="@+id/tvBackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textSize="20dp"
+        android:paddingLeft="78dp"
+        android:paddingRight="56dp"
+        android:paddingVertical="18dp"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Input_Grey"
+        />
 
 
-
-
+    <ImageView
+        android:layout_below="@id/fcFragmentContainer"
+        android:id="@+id/imgBackIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="11.5dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Muted_Green"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:paddingVertical="13dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="15dp"
+        app:srcCompat="@drawable/navigation_arrow"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </RelativeLayout>

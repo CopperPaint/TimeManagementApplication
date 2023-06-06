@@ -46,7 +46,9 @@ class CreateActivity : AppCompatActivity() {
 
         var activityIDIndex = intent.getIntExtra("activityIDIndex", -1)
 
-        binding.tvCategoryName.text = activityIDIndex.toString()
+        binding.tvScreenFunction.text = "Edit"
+
+       // binding.tvCategoryName.text = activityIDIndex.toString()
 
         //Spinner
         //----------------------------------------------------------------------------------
@@ -87,6 +89,9 @@ class CreateActivity : AppCompatActivity() {
 
         if (activityIDIndex == -1) //activity does not exist
         {
+
+            binding.tvScreenFunction.text = "Create"
+
             binding.btnClick.setOnClickListener()
             {
                 //code to get selected category
