@@ -99,7 +99,7 @@
             android:ems="10"
             android:textSize="14dp"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text=""
             android:padding="5dp"/>
 
         <TextView
@@ -155,7 +155,7 @@
             android:backgroundTint="@color/Input_Grey"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Description"
+            android:text=""
             android:textSize="14dp"
             android:gravity="top"
             android:padding="5dp"/>

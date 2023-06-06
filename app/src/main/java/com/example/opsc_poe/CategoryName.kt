@@ -170,6 +170,7 @@ class CategoryName : AppCompatActivity() {
         {
             //go to add create category page
             var intent = Intent(this, CreateCategory::class.java)
+            intent.putExtra("categoryIDIndex", categoryIDIndex)
             startActivity(intent)
         }
 
