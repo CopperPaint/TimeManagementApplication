@@ -91,9 +91,12 @@ class CategoryName : AppCompatActivity() {
                             currentMinGoal = j
                         }
                     }
-                    if (currentMinGoal != -1)
+
+                    var mingoal = GlobalClass.goals[currentMinGoal]
+                    var maxgoal = GlobalClass.goals[currentMaxGoal]
+                    if (mingoal.isSet)
                     {
-                        if (currentMaxGoal != -1) //both goals
+                        if (maxgoal.isSet) //both goals
                         {
                             var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
                             val barColor = ColorStateList.valueOf(Color.parseColor(color))
@@ -113,7 +116,7 @@ class CategoryName : AppCompatActivity() {
                     }
                     else
                     {
-                        if (currentMaxGoal != -1) //max only
+                        if (maxgoal.isSet) //max only
                         {
                             var goal = GlobalClass.goals[currentMaxGoal]
                             var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)

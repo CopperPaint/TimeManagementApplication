@@ -79,28 +79,38 @@ class CreateActivity : AppCompatActivity() {
 
             //create activity object
             var activities = Temp_ActivityDataClass(
-                //activityID = GlobalClass.activities.size + 1,
-               // userID = GlobalClass.user.userID,
-               // name = binding.txtActivtyName.text.toString(),
-               // description = binding.txtDescription.text.toString(),
-                //photo = tempImage
                 activityID = GlobalClass.activities.size + 1,
-            userID = GlobalClass.user.userID,
-            categoryID = category.categoryID, //get current category ID
-            name =  binding.txtActivtyName.text.toString(),
-            description = binding.txtDescription.text.toString(),
-            maxgoalID = 0, //wrong value, might need to make new goal objects with blank data? placeholder?
-            mingoalID = 0, //wrong value, might need to make new goal objects with blank data? placeholder?
-            photo = tempImage   //bitmap?
+                userID = GlobalClass.user.userID,
+                categoryID = category.categoryID, //get current category ID
+                name =  binding.etActivtyName.text.toString(),
+                description = binding.etDescription.text.toString(),
+                maxgoalID = GlobalClass.goals.size + 1,
+                mingoalID = GlobalClass.goals.size + 2,
+                photo = tempImage
             )
+            //save activity
             GlobalClass.activities.add(activities)
 
+            //create max activity goal
+            var maxgoal = Temp_GoalDataClass(
+                goalID = GlobalClass.goals.size + 1,
+                userID = GlobalClass.user.userID,
+            )
+            var mingoal = Temp_GoalDataClass(
+                goalID = GlobalClass.goals.size + 2,
+                userID = GlobalClass.user.userID,
+            )
+            GlobalClass.goals.add(maxgoal)
+            GlobalClass.goals.add(mingoal)
+
+
+            /*
             //--------------------------------------------------------------------------------------------
             //copy bitmap as a string for testing
             val clipboard = ContextCompat.getSystemService(this, ClipboardManager::class.java)
             clipboard?.setPrimaryClip(ClipData.newPlainText("",tempImage.toString()))
             //--------------------------------------------------------------------------------------------
-
+             */
             //return user to the home view screen
             var intent = Intent(this, Home_Activity::class.java)
             startActivity(intent)
@@ -132,9 +142,7 @@ class CreateActivity : AppCompatActivity() {
     }
     //save image locally
     private fun saveImageLocally(imageBitmap: Bitmap) {
-
         tempImage = imageBitmap
-
     }
 
 

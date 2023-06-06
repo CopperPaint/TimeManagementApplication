@@ -76,9 +76,14 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                         currentMinGoal = j
                     }
                 }
-                if (currentMinGoal != -1)
+
+                var minGoal = GlobalClass.goals[currentMinGoal]
+                var maxGoal = GlobalClass.goals[currentMaxGoal]
+
+
+                if (minGoal.isSet)
                 {
-                    if (currentMaxGoal != -1) //both goals
+                    if (maxGoal.isSet) //both goals
                     {
                         var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
                         val barColor = ColorStateList.valueOf(Color.parseColor(color))
@@ -98,7 +103,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                 }
                 else
                 {
-                    if (currentMaxGoal != -1) //max only
+                    if (maxGoal.isSet) //max only
                     {
                         var goal = GlobalClass.goals[currentMaxGoal]
                         var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
@@ -121,7 +126,6 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                         newActivity.binding.tvBlockX.text = total.toString()
                     }
                 }
-
 
 
                 newActivity.setOnClickListener(){

@@ -158,7 +158,6 @@ class GlobalClass : Application()
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
     }
 
     fun LoadLists()
@@ -179,7 +178,7 @@ class GlobalClass : Application()
         for(i in listGoalGoalID.indices)
         {
 
-            var newGoal = Temp_GoalDataClass(listGoalGoalID[i], listGoalUserID[i], listGoalAmount[i], listGoalInterval[i])
+            var newGoal = Temp_GoalDataClass(listGoalGoalID[i], listGoalUserID[i], listGoalAmount[i], listGoalInterval[i], isSet = true)
             goals.add(newGoal)
         }
 
@@ -191,7 +190,6 @@ class GlobalClass : Application()
             var newActivity = Temp_ActivityDataClass(listActivityActivityID[i], listActivityUserID[i], listActivityCategoryID[i], listActivityName[i], listActivityDescription[i], listActivityMaxGoalID[i], listActivityMinGoalID[i])
             activities.add(newActivity)
         }
-
 
         //add the logs
         for(i in listLogLogID.indices)
@@ -208,8 +206,5 @@ class GlobalClass : Application()
         //call the data import method
         LoadLists()
     }
-
-
-
 
 }
