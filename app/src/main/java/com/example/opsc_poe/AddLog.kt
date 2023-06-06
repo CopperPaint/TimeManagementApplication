@@ -45,7 +45,6 @@ class AddLog : AppCompatActivity() {
         binding.dpHours.setIs24HourView(true)
         var isStopWatch = true
 
-
         //DATE PICKER
         //---------------------------------------------------------------------------------
         val calendar = Calendar.getInstance()
@@ -64,14 +63,6 @@ class AddLog : AppCompatActivity() {
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
-
-
-
-
-
-
-
-
 
 
         //SPINNER
@@ -118,7 +109,6 @@ class AddLog : AppCompatActivity() {
         registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
 
 
-
         //SAVE
         //--------------------------------------------------------------------------------------
         //save goal
@@ -127,7 +117,7 @@ class AddLog : AppCompatActivity() {
             var inputTime = 0.0
             if (isStopWatch)
             {
-                inputTime = round((time/60.0) * 100) / 100
+                inputTime = round((time/60.0)/60.0 * 100) / 100
             }
             else
             {
@@ -145,8 +135,11 @@ class AddLog : AppCompatActivity() {
                 hours = inputTime
             )
             GlobalClass.logs.add(log)
+            var testLog = GlobalClass.logs[GlobalClass.logs.size-1]
+            binding.tvLog.text = testLog.hours.toString()
         }
     }
+
 
     //Date Format Method
     private fun updateLable(calendar: Calendar) : String {
@@ -155,7 +148,6 @@ class AddLog : AppCompatActivity() {
         var dateText = sdf.format(calendar.time)
         return dateText
     }
-
 
     //TIMER METHODS
     //------------------------------------------------------------------------------------
@@ -173,7 +165,6 @@ class AddLog : AppCompatActivity() {
         else
             startTimer()
     }
-
 
     private fun startTimer()
     {
