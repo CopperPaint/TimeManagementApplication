@@ -45,6 +45,7 @@ class CreateActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
         var activityIDIndex = intent.getIntExtra("activityIDIndex", 0)
+
         binding.tvCategoryName.text = activityIDIndex.toString()
 
         //Spinner
@@ -163,6 +164,14 @@ class CreateActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        binding.tvNeedHelp.setOnClickListener(){
+            var intent = Intent(this, Help::class.java)
+            intent.putExtra("previousScreen", "Create_Activity")
+            intent.putExtra("activityIDIndex", activityIDIndex)
+            startActivity(intent)
+        }
+
         }
 
     private fun startCamera()

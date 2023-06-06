@@ -54,7 +54,7 @@ class Help : AppCompatActivity() {
                     startActivity(intent)
                 }
                 "Create_Activity" -> {
-                    var returningActivityID = intent.getIntExtra("currentActivityID", 0)
+                    var returningActivityID = intent.getIntExtra("activityIDIndex", 0)
 
                     //return user to the initial view screen
                     var intent = Intent(this, CreateActivity::class.java)
