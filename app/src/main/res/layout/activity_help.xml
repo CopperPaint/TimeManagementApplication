@@ -66,19 +66,46 @@
         android:layout_height="64dp"
         app:srcCompat="@drawable/cyanturtle"
         android:layout_marginLeft="340dp"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="636dp"
         android:rotation="25"
         />
 
     <ImageView
         android:id="@+id/imgGreenTurtle"
-        android:layout_width="114dp"
-        android:layout_height="114dp"
-        app:srcCompat="@drawable/greenturtle"
+        android:layout_width="103dp"
+        android:layout_height="92dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="410dp"
+        android:layout_marginTop="630dp"
         android:rotation="-30"
-        />
+        app:srcCompat="@drawable/greenturtle" />
+
+    <LinearLayout
+        android:id="@+id/llHelp"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:layout_below="@id/llScreenHeading"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHelpMessage"
+            android:layout_width="389dp"
+            android:layout_height="450dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rounded_rectangle"
+            android:text="Help Message" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/rounded_item_box"
+            android:theme="@style/button_colour_green"
+            android:text="Back" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
