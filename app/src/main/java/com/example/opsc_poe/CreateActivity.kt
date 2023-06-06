@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.Manifest
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -84,14 +86,20 @@ class CreateActivity : AppCompatActivity() {
                 //photo = tempImage
                 activityID = GlobalClass.activities.size + 1,
             userID = GlobalClass.user.userID,
-            categoryID = 1, //get current category ID
+            categoryID = category.categoryID, //get current category ID
             name =  binding.txtActivtyName.text.toString(),
             description = binding.txtDescription.text.toString(),
-            maxgoalID = 1, //wrong value, might need to make new goal objects with blank data? placeholder?
-            mingoalID = 2, //wrong value, might need to make new goal objects with blank data? placeholder?
+            maxgoalID = 0, //wrong value, might need to make new goal objects with blank data? placeholder?
+            mingoalID = 0, //wrong value, might need to make new goal objects with blank data? placeholder?
             photo = tempImage   //bitmap?
             )
             GlobalClass.activities.add(activities)
+
+            //--------------------------------------------------------------------------------------------
+            //copy bitmap as a string for testing
+            val clipboard = ContextCompat.getSystemService(this, ClipboardManager::class.java)
+            clipboard?.setPrimaryClip(ClipData.newPlainText("",tempImage.toString()))
+            //--------------------------------------------------------------------------------------------
 
             //return user to the home view screen
             var intent = Intent(this, Home_Activity::class.java)
