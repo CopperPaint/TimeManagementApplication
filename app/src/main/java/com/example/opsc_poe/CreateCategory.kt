@@ -49,9 +49,9 @@ class CreateCategory : AppCompatActivity() {
         //--------------------------------------------------------------------------------
 
 
-            var categoryIDIndex = intent.getIntExtra("categoryIDIndex", 0)
+            var categoryIDIndex = intent.getIntExtra("categoryIDIndex", -1)
 
-            if (categoryIDIndex == 0)
+            if (categoryIDIndex == -1)
             {
 
                 binding.btnCreate.setOnClickListener()
@@ -75,6 +75,7 @@ class CreateCategory : AppCompatActivity() {
             }
             else {
 
+
                 var category = GlobalClass.categories[categoryIDIndex]
                 binding.etName.setText(category.name)
                 binding.previewSelectedColor.backgroundTintList = ColorStateList.valueOf(Color.parseColor(category.colour))
@@ -84,6 +85,7 @@ class CreateCategory : AppCompatActivity() {
                 colorPreview?.backgroundTintList = previewColor
 
                 binding.etDescription.setText(category.description)
+                binding.tvScreenFunction.text = "Edit"
                 binding.btnCreate.text = "Save"
 
 

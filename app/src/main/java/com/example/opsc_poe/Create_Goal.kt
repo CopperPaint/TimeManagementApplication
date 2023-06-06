@@ -14,16 +14,22 @@ class Create_Goal : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityCreateGoalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Hide the action bar
         supportActionBar?.hide()
 
+        //set status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
+
+        var currentActivityIndex = intent.extras?.getInt("CurrentActivity")!!
+
         //set activity
-        var activity = GlobalClass.activities[intent.extras?.getInt("CurrentActivity")!!]
+        var activity = GlobalClass.activities[currentActivityIndex]
 
         //set activity name
         binding.tvActivity.text = activity.name
 
-        //set status bar color
-        window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
+
 
         //Picker Set up
         binding.npHourGoal.minValue = 1
@@ -42,6 +48,8 @@ class Create_Goal : AppCompatActivity() {
         //if goal exists, preset values
         if (currentGoal.isSet)
         {
+            binding.tvScreenFunction.text = "Edit"
+
             var currentInterval = 0
 
             when (currentGoal.interval){
@@ -80,6 +88,15 @@ class Create_Goal : AppCompatActivity() {
 
             //return user to the home view screen
             var intent = Intent(this, Home_Activity::class.java) //ViewActivity
+            startActivity(intent)
+        }
+
+        binding.tvNeedHelpButton.setOnClickListener()
+        {
+            var intent = Intent(this, Help::class.java) //ViewActivity
+
+            intent.putExtra("previousScreen", "Create_Goal")
+            intent.putExtra("currentActivityID", currentActivityIndex)
             startActivity(intent)
         }
     }

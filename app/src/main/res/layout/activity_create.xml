@@ -184,7 +184,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:text="Need Help?" />
+            android:text="Need Help?"
+            android:onClick="onClick"
+            android:clickable="true"/>
 
     </LinearLayout>
 

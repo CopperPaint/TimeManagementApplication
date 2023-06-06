@@ -36,7 +36,7 @@
         android:layout_toRightOf="@id/vwLogsBar">
 
         <TextView
-            android:id="@+id/tvCreate"
+            android:id="@+id/tvScreenFunction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create"
