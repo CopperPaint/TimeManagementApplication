@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
@@ -58,6 +59,7 @@ class AddLog : AppCompatActivity() {
         //DATE PICKER
         //---------------------------------------------------------------------------------
         val calendar = Calendar.getInstance()
+        binding.tvDate.text = updateLable(calendar)
 
         val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
@@ -136,21 +138,27 @@ class AddLog : AppCompatActivity() {
                 val timeInHours = hour + (min / 60.0)
                 inputTime = round(timeInHours * 100) / 100
             }
-            var log = Temp_LogDataClass(
-                logID = GlobalClass.logs.size + 1,
-                activityID = activity.activityID,
-                userID = GlobalClass.user.userID,
-                startDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                endDate = LocalDate.now(),
-                hours = inputTime
-            )
-            GlobalClass.logs.add(log)
 
+            if (inputTime == 0.0)
+            {
+                GlobalClass.InformUser("Input Error","Cannot have 0 hours. Please set the amount of hours or use the stop watch to time an activity", this)
+            }
+            else
+            {
+                //create new log item
+                var log = Temp_LogDataClass(
+                    logID = GlobalClass.logs.size + 1,
+                    activityID = activity.activityID,
+                    userID = GlobalClass.user.userID,
+                    startDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                    endDate = LocalDate.now(),
+                    hours = inputTime
+                )
+                GlobalClass.logs.add(log)
 
-            var intent = Intent(this, Home_Activity::class.java)
-            startActivity(intent)
-            //var testLog = GlobalClass.logs[GlobalClass.logs.size-1]
-            //binding.tvLog.text = testLog.hours.toString()
+                var intent = Intent(this, Home_Activity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
