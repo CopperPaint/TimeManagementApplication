@@ -49,7 +49,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
 
         if (userHasData == false)
         {
-            NoUserAppData(binding.llBars, activity, requireContext(),"Activity")
+            NoUserAppData(binding.llBars, activity, requireContext(),"Activity", 0)
         }
         else
         {

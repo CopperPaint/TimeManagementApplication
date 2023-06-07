@@ -47,7 +47,7 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
 
         if (userHasData == false)
         {
-            GlobalClass.NoUserAppData(binding.llBars, activity, requireContext(), "Category")
+            GlobalClass.NoUserAppData(binding.llBars, activity, requireContext(), "Category", 0)
         }
         else
         {

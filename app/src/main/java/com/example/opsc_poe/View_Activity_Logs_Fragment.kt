@@ -51,7 +51,7 @@ class View_Activity_Logs_Fragment : Fragment(R.layout.activity_view_logs_fragmen
 
         if (userHasData == false)
         {
-            GlobalClass.NoUserAppData(binding.llBars, requireActivity(), requireContext(), "Log")
+            GlobalClass.NoUserAppData(binding.llBars, requireActivity(), requireContext(), "Log", activityIDIndex)
         }
         else {
 

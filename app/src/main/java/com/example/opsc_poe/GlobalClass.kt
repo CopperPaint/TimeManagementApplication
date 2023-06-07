@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.icu.text.IDNA.Info
 import android.view.ContentInfo
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -35,7 +36,7 @@ class GlobalClass : Application()
             context.startActivity(intent)
         }
 
-        fun NoUserAppData(barLayout: LinearLayout, barActivity: FragmentActivity?, barContext : Context, screenFunction: String)
+        fun NoUserAppData(barLayout: LinearLayout, barActivity: FragmentActivity?, barContext : Context, screenFunction: String, dataID : Int)
         {
 
             var barNoData = CustomActivity(barActivity)
@@ -46,6 +47,8 @@ class GlobalClass : Application()
             barNoData.binding.tvBlockText.text = "Click Here"
             barNoData.binding.tvBlockX.text = "+"
             barNoData.binding.tvBlockX.textSize = 36F
+
+            barNoData.isClickable = true
 
             //set the + text to be closer to the Click Me Text
             val barParam: ViewGroup.MarginLayoutParams = barNoData.binding.tvBlockX.layoutParams as ViewGroup.MarginLayoutParams
@@ -61,12 +64,65 @@ class GlobalClass : Application()
                     logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
                     barNoData.binding.vwBar.layoutParams = logParam
                 }
+                "Log" ->
+                {
+                    barNoData.setOnClickListener()
+                    {
+                        //load add activity
+                        var intent = Intent(barContext, AddLog::class.java)
+                        intent.putExtra("activityIDIndex", dataID)
+                        barContext.startActivity(intent)
+                    }
+                }
+                "Activity" ->
+                {
+                    barNoData.setOnClickListener()
+                    {
+
+                        //check if any categories exist first
+
+                        var userHasData = false
+                        for (i in categories.indices)
+                        {
+                            if (categories[i].userID == user.userID)
+                            {
+                                //load add activity
+                               userHasData = true
+                                break
+                            }
+                        }
+
+                        if (userHasData == true)
+                        {
+                            var intent = Intent(barContext, CreateActivity::class.java)
+                            barContext.startActivity(intent)
+                        }
+                        else
+                        {
+                            InformUser("No Categories Available", "Add a category from the home page", barContext)
+                        }
+
+
+                    }
+                }
+                "Category" ->
+                {
+                    barNoData.setOnClickListener()
+                    {
+                        //load add category view
+                        var intent = Intent(barContext, CreateCategory::class.java)
+                        barContext.startActivity(intent)
+                    }
+
+                }
             }
 
 
             barLayout.addView(barNoData)
 
         }
+
+
 
         fun InformUser(messageTitle: String, messageText: String, context: Context) {
             val alert = AlertDialog.Builder(context)

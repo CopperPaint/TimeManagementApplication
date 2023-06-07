@@ -64,7 +64,7 @@ class CategoryName : AppCompatActivity()
         //if user has no data
         if (userHasData == false)
         {
-            GlobalClass.NoUserAppData(binding.llBars, this, this, "Activity")
+            GlobalClass.NoUserAppData(binding.llBars, this, this, "Activity", 0)
         }
         else
         {

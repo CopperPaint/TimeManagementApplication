@@ -54,7 +54,7 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
 
             if (userHasData == false)
             {
-                GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Logs")
+                GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Logs", 0)
             }
             else {
 
@@ -182,7 +182,7 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
 
         if (binding.llLogContainer.childCount == 0)
         {
-            GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Logs")
+            GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Logs", 0)
 
         }
 
