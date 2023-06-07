@@ -5,6 +5,8 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.icu.text.IDNA.Info
 import android.view.ContentInfo
@@ -20,8 +22,8 @@ import kotlin.math.roundToInt
 
 class GlobalClass : Application()
 {
-
-    companion object {
+    companion object
+    {
 
 
         var activities = arrayListOf<Temp_ActivityDataClass>()
@@ -324,11 +326,16 @@ class GlobalClass : Application()
         }
     }
 
-    override fun onCreate() {
+    override fun onCreate()
+    {
         super.onCreate()
-
         //call the data import method
         LoadLists()
-    }
 
+        //add images 3.6.9.12
+        activities[3].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockbike);
+        activities[6].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockdriving);
+        activities[9].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockeggs);
+        activities[12].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockhacking);
+    }
 }
