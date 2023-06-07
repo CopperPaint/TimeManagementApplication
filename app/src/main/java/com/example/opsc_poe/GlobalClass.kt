@@ -58,11 +58,32 @@ class GlobalClass : Application()
 
             when (screenFunction)
             {
-                "Logs" ->
+                "LogsData" ->
                 {
                     val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
                     logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
                     barNoData.binding.vwBar.layoutParams = logParam
+
+                    barNoData.binding.tvPrimaryText.text = "No Logs Found"
+                    barNoData.binding.tvSecondaryText.text = "Try a different set of filters"
+
+                    //val logParamFill: ViewGroup.MarginLayoutParams = barNoData.binding.tvBlockX.layoutParams as ViewGroup.MarginLayoutParams
+                    //logParam.setMargins(logParamFill.leftMargin, -60, logParamFill.rightMargin, logParamFill.bottomMargin)
+                    //barNoData.binding.tvBlockX.layoutParams = logParamFill
+
+                    barNoData.binding.tvBlockText.text = ""
+                    barNoData.binding.tvBlockX.text = "\uD83D\uDCC5"
+                }
+                "Logs" ->
+                {
+                    val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
+                    logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
+
+                    barNoData.binding.vwBar.layoutParams = logParam
+                    barNoData.binding.tvSecondaryText.text = "Go to an activity to add a log"
+
+                    barNoData.binding.tvBlockText.text = ""
+                    barNoData.binding.tvBlockX.text = "\uD83D\uDCC5"
                 }
                 "Log" ->
                 {
