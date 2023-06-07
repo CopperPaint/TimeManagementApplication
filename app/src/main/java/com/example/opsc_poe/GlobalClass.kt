@@ -335,7 +335,7 @@ class GlobalClass : Application()
         //add images 3.6.9.12
         activities[2].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockbike);
         activities[5].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockdriving);
-        activities[8].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockeggs);
+        activities[8].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockboileggs);
         activities[11].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockhacking);
     }
 }
