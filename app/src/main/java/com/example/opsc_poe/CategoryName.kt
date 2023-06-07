@@ -264,4 +264,5 @@ class CategoryName : AppCompatActivity()
             }
         }
     }
+    override fun onBackPressed() {}
 }

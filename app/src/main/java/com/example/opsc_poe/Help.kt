@@ -122,6 +122,6 @@ class Help : AppCompatActivity()
                 startActivity(intent)
             }
         }
-
     }
+    override fun onBackPressed() {}
 }

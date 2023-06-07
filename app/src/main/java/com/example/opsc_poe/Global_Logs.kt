@@ -7,8 +7,10 @@ import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityGlobalLogsBinding
 import com.example.opsc_poe.databinding.ActivitySettingsViewBinding
 
-class Global_Logs : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class Global_Logs : AppCompatActivity()
+{
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
         //Hide the action bar
@@ -27,16 +29,19 @@ class Global_Logs : AppCompatActivity() {
         //set the activity view fragment to be the initial view
         fragmentControl.replaceFragment(global_logs_list_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
-        fun CycleHomeFragmentView () {
+        fun CycleHomeFragmentView ()
+        {
 
-            if (binding.tvSectionTitle.text == "List") {
+            if (binding.tvSectionTitle.text == "List")
+            {
                 binding.tvSectionTitle.text = "Category"
                 fragmentControl.replaceFragment(
                     global_logs_category_fragment(),
                     R.id.fcFragmentContainer,
                     supportFragmentManager
                 )
-            } else {
+            } else
+            {
                 binding.tvSectionTitle.text = "List"
                 fragmentControl.replaceFragment(
                     global_logs_list_fragment(),
@@ -73,7 +78,6 @@ class Global_Logs : AppCompatActivity() {
         {
             ExitLogs()
         }
-
-
     }
+    override fun onBackPressed() {}
 }
