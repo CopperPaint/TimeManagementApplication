@@ -33,42 +33,65 @@ class home_category_view_fragment : Fragment(R.layout.home_category_view_fragmen
 
         //-------------------------------------------------
         //code here
-        val activityLayout = binding.llBars
-        for (i in GlobalClass.categories.indices)
-        {
-            //if the category belongs to the signed in user
+
+        var userHasData = false
+        for (i in GlobalClass.categories.indices) {
+
             if (GlobalClass.categories[i].userID == GlobalClass.user.userID)
             {
-
-                //create new custom activity
-                var newCategory = CustomActivity(activity)
-                //get category data
-                val catColour = ColorStateList.valueOf(Color.parseColor(GlobalClass.categories[i].colour))
-                var (actTotal, hourTotal) = GetActivitesData(GlobalClass.categories[i].categoryID)
-                //set primary text
-                newCategory.binding.tvPrimaryText.text = GlobalClass.categories[i].name
-                //set secondary text
-                newCategory.binding.tvSecondaryText.text = "No of activties: " + actTotal
-                //set the color of the divider bar between the text and the activity color shape
-                newCategory.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Default_Charcoal_Grey)
-                //set the activity color shape color
-                newCategory.binding.llBlockText.backgroundTintList = catColour
-                //set the activity color block text
-                newCategory.binding.tvBlockText.text = "Total Hours:"
-                //set the activity color block time
-                newCategory.binding.tvBlockX.text =  hourTotal.toString()
-                newCategory.binding.tvBlockX.text = DoubleToTime(hourTotal.toString())
-
-                newCategory.setOnClickListener(){
-                    var intent = Intent(activity, CategoryName::class.java)
-                    intent.putExtra("categoryIDIndex", i)
-                    startActivity(intent)
-                }
-
-                //add the new view
-                activityLayout.addView(newCategory)
+                userHasData = true
+                break
             }
+
         }
+
+        if (userHasData == false)
+        {
+            GlobalClass.NoUserAppData(binding.llBars, activity, requireContext(), "Category")
+        }
+        else
+        {
+
+            val activityLayout = binding.llBars
+            for (i in GlobalClass.categories.indices)
+            {
+                //if the category belongs to the signed in user
+                if (GlobalClass.categories[i].userID == GlobalClass.user.userID)
+                {
+
+                    //create new custom activity
+                    var newCategory = CustomActivity(activity)
+                    //get category data
+                    val catColour = ColorStateList.valueOf(Color.parseColor(GlobalClass.categories[i].colour))
+                    var (actTotal, hourTotal) = GetActivitesData(GlobalClass.categories[i].categoryID)
+                    //set primary text
+                    newCategory.binding.tvPrimaryText.text = GlobalClass.categories[i].name
+                    //set secondary text
+                    newCategory.binding.tvSecondaryText.text = "No of activties: " + actTotal
+                    //set the color of the divider bar between the text and the activity color shape
+                    newCategory.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(requireContext(), R.color.Default_Charcoal_Grey)
+                    //set the activity color shape color
+                    newCategory.binding.llBlockText.backgroundTintList = catColour
+                    //set the activity color block text
+                    newCategory.binding.tvBlockText.text = "Total Hours:"
+                    //set the activity color block time
+                    newCategory.binding.tvBlockX.text =  hourTotal.toString()
+                    newCategory.binding.tvBlockX.text = DoubleToTime(hourTotal.toString())
+
+                    newCategory.setOnClickListener(){
+                        var intent = Intent(activity, CategoryName::class.java)
+                        intent.putExtra("categoryIDIndex", i)
+                        startActivity(intent)
+                    }
+
+                    //add the new view
+                    activityLayout.addView(newCategory)
+                }
+            }
+
+        }
+
+
         //-------------------------------------------------
 
 

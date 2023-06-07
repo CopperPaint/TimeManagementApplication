@@ -31,6 +31,7 @@ class CategoryName : AppCompatActivity() {
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
+
         val categoryIDIndex = intent.getIntExtra("categoryIDIndex", 0)
 
         //passed category
@@ -43,119 +44,144 @@ class CategoryName : AppCompatActivity() {
         //display category description
         binding.tvDescription.text = category.description
 
-        //display category activites
-        val activityLayout = binding.llBars
 
-        //loop through activites
-        for (i in GlobalClass.activities.indices)
-        {
-            //if activity belongs to user
-            if (GlobalClass.user.userID == GlobalClass.activities[i].userID)
+        var userHasData = false
+        for (i in GlobalClass.activities.indices) {
+
+            if (GlobalClass.activities[i].categoryID == GlobalClass.categories[categoryIDIndex].categoryID)
             {
-                //if activity belongs to category
-                if (GlobalClass.activities[i].categoryID == category.categoryID)
+                userHasData = true
+                break
+            }
+
+        }
+
+        if (userHasData == false)
+        {
+            GlobalClass.NoUserAppData(binding.llBars, this, this, "Activity")
+        }
+        else {
+
+
+
+            //display category activites
+            val activityLayout = binding.llBars
+
+            //loop through activites
+            for (i in GlobalClass.activities.indices)
+            {
+                //if activity belongs to user
+                if (GlobalClass.user.userID == GlobalClass.activities[i].userID)
                 {
-                    //create new custom activity
-                    var newActivity = CustomActivity(this)
-
-                    //set primary text
-                    newActivity.binding.tvPrimaryText.text = GlobalClass.activities[i].name
-
-                    //bold the primary text
-                    newActivity.binding.tvPrimaryText.typeface = Typeface.DEFAULT_BOLD
-
-                    //change the position of the primary text on the custom component
-                    val activityParam: ViewGroup.MarginLayoutParams = newActivity.binding.tvPrimaryText.layoutParams as ViewGroup.MarginLayoutParams
-                    activityParam.setMargins(activityParam.leftMargin, 56, activityParam.rightMargin, activityParam.bottomMargin)
-                    newActivity.binding.tvPrimaryText.layoutParams = activityParam
-
-                    //set secondary text - set to null
-                    newActivity.binding.tvSecondaryText.text = null
-
-                    //set the activity color shape color
-                    val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
-                    newActivity.binding.llBlockText.backgroundTintList = catColour
-
-                    var currentMaxGoal = -1
-                    var currentMinGoal = -1
-
-                    for (j in GlobalClass.goals.indices)
+                    //if activity belongs to category
+                    if (GlobalClass.activities[i].categoryID == category.categoryID)
                     {
-                        if (GlobalClass.activities[i].maxgoalID == GlobalClass.goals[j].goalID)
-                        {
-                            currentMaxGoal = j
-                        }
+                        //create new custom activity
+                        var newActivity = CustomActivity(this)
 
-                        if (GlobalClass.activities[i].mingoalID == GlobalClass.goals[j].goalID)
-                        {
-                            currentMinGoal = j
-                        }
-                    }
+                        //set primary text
+                        newActivity.binding.tvPrimaryText.text = GlobalClass.activities[i].name
 
-                    var mingoal = GlobalClass.goals[currentMinGoal]
-                    var maxgoal = GlobalClass.goals[currentMaxGoal]
-                    if (mingoal.isSet)
-                    {
-                        if (maxgoal.isSet) //both goals
+                        //bold the primary text
+                        newActivity.binding.tvPrimaryText.typeface = Typeface.DEFAULT_BOLD
+
+                        //change the position of the primary text on the custom component
+                        val activityParam: ViewGroup.MarginLayoutParams = newActivity.binding.tvPrimaryText.layoutParams as ViewGroup.MarginLayoutParams
+                        activityParam.setMargins(activityParam.leftMargin, 56, activityParam.rightMargin, activityParam.bottomMargin)
+                        newActivity.binding.tvPrimaryText.layoutParams = activityParam
+
+                        //set secondary text - set to null
+                        newActivity.binding.tvSecondaryText.text = null
+
+                        //set the activity color shape color
+                        val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
+                        newActivity.binding.llBlockText.backgroundTintList = catColour
+
+                        var currentMaxGoal = -1
+                        var currentMinGoal = -1
+
+                        for (j in GlobalClass.goals.indices)
                         {
-                            var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
-                            val barColor = ColorStateList.valueOf(Color.parseColor(color))
-                            newActivity.binding.vwBar.backgroundTintList = barColor
-                            newActivity.binding.tvBlockText.text = text
-                            newActivity.binding.tvBlockX.text = DoubleToTime(hour)
-                        }
-                        else //min only
-                        {
-                            var goal = GlobalClass.goals[currentMinGoal]
-                            var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
-                            val barColor = ColorStateList.valueOf(Color.parseColor(color))
-                            newActivity.binding.vwBar.backgroundTintList = barColor
-                            newActivity.binding.tvBlockText.text = text
-                            newActivity.binding.tvBlockX.text = DoubleToTime(hour)
-                        }
-                    }
-                    else
-                    {
-                        if (maxgoal.isSet) //max only
-                        {
-                            var goal = GlobalClass.goals[currentMaxGoal]
-                            var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
-                            val barColor = ColorStateList.valueOf(Color.parseColor(color))
-                            newActivity.binding.vwBar.backgroundTintList = barColor
-                            newActivity.binding.tvBlockText.text = text
-                            newActivity.binding.tvBlockX.text = DoubleToTime(hour)
-                        }
-                        else //no goals
-                        {
-                            var total = 0.0
-                            for (k in GlobalClass.logs.indices)
+                            if (GlobalClass.activities[i].maxgoalID == GlobalClass.goals[j].goalID)
                             {
-                                if (GlobalClass.logs[k].activityID == GlobalClass.activities[i].activityID)
-                                {
-                                    total = total + GlobalClass.logs[k].hours
-                                }
+                                currentMaxGoal = j
                             }
-                            newActivity.binding.tvBlockText.text = "Total Hours:"
-                            newActivity.binding.tvBlockX.text = DoubleToTime(total.toString())
+
+                            if (GlobalClass.activities[i].mingoalID == GlobalClass.goals[j].goalID)
+                            {
+                                currentMinGoal = j
+                            }
                         }
+
+                        var mingoal = GlobalClass.goals[currentMinGoal]
+                        var maxgoal = GlobalClass.goals[currentMaxGoal]
+                        if (mingoal.isSet)
+                        {
+                            if (maxgoal.isSet) //both goals
+                            {
+                                var (hour, text, color) = GoalHourCalculator().CalculateHours(currentMinGoal, currentMaxGoal, GlobalClass.activities[i].activityID)
+                                val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                                newActivity.binding.vwBar.backgroundTintList = barColor
+                                newActivity.binding.tvBlockText.text = text
+                                newActivity.binding.tvBlockX.text = DoubleToTime(hour)
+                            }
+                            else //min only
+                            {
+                                var goal = GlobalClass.goals[currentMinGoal]
+                                var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
+                                val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                                newActivity.binding.vwBar.backgroundTintList = barColor
+                                newActivity.binding.tvBlockText.text = text
+                                newActivity.binding.tvBlockX.text = DoubleToTime(hour)
+                            }
+                        }
+                        else
+                        {
+                            if (maxgoal.isSet) //max only
+                            {
+                                var goal = GlobalClass.goals[currentMaxGoal]
+                                var (hour, text, color) = GoalHourCalculator().CheckGoal(goal.interval, goal.amount, GlobalClass.activities[i].activityID)
+                                val barColor = ColorStateList.valueOf(Color.parseColor(color))
+                                newActivity.binding.vwBar.backgroundTintList = barColor
+                                newActivity.binding.tvBlockText.text = text
+                                newActivity.binding.tvBlockX.text = DoubleToTime(hour)
+                            }
+                            else //no goals
+                            {
+                                var total = 0.0
+                                for (k in GlobalClass.logs.indices)
+                                {
+                                    if (GlobalClass.logs[k].activityID == GlobalClass.activities[i].activityID)
+                                    {
+                                        total = total + GlobalClass.logs[k].hours
+                                    }
+                                }
+                                newActivity.binding.tvBlockText.text = "Total Hours:"
+                                newActivity.binding.tvBlockX.text = DoubleToTime(total.toString())
+                            }
+                        }
+
+
+
+                        //set the click function of the activity to load the activity detail view
+                        newActivity.setOnClickListener(){
+                            var intent = Intent(this, ViewActivity::class.java)
+                            intent.putExtra("activityIDIndex", i)
+                            startActivity(intent)
+                        }
+
+
+
+                        //add the new view
+                        activityLayout.addView(newActivity)
                     }
-
-
-
-                    //set the click function of the activity to load the activity detail view
-                    newActivity.setOnClickListener(){
-                        var intent = Intent(this, ViewActivity::class.java)
-                        intent.putExtra("activityIDIndex", i)
-                        startActivity(intent)
-                    }
-
-
-
-                    //add the new view
-                    activityLayout.addView(newActivity)
                 }
             }
+
         }
+
+
+
 
         //add activity to category
         binding.imgAddActivity.setOnClickListener()

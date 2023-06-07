@@ -172,45 +172,68 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
     @SuppressLint("Range")
     private fun AddLogView(log: Temp_LogDataClass, activity: Temp_ActivityDataClass)
     {
-        //create new custom activity
-        var newLog = CustomActivity(requireActivity())
+        var userHasData = false
+        //for (i in GlobalClass.logs.indices) {
 
-        val logParam: ViewGroup.MarginLayoutParams = newLog.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
-        logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
-        newLog.binding.vwBar.layoutParams = logParam
+            if (GlobalClass.logs.size != 0)
+            {
+                userHasData = true
+                //break
+            }
 
-        //set primary text
-        newLog.binding.tvPrimaryText.text = activity.name
+       // }
 
-        //set secondary text
-        newLog.binding.tvSecondaryText.text = log.startDate.toString()
+        if (userHasData == false)
+        {
+            GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Log")
+        }
+        else
+        {
 
-        //change the text sizes
-        newLog.binding.tvPrimaryText.textSize = 14F
-        newLog.binding.tvSecondaryText.textSize = 20F
 
-        var catIndex = Temp_CategoryDataClass().GetIndex(
-            activity.categoryID,
-            GlobalClass.categories
-        )
-        var category = GlobalClass.categories[catIndex]
-        //set the activity color shape color
-        val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
-        //ColorStateList.valueOf(Color.parseColor(category.colour))
-        newLog.binding.llBlockText.backgroundTintList = catColour
+            //create new custom activity
+            var newLog = CustomActivity(requireActivity())
 
-        //set bar color
-        val barColor = ContextCompat.getColorStateList(
-            requireContext(),
-            R.color.Default_Charcoal_Grey
-        )
-        newLog.binding.vwBar.backgroundTintList = barColor
+            val logParam: ViewGroup.MarginLayoutParams = newLog.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
+            logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
+            newLog.binding.vwBar.layoutParams = logParam
 
-        newLog.binding.tvBlockText.text = "Hours Logged"
+            //set primary text
+            newLog.binding.tvPrimaryText.text = activity.name
 
-        newLog.binding.tvBlockX.text = GlobalClass.DoubleToTime(log.hours.toString())
+            //set secondary text
+            newLog.binding.tvSecondaryText.text = log.startDate.toString()
 
-        binding.llLogContainer.addView(newLog)
+            //change the text sizes
+            newLog.binding.tvPrimaryText.textSize = 14F
+            newLog.binding.tvSecondaryText.textSize = 20F
+
+            var catIndex = Temp_CategoryDataClass().GetIndex(
+                activity.categoryID,
+                GlobalClass.categories
+            )
+            var category = GlobalClass.categories[catIndex]
+            //set the activity color shape color
+            val catColour = ColorStateList.valueOf(Color.parseColor(category.colour))
+            //ColorStateList.valueOf(Color.parseColor(category.colour))
+            newLog.binding.llBlockText.backgroundTintList = catColour
+
+            //set bar color
+            val barColor = ContextCompat.getColorStateList(
+                requireContext(),
+                R.color.Default_Charcoal_Grey
+            )
+            newLog.binding.vwBar.backgroundTintList = barColor
+
+            newLog.binding.tvBlockText.text = "Hours Logged"
+
+            newLog.binding.tvBlockX.text = GlobalClass.DoubleToTime(log.hours.toString())
+
+            binding.llLogContainer.addView(newLog)
+
+        }
+
+
     }
 
 
