@@ -1,21 +1,19 @@
 package com.example.opsc_poe
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.core.content.ContentProviderCompat.requireContext
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityAddLogBinding
-import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.ZoneId
