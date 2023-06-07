@@ -4,14 +4,12 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.opsc_poe.databinding.ActivityGlobalLogsCategoryFragmentBinding
-import com.example.opsc_poe.databinding.ActivityGlobalLogsListFragmentBinding
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.Entry
@@ -27,24 +25,23 @@ import java.time.LocalDate
 import java.time.ZoneId
 import java.util.*
 
-class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_category_fragment) {
-
-
+class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_category_fragment)
+{
     private var _binding: ActivityGlobalLogsCategoryFragmentBinding? = null
     // This property is only valid between onCreateView and
-// onDestroyView.
+    // onDestroyView.
     private val binding get() = _binding!!
 
     var StartDate: LocalDate? = null
     var EndDate: LocalDate? = null
-
 
     @SuppressLint("Range")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View?
+    {
         _binding = ActivityGlobalLogsCategoryFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -72,6 +69,7 @@ class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_cat
             pieChart.setData(data)
             pieChart.invalidate()
         }
+        //start date button
         binding.btnStartDate.setOnClickListener {
             DatePickerDialog(requireContext(), dateStartPicker,
                 calendar.get(Calendar.YEAR),
@@ -91,6 +89,7 @@ class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_cat
             pieChart.setData(data)
             pieChart.invalidate()
         }
+        //end date button
         binding.btnEndDate.setOnClickListener {
             DatePickerDialog(requireContext(), dateEndPicker,
                 calendar.get(Calendar.YEAR),
@@ -169,21 +168,19 @@ class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_cat
             }
         })
         //------------------------------------------------------
-
-
-
-
         return view
     }
 
-    override fun onDestroyView() {
+    override fun onDestroyView()
+    {
         super.onDestroyView()
         _binding = null
     }
 
     //Date Format Method
     //-------------------------------------------------------------------------------
-    private fun updateLable(calendar: Calendar) : String {
+    private fun updateLable(calendar: Calendar) : String
+    {
         val dateFormat = "dd-MM-yyyy"
         val sdf = SimpleDateFormat(dateFormat, Locale.UK)
         var dateText = sdf.format(calendar.time)
@@ -198,7 +195,6 @@ class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_cat
     {
         val entries: ArrayList<PieEntry> = ArrayList()
         val colors: ArrayList<Int> = ArrayList()
-        val indexes: ArrayList<Int> = ArrayList()
         for (i in GlobalClass.categories.indices)
         {
             //if category belongs to user
@@ -232,6 +228,15 @@ class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_cat
                 colors.add(Color.parseColor(GlobalClass.categories[i].colour))
             }
         }
+        if (entries.size == 0)
+        {
+            binding.tvCategoryInformation.text = "No date in this time period"
+        }
+        else
+        {
+            binding.tvCategoryInformation.text = "No category selected"
+        }
+
         val dataSet = PieDataSet(entries, "Category Totals")
 
         // on below line we are setting colors.
@@ -247,8 +252,10 @@ class global_logs_category_fragment : Fragment(R.layout.activity_global_logs_cat
 
         // on below line we are setting pie data set
         val data = PieData(dataSet)
-        data.setValueFormatter(object : ValueFormatter() {
-            override fun getFormattedValue(value: Float): String {
+        data.setValueFormatter(object : ValueFormatter()
+        {
+            override fun getFormattedValue(value: Float): String
+            {
                 return value.toInt().toString()
             }
         })
