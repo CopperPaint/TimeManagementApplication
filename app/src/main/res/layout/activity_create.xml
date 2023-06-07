@@ -179,7 +179,7 @@
         <TextView
             android:id="@+id/tvNeedHelp"
             android:layout_width="120dp"
-            android:layout_marginLeft="133dp"
+            android:layout_marginLeft="138dp"
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"

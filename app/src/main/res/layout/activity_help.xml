@@ -147,7 +147,7 @@
         android:id="@+id/tvHelpName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="102dp"
         android:textSize="25dp"
         android:text="TextView" />
