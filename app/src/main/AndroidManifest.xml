@@ -42,19 +42,7 @@
             android:name=".View_Activity_Details_Fragment"
             android:exported="false" />
         <activity
-            android:name=".CalendarLogs"
-            android:exported="true" />
-        <activity
             android:name=".AddLog"
-            android:exported="false" />
-        <activity
-            android:name=".HomeScreen"
-            android:exported="false" />
-        <activity
-            android:name=".LogsCategory"
-            android:exported="false" />
-        <activity
-            android:name=".LogsList"
             android:exported="false" />
         <activity
             android:name=".CategoryName"
@@ -64,7 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".CreateActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Create_Goal"
             android:exported="false" />
