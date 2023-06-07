@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityMainBinding
 import com.example.opsc_poe.databinding.ActivitySettingsViewBinding
@@ -17,6 +18,7 @@ class settings_view : AppCompatActivity() {
 
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
+
 
         //Set view binding
         val binding = ActivitySettingsViewBinding.inflate(layoutInflater)
