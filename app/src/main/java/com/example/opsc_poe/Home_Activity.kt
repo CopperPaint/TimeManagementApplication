@@ -12,8 +12,10 @@ import com.example.opsc_poe.databinding.ActivityHomeBinding
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class Home_Activity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class Home_Activity : AppCompatActivity()
+{
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
         val binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -25,38 +27,27 @@ class Home_Activity : AppCompatActivity() {
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
-
         //create local fragment controller
         val fragmentControl = FragmentHandler()
 
         //set the activity view fragment to be the initial view
          fragmentControl.replaceFragment(home_activity_view_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
-
         binding.tvUserUsername.text = GlobalClass.user.username
 
-        /*
-        val activityLayout = findViewById<LinearLayout>(R.id.activitycontainer)
+        fun CycleHomeFragmentView ()
+        {
 
-        val customactivity = CustomActivity(this)
-        val tvPrimaryText = customactivity.findViewById<TextView>(R.id.tvPrimaryText)
-        tvPrimaryText.text = "I want to die"
-        activityLayout.addView(customactivity)
-
-         */
-
-
-
-        fun CycleHomeFragmentView () {
-
-            if (binding.tvSectionTitle.text == "Activities") {
+            if (binding.tvSectionTitle.text == "Activities")
+            {
                 binding.tvSectionTitle.text = "Categories"
                 fragmentControl.replaceFragment(
                     home_category_view_fragment(),
                     R.id.fcFragmentContainer,
                     supportFragmentManager
                 )
-            } else {
+            } else
+            {
                 binding.tvSectionTitle.text = "Activities"
                 fragmentControl.replaceFragment(
                     home_activity_view_fragment(),
@@ -79,19 +70,16 @@ class Home_Activity : AppCompatActivity() {
         //add new entry depending on if category or activity is selected
         binding.imgAddEntry.setOnClickListener{
 
-            if (binding.tvSectionTitle.text == "Activities") {
-
+            if (binding.tvSectionTitle.text == "Activities")
+            {
                 //load add activity
                 var intent = Intent(this, CreateActivity::class.java)
                 startActivity(intent)
-
-            } else {
-
+            } else
+            {
                 //load add category view
                 var intent = Intent(this, CreateCategory::class.java)
                 startActivity(intent)
-
-
             }
 
         }
@@ -102,11 +90,6 @@ class Home_Activity : AppCompatActivity() {
             intent.putExtra("previousScreen", "Home_View")
             startActivity(intent)
         }
-
-
-
-
-
-
     }
+    override fun onBackPressed() {}
 }

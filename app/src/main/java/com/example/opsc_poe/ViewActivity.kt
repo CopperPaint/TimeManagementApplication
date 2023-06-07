@@ -62,4 +62,5 @@ class ViewActivity : AppCompatActivity()
             }
         }
     }
+    override fun onBackPressed() {}
 }

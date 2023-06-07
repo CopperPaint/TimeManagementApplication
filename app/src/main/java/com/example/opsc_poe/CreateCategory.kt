@@ -4,20 +4,18 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.toColorInt
 import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import yuku.ambilwarna.AmbilWarnaDialog
 
-class CreateCategory : AppCompatActivity() {
-
-
+class CreateCategory : AppCompatActivity()
+{
     val default_Activity_Yellow = 16769154
     private var colorPreview: View? = null
     private var defaultcolour = default_Activity_Yellow //Activity Yellow color
@@ -33,8 +31,6 @@ class CreateCategory : AppCompatActivity() {
 
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
-
-
 
         //colour picker
         //--------------------------------------------------------------------------------
@@ -53,7 +49,6 @@ class CreateCategory : AppCompatActivity() {
 
         //create category button
         //--------------------------------------------------------------------------------
-
 
             var categoryIDIndex = intent.getIntExtra("categoryIDIndex", -1)
 
@@ -79,9 +74,8 @@ class CreateCategory : AppCompatActivity() {
                 }
 
             }
-            else {
-
-
+            else
+            {
                 var category = GlobalClass.categories[categoryIDIndex]
                 binding.etName.setText(category.name)
                 binding.previewSelectedColor.backgroundTintList = ColorStateList.valueOf(Color.parseColor(category.colour))
@@ -105,15 +99,8 @@ class CreateCategory : AppCompatActivity() {
                     var intent = Intent(this, Home_Activity::class.java)
                     startActivity(intent)
                 }
-
-
-
             }
-
-
         }
-
-
 
     //Color Picker Popup
     fun openColorPickerDialogue()
@@ -133,7 +120,10 @@ class CreateCategory : AppCompatActivity() {
     }
 
     //Convert Color Int to String
-    fun intToColourString(color: Int): String {
+    fun intToColourString(color: Int): String
+    {
         return String.format("#%06X", 0xFFFFFF and color)
     }
+
+    override fun onBackPressed() {}
 }

@@ -310,4 +310,5 @@ class AddLog : AppCompatActivity()
     //method to format a time string
     private fun makeTimeString(hour: Int, min: Int, sec: Int): String = String.format("%02d:%02d:%02d", hour, min, sec)
 
+    override fun onBackPressed() {}
 }

@@ -3,15 +3,15 @@ package com.example.opsc_poe
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
-import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityCreateGoalBinding
 
-
-class Create_Goal : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class Create_Goal : AppCompatActivity()
+{
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         val binding = ActivityCreateGoalBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -106,4 +106,5 @@ class Create_Goal : AppCompatActivity() {
             ReturnToHome(this)
         }
     }
+    override fun onBackPressed() {}
 }
