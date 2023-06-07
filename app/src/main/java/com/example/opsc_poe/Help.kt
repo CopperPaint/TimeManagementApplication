@@ -52,11 +52,14 @@ class Help : AppCompatActivity()
                 when (previousScreenVar)
                 {
                     "Create_Goal" -> {
-                        var returningActivityID = intent.getIntExtra("currentActivityID", 0)
+                        var returningActivityID = intent.getIntExtra("CurrentActivity", 0)
+                        var returningGoalID = intent.getIntExtra("currentGoalIDIndex", 0)
 
                         //return user to the initial view screen
                         var intent = Intent(this, Create_Goal::class.java)
-                        intent.putExtra("currentActivityID", returningActivityID)
+                        //GlobalClass.InformUser("on Help", returningActivityID.toString(), this)
+                        intent.putExtra("CurrentActivity", returningActivityID)
+                        intent.putExtra("currentGoalIDIndex", returningGoalID)
                         startActivity(intent)
                     }
                     "Create_Activity" -> {
