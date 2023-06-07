@@ -25,17 +25,19 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CreateActivity : AppCompatActivity() {
-
+class CreateActivity : AppCompatActivity()
+{
     private lateinit var imageView: ImageView
     private var tempImage : Bitmap? = null
 
-
-    companion object {
+    companion object
+    {
         private const val CAMERA_PERMISSION_CODE = 100
         private const val CAMERA_REQUEST_CODE = 200
     }
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         val binding = ActivityCreateBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -66,149 +68,194 @@ class CreateActivity : AppCompatActivity() {
         }
         //set spinner
         val spinner = findViewById<Spinner>(R.id.spCategory)
-        if (spinner != null) {
+        if (spinner != null)
+        {
             val adapter = ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, items)
             spinner.adapter = adapter
         }
+        //if spinner has items
         if (items.size <= 0)
         {
             GlobalClass.InformUser("No Categories Available", "Add a category from the home page", this)
-
         }
-
-
-
 
 
         imageView = findViewById(R.id.imgCamera)
         val CameraImage: Button = findViewById(R.id.btnInsertImage)
 
+        //camera
         CameraImage.setOnClickListener {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                startCamera()
-            } else
+            try
             {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
-            }
-        }
-
-
-
-        if (activityIDIndex == -1) //activity does not exist
-        {
-
-            binding.tvScreenFunction.text = "Create"
-
-            binding.btnClick.setOnClickListener()
-            {
-                if (binding.etActivtyName.text.isNotEmpty())
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    startCamera()
+                } else
                 {
-                    if (binding.etDescription.text.isNotEmpty())
-                    {
-                        if (items.size <= 0)
-                        {
-                            GlobalClass.InformUser("Category Needed", "Add a category from the home page", this)
-                        }
-                        else
-                        {
-                            //code to get selected category
-                            var selectedItem = spinner.selectedItemPosition
-                            var category = GlobalClass.categories[indexes[selectedItem]]
-                            //create activity object
-                            var activities = Temp_ActivityDataClass(
-                                activityID = GlobalClass.activities.size + 1,
-                                userID = GlobalClass.user.userID,
-                                categoryID = category.categoryID, //get current category ID
-                                name =  binding.etActivtyName.text.toString(),
-                                description = binding.etDescription.text.toString(),
-                                maxgoalID = GlobalClass.goals.size + 1,
-                                mingoalID = GlobalClass.goals.size + 2,
-                                photo = tempImage
-                            )
-                            //save activity
-                            GlobalClass.activities.add(activities)
-
-                            //create max activity goal
-                            var maxgoal = Temp_GoalDataClass(
-                                goalID = GlobalClass.goals.size + 1,
-                                userID = GlobalClass.user.userID,
-                            )
-                            var mingoal = Temp_GoalDataClass(
-                                goalID = GlobalClass.goals.size + 2,
-                                userID = GlobalClass.user.userID,
-                            )
-                            GlobalClass.goals.add(maxgoal)
-                            GlobalClass.goals.add(mingoal)
-
-                            //return user to the home view screen
-                            var intent = Intent(this, Home_Activity::class.java)
-                            startActivity(intent)
-                        }
-                    }
-                    else
-                    {
-                        GlobalClass.InformUser("All input fields required", "Please enter an activity description", this)
-                    }
-                }
-                else
-                {
-                    GlobalClass.InformUser("All input fields required", "Please enter an activity name", this)
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
                 }
             }
-        }
-        else
-        {
-            var activity = GlobalClass.activities[activityIDIndex]
-            binding.etActivtyName.setText(activity.name)
-            binding.etDescription.setText(activity.description)
-
-
-            //get activity category
-            var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
-
-            //set spinner
-            var spinIndex = 0;
-            for (i in indexes.indices)
+            catch (e: Error)
             {
-                if (indexes[i] == catIndex)
-                {
-                    spinIndex = i
-                }
-            }
-            spinner.setSelection(spinIndex)
-
-            //set image
-            binding.imgCamera.setImageBitmap(activity.photo)
-
-            binding.btnClick.setOnClickListener()
-            {
-                GlobalClass.activities[activityIDIndex].name = binding.etActivtyName.text.toString()
-                GlobalClass.activities[activityIDIndex].description = binding.etDescription.text.toString()
-
-                var selectedItem = spinner.selectedItemPosition
-                var category = GlobalClass.categories[indexes[selectedItem]]
-                GlobalClass.activities[activityIDIndex].categoryID = category.categoryID
-                GlobalClass.activities[activityIDIndex].photo = tempImage
-
-                var intent = Intent(this, Home_Activity::class.java)
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
                 startActivity(intent)
             }
         }
 
-        binding.tvNeedHelp.setOnClickListener(){
-            var intent = Intent(this, Help::class.java)
-            intent.putExtra("previousScreen", "Create_Activity")
-            intent.putExtra("activityIDIndex", activityIDIndex)
-            startActivity(intent)
+        if (activityIDIndex == -1) //activity does not exist
+        {
+            try
+            {
+                binding.tvScreenFunction.text = "Create"
+                binding.btnClick.setOnClickListener()
+                {
+                    if (binding.etActivtyName.text.isNotEmpty())
+                    {
+                        if (binding.etDescription.text.isNotEmpty())
+                        {
+                            if (items.size <= 0)
+                            {
+                                GlobalClass.InformUser("Category Needed", "Add a category from the home page", this)
+                            }
+                            else
+                            {
+                                //code to get selected category
+                                var selectedItem = spinner.selectedItemPosition
+                                var category = GlobalClass.categories[indexes[selectedItem]]
+                                //create activity object
+                                var activities = Temp_ActivityDataClass(
+                                    activityID = GlobalClass.activities.size + 1,
+                                    userID = GlobalClass.user.userID,
+                                    categoryID = category.categoryID, //get current category ID
+                                    name =  binding.etActivtyName.text.toString(),
+                                    description = binding.etDescription.text.toString(),
+                                    maxgoalID = GlobalClass.goals.size + 1,
+                                    mingoalID = GlobalClass.goals.size + 2,
+                                    photo = tempImage
+                                )
+                                //save activity
+                                GlobalClass.activities.add(activities)
+
+                                //create max activity goal
+                                var maxgoal = Temp_GoalDataClass(
+                                    goalID = GlobalClass.goals.size + 1,
+                                    userID = GlobalClass.user.userID,
+                                )
+                                var mingoal = Temp_GoalDataClass(
+                                    goalID = GlobalClass.goals.size + 2,
+                                    userID = GlobalClass.user.userID,
+                                )
+                                GlobalClass.goals.add(maxgoal)
+                                GlobalClass.goals.add(mingoal)
+
+                                //return user to the home view screen
+                                var intent = Intent(this, Home_Activity::class.java)
+                                startActivity(intent)
+                            }
+                        }
+                        else
+                        {
+                            GlobalClass.InformUser("All input fields required", "Please enter an activity description", this)
+                        }
+                    }
+                    else
+                    {
+                        GlobalClass.InformUser("All input fields required", "Please enter an activity name", this)
+                    }
+                }
+            }
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
+                startActivity(intent)
+            }
+        }
+        else
+        {
+            try
+            {
+                var activity = GlobalClass.activities[activityIDIndex]
+                binding.etActivtyName.setText(activity.name)
+                binding.etDescription.setText(activity.description)
+
+
+                //get activity category
+                var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
+
+                //set spinner
+                var spinIndex = 0;
+                for (i in indexes.indices)
+                {
+                    if (indexes[i] == catIndex)
+                    {
+                        spinIndex = i
+                    }
+                }
+                spinner.setSelection(spinIndex)
+
+                //set image
+                binding.imgCamera.setImageBitmap(activity.photo)
+
+                binding.btnClick.setOnClickListener()
+                {
+                    GlobalClass.activities[activityIDIndex].name = binding.etActivtyName.text.toString()
+                    GlobalClass.activities[activityIDIndex].description = binding.etDescription.text.toString()
+
+                    var selectedItem = spinner.selectedItemPosition
+                    var category = GlobalClass.categories[indexes[selectedItem]]
+                    GlobalClass.activities[activityIDIndex].categoryID = category.categoryID
+                    GlobalClass.activities[activityIDIndex].photo = tempImage
+
+                    var intent = Intent(this, Home_Activity::class.java)
+                    startActivity(intent)
+                }
+            }
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
+                startActivity(intent)
+            }
         }
 
+        //need help
+        binding.tvNeedHelp.setOnClickListener(){
+            try
+            {
+                var intent = Intent(this, Help::class.java)
+                intent.putExtra("previousScreen", "Create_Activity")
+                intent.putExtra("activityIDIndex", activityIDIndex)
+                startActivity(intent)
+            }
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
+                startActivity(intent)
+            }
+        }
 
+        //back button
         binding.imgBlackTurtle.setOnClickListener()
         {
-            ReturnToHome(this)
+            try
+            {
+                ReturnToHome(this)
+            }
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
+                startActivity(intent)
+            }
         }
-
         }
 
     private fun startCamera()
