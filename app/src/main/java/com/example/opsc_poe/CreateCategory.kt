@@ -44,7 +44,7 @@ class CreateCategory : AppCompatActivity() {
         {
             openColorPickerDialogue()
         }
-
+        //Return Home
         binding.imgBlackTurtle.setOnClickListener()
         {
             ReturnToHome(this)
