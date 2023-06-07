@@ -1,19 +1,16 @@
 package com.example.opsc_poe
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityHelpBinding
-import com.example.opsc_poe.databinding.ActivitySettingsViewBinding
-import com.example.opsc_poe.databinding.SignUpFragmentBinding
 
-
-class Help : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+class Help : AppCompatActivity()
+{
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
-
 
         //Set view binding
         val binding = ActivityHelpBinding.inflate(layoutInflater)
@@ -25,9 +22,10 @@ class Help : AppCompatActivity() {
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
-
+        //get previous screen
         var previousScreen = intent.getStringExtra("previousScreen")
 
+        //messages for help
         when (previousScreen)
         {
             "Create_Goal" -> {
@@ -46,50 +44,82 @@ class Help : AppCompatActivity() {
 
         }
 
+        //method to go back
         fun GoBack(previousScreenVar: String)
         {
-
-            when (previousScreenVar)
+            try
             {
-                "Create_Goal" -> {
-                    var returningActivityID = intent.getIntExtra("currentActivityID", 0)
+                when (previousScreenVar)
+                {
+                    "Create_Goal" -> {
+                        var returningActivityID = intent.getIntExtra("currentActivityID", 0)
 
-                    //return user to the initial view screen
-                    var intent = Intent(this, Create_Goal::class.java)
-                    intent.putExtra("currentActivityID", returningActivityID)
-                    startActivity(intent)
-                }
-                "Create_Activity" -> {
-                    var returningActivityID = intent.getIntExtra("activityIDIndex", 0)
+                        //return user to the initial view screen
+                        var intent = Intent(this, Create_Goal::class.java)
+                        intent.putExtra("currentActivityID", returningActivityID)
+                        startActivity(intent)
+                    }
+                    "Create_Activity" -> {
+                        var returningActivityID = intent.getIntExtra("activityIDIndex", 0)
 
-                    //return user to the initial view screen
-                    var intent = Intent(this, CreateActivity::class.java)
-                    intent.putExtra("activityIDIndex", returningActivityID)
-                    startActivity(intent)
-                }
-                "Sign_Up" -> {
-                    //return user to the initial view screen
-                    var intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra("LoadSignUp", true)
-                    startActivity(intent)
-                }
+                        //return user to the initial view screen
+                        var intent = Intent(this, CreateActivity::class.java)
+                        intent.putExtra("activityIDIndex", returningActivityID)
+                        startActivity(intent)
+                    }
+                    "Sign_Up" -> {
+                        //return user to the initial view screen
+                        var intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("LoadSignUp", true)
+                        startActivity(intent)
+                    }
 
+                }
             }
-
-
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
+                startActivity(intent)
+            }
         }
 
+        //back button
         binding.tvBackText.setOnClickListener()
         {
-            if (previousScreen != null) {
-                GoBack(previousScreen)
+            try
+            {
+                if (previousScreen != null)
+                {
+                    GoBack(previousScreen)
+                }
+            }
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
+                startActivity(intent)
             }
         }
 
+        //back image
         binding.imgBackIndicator.setOnClickListener()
         {
-            if (previousScreen != null) {
-                GoBack(previousScreen)
+            try
+            {
+                if (previousScreen != null)
+                {
+                    GoBack(previousScreen)
+                }
+            }
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
+                startActivity(intent)
             }
         }
 
