@@ -52,6 +52,18 @@ class GlobalClass : Application()
             barParam.setMargins(barParam.leftMargin, -40, barParam.rightMargin, barParam.bottomMargin)
             barNoData.binding.tvBlockX.layoutParams = barParam
 
+
+            when (screenFunction)
+            {
+                "Logs" ->
+                {
+                    val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
+                    logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
+                    barNoData.binding.vwBar.layoutParams = logParam
+                }
+            }
+
+
             barLayout.addView(barNoData)
 
         }

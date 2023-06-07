@@ -39,12 +39,31 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
             val view = binding.root
 
 
+            var userHasData = false
+            for (i in GlobalClass.logs.indices) {
+
+           // GlobalClass.InformUser("", GlobalClass.logs.size.toString(), requireContext())
+
+            if (GlobalClass.logs[i].userID  == GlobalClass.user.userID)
+            {
+                userHasData = true
+                //break
+            }
+
+             }
+
+            if (userHasData == false)
+            {
+                GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Logs")
+            }
+            else {
 
 
-            //-------------------------------------------------
-            //code here
-            //generate full list
-            GenerateLogList()
+                //-------------------------------------------------
+                //code here
+                //generate full list
+                GenerateLogList()
+            }
 
 
             //Date Pickers
@@ -160,6 +179,13 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
                 }
             }
         }
+
+        if (binding.llLogContainer.childCount == 0)
+        {
+            GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Logs")
+
+        }
+
     }
 
     private fun updateTable(calendar: Calendar) : String {
@@ -172,23 +198,7 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
     @SuppressLint("Range")
     private fun AddLogView(log: Temp_LogDataClass, activity: Temp_ActivityDataClass)
     {
-        var userHasData = false
-        //for (i in GlobalClass.logs.indices) {
 
-            if (GlobalClass.logs.size != 0)
-            {
-                userHasData = true
-                //break
-            }
-
-       // }
-
-        if (userHasData == false)
-        {
-            GlobalClass.NoUserAppData(binding.llLogContainer, requireActivity(), requireContext(), "Log")
-        }
-        else
-        {
 
 
             //create new custom activity
@@ -231,7 +241,7 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
 
             binding.llLogContainer.addView(newLog)
 
-        }
+
 
 
     }
