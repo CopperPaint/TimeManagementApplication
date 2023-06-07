@@ -37,7 +37,10 @@
             android:text="{CategoryName}!"
             android:textColor="@color/Dark_Green"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="end"
+            />
 
 
     <View
