@@ -59,23 +59,23 @@ class AddLog : AppCompatActivity() {
         //DATE PICKER
         //---------------------------------------------------------------------------------
         val calendar = Calendar.getInstance()
-        binding.tvDate.text = updateLable(calendar)
 
-        val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+        //START DATE
+        binding.tvStartDate.text = updateLable(calendar)
+        val StartDatePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             var dateText = updateLable(calendar)
-            binding.tvDate.text = dateText
+            binding.tvStartDate.text = dateText
         }
 
-        binding.btnDate.setOnClickListener {
-            DatePickerDialog(this, datePicker,
+        binding.btnStartDate.setOnClickListener {
+            DatePickerDialog(this, StartDatePicker,
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
-
 
         //SPINNER
         //------------------------------------------------------------------------------------
