@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -82,6 +83,10 @@ class AddLog : AppCompatActivity()
                 calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
 
+        binding.imgBlackTurtle.setOnClickListener()
+        {
+            ReturnToHome(this)
+        }
         //SPINNER
         //------------------------------------------------------------------------------------
         //set spinner items
