@@ -97,9 +97,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
+            android:paddingHorizontal="5dp"
             android:text=""
-            tools:ignore="TouchTargetSizeCheck"
-            android:paddingHorizontal="5dp"/>
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tvActivtyDescriptionHeading"
@@ -118,9 +118,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/rounded_rectangle"
-            android:text=""
+            android:gravity="top"
             android:padding="5dp"
-            android:gravity="top"/>
+            android:text=""
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tvCategoryHeading"
@@ -179,14 +180,15 @@
         <TextView
             android:id="@+id/tvNeedHelp"
             android:layout_width="120dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="138dp"
             android:layout_marginTop="5dp"
-            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:text="Need Help?"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:text="Need Help?"
-            android:onClick="onClick"
-            android:clickable="true"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 

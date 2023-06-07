@@ -46,8 +46,6 @@ class Help : AppCompatActivity() {
 
         }
 
-
-
         fun GoBack(previousScreenVar: String)
         {
 
