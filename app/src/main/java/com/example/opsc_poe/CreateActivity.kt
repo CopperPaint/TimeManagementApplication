@@ -48,8 +48,6 @@ class CreateActivity : AppCompatActivity() {
 
         binding.tvScreenFunction.text = "Edit"
 
-       // binding.tvCategoryName.text = activityIDIndex.toString()
-
         //Spinner
         //----------------------------------------------------------------------------------
         val items = arrayListOf<String>()
@@ -71,6 +69,14 @@ class CreateActivity : AppCompatActivity() {
                 android.R.layout.simple_spinner_item, items)
             spinner.adapter = adapter
         }
+        if (items.size <= 0)
+        {
+            GlobalClass.InformUser("No Categories Available", "Add a category from the home page", this)
+
+        }
+
+
+
 
 
         imageView = findViewById(R.id.imgCamera)
@@ -94,41 +100,59 @@ class CreateActivity : AppCompatActivity() {
 
             binding.btnClick.setOnClickListener()
             {
-                //code to get selected category
-                var selectedItem = spinner.selectedItemPosition
-                var category = GlobalClass.categories[indexes[selectedItem]]
+                if (binding.etActivtyName.text.isNotEmpty())
+                {
+                    if (binding.etDescription.text.isNotEmpty())
+                    {
+                        if (items.size <= 0)
+                        {
+                            GlobalClass.InformUser("Category Needed", "Add a category from the home page", this)
+                        }
+                        else
+                        {
+                            //code to get selected category
+                            var selectedItem = spinner.selectedItemPosition
+                            var category = GlobalClass.categories[indexes[selectedItem]]
+                            //create activity object
+                            var activities = Temp_ActivityDataClass(
+                                activityID = GlobalClass.activities.size + 1,
+                                userID = GlobalClass.user.userID,
+                                categoryID = category.categoryID, //get current category ID
+                                name =  binding.etActivtyName.text.toString(),
+                                description = binding.etDescription.text.toString(),
+                                maxgoalID = GlobalClass.goals.size + 1,
+                                mingoalID = GlobalClass.goals.size + 2,
+                                photo = tempImage
+                            )
+                            //save activity
+                            GlobalClass.activities.add(activities)
 
-                //create activity object
-                var activities = Temp_ActivityDataClass(
-                    activityID = GlobalClass.activities.size + 1,
-                    userID = GlobalClass.user.userID,
-                    categoryID = category.categoryID, //get current category ID
-                    name =  binding.etActivtyName.text.toString(),
-                    description = binding.etDescription.text.toString(),
-                    maxgoalID = GlobalClass.goals.size + 1,
-                    mingoalID = GlobalClass.goals.size + 2,
-                    photo = tempImage
-                )
-                //save activity
-                GlobalClass.activities.add(activities)
+                            //create max activity goal
+                            var maxgoal = Temp_GoalDataClass(
+                                goalID = GlobalClass.goals.size + 1,
+                                userID = GlobalClass.user.userID,
+                            )
+                            var mingoal = Temp_GoalDataClass(
+                                goalID = GlobalClass.goals.size + 2,
+                                userID = GlobalClass.user.userID,
+                            )
+                            GlobalClass.goals.add(maxgoal)
+                            GlobalClass.goals.add(mingoal)
 
-                //create max activity goal
-                var maxgoal = Temp_GoalDataClass(
-                    goalID = GlobalClass.goals.size + 1,
-                    userID = GlobalClass.user.userID,
-                )
-                var mingoal = Temp_GoalDataClass(
-                    goalID = GlobalClass.goals.size + 2,
-                    userID = GlobalClass.user.userID,
-                )
-                GlobalClass.goals.add(maxgoal)
-                GlobalClass.goals.add(mingoal)
-
-                //return user to the home view screen
-                var intent = Intent(this, Home_Activity::class.java)
-                startActivity(intent)
-
-
+                            //return user to the home view screen
+                            var intent = Intent(this, Home_Activity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+                    else
+                    {
+                        GlobalClass.InformUser("All input fields required", "Please enter an activity description", this)
+                    }
+                }
+                else
+                {
+                    GlobalClass.InformUser("All input fields required", "Please enter an activity name", this)
+                }
             }
         }
         else
