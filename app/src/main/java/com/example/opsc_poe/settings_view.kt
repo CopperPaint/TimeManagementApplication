@@ -9,8 +9,10 @@ import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityMainBinding
 import com.example.opsc_poe.databinding.ActivitySettingsViewBinding
 
-class settings_view : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class settings_view : AppCompatActivity()
+{
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
         //Hide the action bar
@@ -19,14 +21,12 @@ class settings_view : AppCompatActivity() {
         //set status bar color
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
-
         //Set view binding
         val binding = ActivitySettingsViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //get the extra
         var previousScreen = intent.getStringExtra("previousScreen")
-
 
         fun SignOut()
         {
@@ -35,10 +35,8 @@ class settings_view : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         fun GoBack(previousScreenVar: String)
         {
-
             when (previousScreenVar)
             {
                 "Home_View" -> {
@@ -66,10 +64,7 @@ class settings_view : AppCompatActivity() {
                     intent.putExtra("activityIDIndex", returningActivityID)
                     startActivity(intent)
                 }
-
             }
-
-
         }
         binding.tvBackText.setOnClickListener()
         {
@@ -108,7 +103,6 @@ class settings_view : AppCompatActivity() {
         {
             SignOut()
         }
-
-
     }
+    override fun onBackPressed() {}
 }

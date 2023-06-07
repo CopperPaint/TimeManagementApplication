@@ -1,29 +1,18 @@
 package com.example.opsc_poe
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
 import android.Manifest
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.Environment
+import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityCreateBinding
-import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class CreateActivity : AppCompatActivity()
 {
@@ -281,5 +270,6 @@ class CreateActivity : AppCompatActivity()
     private fun saveImageLocally(imageBitmap: Bitmap) {
         tempImage = imageBitmap
     }
+    override fun onBackPressed() {}
 
 }
