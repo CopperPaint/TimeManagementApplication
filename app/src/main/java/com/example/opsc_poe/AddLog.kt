@@ -23,14 +23,21 @@ import java.util.*
 import kotlin.math.round
 import kotlin.math.roundToInt
 
-class AddLog : AppCompatActivity() {
+class AddLog : AppCompatActivity()
+{
+    //timer started
     private var timerStarted = false
+    //service
     private lateinit var serviceIntent: Intent
+    //current time of stop watch
     private var time = 0.0
+    //binding
     private lateinit var binding: ActivityAddLogBinding
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    //on create method
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         binding = ActivityAddLogBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -59,9 +66,9 @@ class AddLog : AppCompatActivity() {
         //DATE PICKER
         //---------------------------------------------------------------------------------
         val calendar = Calendar.getInstance()
-
-        //START DATE
+        //set start date
         binding.tvStartDate.text = updateLable(calendar)
+        //start date picker pop up
         val StartDatePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
@@ -69,7 +76,7 @@ class AddLog : AppCompatActivity() {
             var dateText = updateLable(calendar)
             binding.tvStartDate.text = dateText
         }
-
+        //start date button
         binding.btnStartDate.setOnClickListener {
             DatePickerDialog(this, StartDatePicker,
                 calendar.get(Calendar.YEAR),
@@ -82,15 +89,18 @@ class AddLog : AppCompatActivity() {
         //set spinner items
         val items = arrayOf("Stopwatch", "Input Hours")
         val spinner = findViewById<Spinner>(R.id.spWatchOption)
-        if (spinner != null) {
+        if (spinner != null)
+        {
             val adapter = ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, items)
             spinner.adapter = adapter
         }
 
         //spinner is changed
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener
+        {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
+            {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 when (selectedItem) {
                     "Stopwatch" -> {
@@ -126,37 +136,47 @@ class AddLog : AppCompatActivity() {
         //save goal
         binding.btnAdd.setOnClickListener()
         {
-            var inputTime = 0.0
-            if (isStopWatch)
+            try
             {
-                inputTime = round((time/60.0)/60.0 * 100) / 100
-            }
-            else
-            {
-                val hour = binding.dpHours.hour
-                val min = binding.dpHours.minute
-                val timeInHours = hour + (min / 60.0)
-                inputTime = round(timeInHours * 100) / 100
-            }
+                var inputTime = 0.0
+                if (isStopWatch)
+                {
+                    inputTime = round((time/60.0)/60.0 * 100) / 100
+                }
+                else
+                {
+                    val hour = binding.dpHours.hour
+                    val min = binding.dpHours.minute
+                    val timeInHours = hour + (min / 60.0)
+                    inputTime = round(timeInHours * 100) / 100
+                }
 
-            if (inputTime == 0.0)
-            {
-                GlobalClass.InformUser("Input Error","Cannot have 0 hours. Please set the amount of hours or use the stop watch to time an activity", this)
-            }
-            else
-            {
-                //create new log item
-                var log = Temp_LogDataClass(
-                    logID = GlobalClass.logs.size + 1,
-                    activityID = activity.activityID,
-                    userID = GlobalClass.user.userID,
-                    startDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                    endDate = LocalDate.now(),
-                    hours = inputTime
-                )
-                GlobalClass.logs.add(log)
+                if (inputTime == 0.0)
+                {
+                    GlobalClass.InformUser("Input Error","Cannot have 0 hours. Please set the amount of hours or use the stop watch to time an activity", this)
+                }
+                else
+                {
+                    //create new log item
+                    var log = Temp_LogDataClass(
+                        logID = GlobalClass.logs.size + 1,
+                        activityID = activity.activityID,
+                        userID = GlobalClass.user.userID,
+                        startDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+                        endDate = LocalDate.now(),
+                        hours = inputTime
+                    )
+                    GlobalClass.logs.add(log)
 
-                var intent = Intent(this, Home_Activity::class.java)
+                    var intent = Intent(this, Home_Activity::class.java)
+                    startActivity(intent)
+                }
+            }
+            catch (e: Error)
+            {
+                GlobalClass.InformUser("Error", e.toString(), this)
+                //return user to the sign in screen
+                var intent = Intent(this, MainActivity::class.java) //ViewActivity
                 startActivity(intent)
             }
         }
@@ -164,46 +184,106 @@ class AddLog : AppCompatActivity() {
 
 
     //Date Format Method
-    private fun updateLable(calendar: Calendar) : String {
-        val dateFormat = "dd-MM-yyyy"
-        val sdf = SimpleDateFormat(dateFormat, Locale.UK)
-        var dateText = sdf.format(calendar.time)
+    //------------------------------------------------------------------------------------
+    private fun updateLable(calendar: Calendar) : String
+    {
+        var dateText = ""
+        try
+        {
+            val dateFormat = "dd-MM-yyyy"
+            val sdf = SimpleDateFormat(dateFormat, Locale.UK)
+            dateText = sdf.format(calendar.time)
+            return dateText
+        }
+        catch (e: Error)
+        {
+            GlobalClass.InformUser("Error", e.toString(), this)
+            //return user to the sign in screen
+            var intent = Intent(this, MainActivity::class.java) //ViewActivity
+            startActivity(intent)
+        }
         return dateText
     }
 
     //TIMER METHODS
     //------------------------------------------------------------------------------------
+    //method to reset timer
     private fun resetTimer()
     {
-        stopTimer()
-        time = 0.0
-        binding.tvTime.text = getTimeStringFromDouble(time)
+        try
+        {
+            stopTimer()
+            time = 0.0
+            binding.tvTime.text = getTimeStringFromDouble(time)
+        }
+        catch (e: Error)
+        {
+            GlobalClass.InformUser("Error", e.toString(), this)
+            //return user to the sign in screen
+            var intent = Intent(this, MainActivity::class.java) //ViewActivity
+            startActivity(intent)
+        }
     }
 
+    //method to to switch timer state
     private fun startStopTimer()
     {
-        if(timerStarted)
-            stopTimer()
-        else
-            startTimer()
+        try
+        {
+            if(timerStarted)
+                stopTimer()
+            else
+                startTimer()
+        }
+        catch (e: Error)
+        {
+            GlobalClass.InformUser("Error", e.toString(), this)
+            //return user to the sign in screen
+            var intent = Intent(this, MainActivity::class.java) //ViewActivity
+            startActivity(intent)
+        }
     }
 
+    //method to start timer
     private fun startTimer()
     {
-        serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
-        startService(serviceIntent)
-        binding.btnStartStop.text = "Stop"
-        binding.btnStartStop.setCompoundDrawablesWithIntrinsicBounds(R.drawable.pause, 0, 0, 0)
-        timerStarted = true
+        try
+        {
+            serviceIntent.putExtra(TimerService.TIME_EXTRA, time)
+            startService(serviceIntent)
+            binding.btnStartStop.text = "Stop"
+            binding.btnStartStop.setCompoundDrawablesWithIntrinsicBounds(R.drawable.pause, 0, 0, 0)
+            timerStarted = true
+        }
+        catch (e: Error)
+        {
+            GlobalClass.InformUser("Error", e.toString(), this)
+            //return user to the sign in screen
+            var intent = Intent(this, MainActivity::class.java) //ViewActivity
+            startActivity(intent)
+        }
     }
 
-    private fun stopTimer() {
-        stopService(serviceIntent)
-        binding.btnStartStop.text = "Start"
-        binding.btnStartStop.setCompoundDrawablesWithIntrinsicBounds(R.drawable.play_arrow, 0, 0, 0)
-        timerStarted = false
+    //method to stop timer
+    private fun stopTimer()
+    {
+        try
+        {
+            stopService(serviceIntent)
+            binding.btnStartStop.text = "Start"
+            binding.btnStartStop.setCompoundDrawablesWithIntrinsicBounds(R.drawable.play_arrow, 0, 0, 0)
+            timerStarted = false
+        }
+        catch (e: Error)
+        {
+            GlobalClass.InformUser("Error", e.toString(), this)
+            //return user to the sign in screen
+            var intent = Intent(this, MainActivity::class.java) //ViewActivity
+            startActivity(intent)
+        }
     }
 
+    //method to update the time to the service
     private val updateTime: BroadcastReceiver = object : BroadcastReceiver()
     {
         override fun onReceive(context: Context, intent: Intent)
@@ -213,6 +293,7 @@ class AddLog : AppCompatActivity() {
         }
     }
 
+    //method to get the time string from a double
     private fun getTimeStringFromDouble(time: Double): CharSequence?
     {
         val resultInt = time.roundToInt()
@@ -223,6 +304,7 @@ class AddLog : AppCompatActivity() {
         return makeTimeString(hours, minutes, seconds)
     }
 
+    //method to format a time string
     private fun makeTimeString(hour: Int, min: Int, sec: Int): String = String.format("%02d:%02d:%02d", hour, min, sec)
 
 }
