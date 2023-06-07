@@ -124,7 +124,7 @@ class home_activity_view_fragment : Fragment(R.layout.home_activity_view_fragmen
                             }
                         }
                         newActivity.binding.tvBlockText.text = "Total Hours:"
-                        newActivity.binding.tvBlockX.text = total.toString()
+                        newActivity.binding.tvBlockX.text = DoubleToTime(total.toString())
                     }
                 }
 
