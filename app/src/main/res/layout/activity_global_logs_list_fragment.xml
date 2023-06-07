@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:orientation="vertical">
 
@@ -20,7 +20,7 @@
             android:id="@+id/llStartDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+
             android:orientation="horizontal">
 
             <Button
@@ -84,6 +84,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fadingEdgeLength="10dp"
+            android:layout_marginBottom="10dp"
             android:requiresFadingEdge="vertical"
             tools:ignore="SpeakableTextPresentCheck">
 
