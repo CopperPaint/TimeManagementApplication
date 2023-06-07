@@ -4,6 +4,8 @@
         category, and an image to create a new Activity</string>
     <string name ="CreateGoalHelp">Welcome to CreateGoal Help \n\nCreate Goal Page is where you will create goals to your inputted activity,
         you will need to select hours and a time frame</string>
-    <string name="CreateGoalHelpHeading">CreateGoalHelp</string>
-    <string name="CreateActivityHelpHeading">CreateActivityHelp</string>
+    <string name="CreateGoalHelpHeading">Create Goal Help</string>
+    <string name="CreateActivityHelpHeading">Create Activity Help</string>
+    <string name="SignUpHelp">Welcome to SignUp Help \n\nHere you are required to enter Username and Password to create an account with us to access our application</string>
+    <string name="SignUpHelpHeading">Sign Up Help</string>
 </resources>
