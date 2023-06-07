@@ -63,7 +63,7 @@ class GlobalClass : Application()
             "marker@turtletime.com"
         )
         //@turtletime.com
-        var listUserUsername = arrayListOf("Jake", "Jo", "Benji", "Mark", "jrtu")
+        var listUserUsername = arrayListOf("Jake", "Jo", "Benji", "Mark")
         var listUserPasswordHash = arrayListOf(
             "cb75e237e40ab1e5f8481fb332076d0969cbf9c643d77133e16303730e501858",
             "53866f8bddeafb655d5f5a86599dafbec8c8eaefcd405d25952b957280e889f7",

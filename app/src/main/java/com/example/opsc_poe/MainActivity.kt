@@ -29,6 +29,14 @@ class MainActivity : AppCompatActivity()
         //set the sign in fragment to be the initial view
         fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
+        //get the intent value if it exists
+        var showSignUp = intent.getBooleanExtra("LoadSignUp", false)
+
+        if (showSignUp)
+        {
+            fragmentControl.replaceFragment(sign_up_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
+        }
+
 
         //Sign in view activation
         binding.tvSignIn.setOnClickListener{

@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.example.opsc_poe.databinding.ActivityHelpBinding
 import com.example.opsc_poe.databinding.ActivitySettingsViewBinding
+import com.example.opsc_poe.databinding.SignUpFragmentBinding
 
 
 class Help : AppCompatActivity() {
@@ -37,6 +38,11 @@ class Help : AppCompatActivity() {
                 binding.tvHelpName.text = getString(R.string.CreateActivityHelpHeading)
                 binding.tvHelpMessage.text = getString(R.string.CreateActivityHelp)
             }
+            "Sign_Up" -> {
+                //return user to the initial view screen
+                binding.tvHelpName.text = getString(R.string.SignUpHelpHeading)
+                binding.tvHelpMessage.text = getString(R.string.SignUpHelp)
+            }
 
         }
 
@@ -61,6 +67,12 @@ class Help : AppCompatActivity() {
                     //return user to the initial view screen
                     var intent = Intent(this, CreateActivity::class.java)
                     intent.putExtra("activityIDIndex", returningActivityID)
+                    startActivity(intent)
+                }
+                "Sign_Up" -> {
+                    //return user to the initial view screen
+                    var intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("LoadSignUp", true)
                     startActivity(intent)
                 }
 

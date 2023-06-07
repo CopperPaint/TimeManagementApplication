@@ -40,6 +40,9 @@ class sign_up_fragment : Fragment(R.layout.sign_up_fragment){
 
                 var tryValidateUserEmail = trySignUp.ValidateUserEmail(binding.etEmail.text.toString())
 
+
+
+
                 if (tryValidateUserEmail)
                 {
                     if (trySignUp.ValidateUserPassword(binding.etPassword.text.toString(), requireContext())) {
@@ -54,7 +57,7 @@ class sign_up_fragment : Fragment(R.layout.sign_up_fragment){
                 }
                 else
                 {
-                    GlobalClass.InformUser("Invalid Password", "Invalid email", requireContext())
+                    GlobalClass.InformUser("Invalid Email", "The email you entered either does not exist or is invalid", requireContext())
                 }
 
 
@@ -73,6 +76,14 @@ class sign_up_fragment : Fragment(R.layout.sign_up_fragment){
 
 
             //-------------------------------------------------
+        }
+
+        binding.tvNeedHelpButton.setOnClickListener()
+        {
+            var intent = Intent(requireContext(), Help::class.java) //ViewActivity
+
+            intent.putExtra("previousScreen", "Sign_Up")
+            startActivity(intent)
         }
 
         return view
