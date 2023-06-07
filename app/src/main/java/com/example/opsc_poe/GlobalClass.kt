@@ -29,6 +29,12 @@ class GlobalClass : Application()
         var logs = arrayListOf<Temp_LogDataClass>()
         var user = Temp_UserDataClass()
 
+        fun ReturnToHome(context: Context)
+        {
+            var intent = Intent(context, Home_Activity::class.java)
+            context.startActivity(intent)
+        }
+
         fun NoUserAppData(barLayout: LinearLayout, barActivity: FragmentActivity?, barContext : Context, screenFunction: String)
         {
 
