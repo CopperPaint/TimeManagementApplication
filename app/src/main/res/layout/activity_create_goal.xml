@@ -58,8 +58,10 @@
         android:id="@+id/imgBlackTurtle"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/blackturtle"
+        app:srcCompat="@drawable/backturtle"
         android:layout_marginLeft="320dp"
+        android:clickable="true"
+        android:onClick="OnClick"
         android:layout_marginTop="10dp"
         android:rotation="-45"
         />

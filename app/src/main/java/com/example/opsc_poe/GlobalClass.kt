@@ -3,7 +3,9 @@ package com.example.opsc_poe
 import android.app.AlertDialog
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.text.isDigitsOnly
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -21,6 +23,13 @@ class GlobalClass : Application()
         var goals = arrayListOf<Temp_GoalDataClass>()
         var logs = arrayListOf<Temp_LogDataClass>()
         var user = Temp_UserDataClass()
+
+
+        fun ReturnToHome(context: Context)
+        {
+            var intent = Intent(context, Home_Activity::class.java)
+            context.startActivity(intent)
+        }
 
 
         fun InformUser(messageTitle: String, messageText: String, context: Context) {

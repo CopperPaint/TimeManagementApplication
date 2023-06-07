@@ -16,6 +16,7 @@ import android.provider.MediaStore
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityCreateBinding
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import java.io.File
@@ -28,6 +29,7 @@ class CreateActivity : AppCompatActivity() {
 
     private lateinit var imageView: ImageView
     private var tempImage : Bitmap? = null
+
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
@@ -199,6 +201,12 @@ class CreateActivity : AppCompatActivity() {
             intent.putExtra("previousScreen", "Create_Activity")
             intent.putExtra("activityIDIndex", activityIDIndex)
             startActivity(intent)
+        }
+
+
+        binding.imgBlackTurtle.setOnClickListener()
+        {
+            ReturnToHome(this)
         }
 
         }

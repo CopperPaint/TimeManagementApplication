@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityCreateGoalBinding
 
 
@@ -98,6 +99,11 @@ class Create_Goal : AppCompatActivity() {
             intent.putExtra("previousScreen", "Create_Goal")
             intent.putExtra("currentActivityID", currentActivityIndex)
             startActivity(intent)
+        }
+
+        binding.imgBlackTurtle.setOnClickListener()
+        {
+            ReturnToHome(this)
         }
     }
 }

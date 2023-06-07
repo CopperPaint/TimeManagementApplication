@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.toColorInt
+import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityCreateCategoryBinding
 import yuku.ambilwarna.AmbilWarnaDialog
 
@@ -42,6 +43,11 @@ class CreateCategory : AppCompatActivity() {
         picker.setOnClickListener()
         {
             openColorPickerDialogue()
+        }
+
+        binding.imgBlackTurtle.setOnClickListener()
+        {
+            ReturnToHome(this)
         }
 
 

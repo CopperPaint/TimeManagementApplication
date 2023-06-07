@@ -34,7 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".settings_view"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".View_Activity_Logs_Fragment"
             android:exported="false" />
