@@ -3,15 +3,15 @@ package com.example.opsc_poe
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.example.opsc_poe.GlobalClass.Companion.DoubleToTime
 import com.example.opsc_poe.databinding.ActivityViewDetailsFragmentBinding
+import kotlin.math.roundToInt
 
 
 class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_fragment) {
@@ -39,9 +39,6 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         //-------------------------------------------------
         //code here
 
-
-
-
         var activity = GlobalClass.activities[activityIDIndex]
         var catIndex = Temp_CategoryDataClass().GetIndex(activity.categoryID, GlobalClass.categories)
         var category = GlobalClass.categories[catIndex]
@@ -56,7 +53,6 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         //get goal indexes
         var currentMaxGoal = -1
         var currentMinGoal = -1
-
 
         for (j in GlobalClass.goals.indices)
         {
@@ -84,12 +80,10 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         maxGoalCustom.binding.vwBar.layoutParams = maxParam
 
 
-
-
         maxGoalCustom.binding.tvPrimaryText.text = "Maximum Goal"
         maxGoalCustom.binding.llBlockText.backgroundTintList = catColour
-
-        if (currentMaxGoal == -1)
+        var maxGoal = GlobalClass.goals[currentMaxGoal]
+        if (!maxGoal.isSet)
         {
             maxGoalCustom.binding.tvSecondaryText.text = "Goal Not Set"
             maxGoalCustom.binding.tvBlockText.text = "Hours"
@@ -97,21 +91,20 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         }
         else
         {
-            var maxGoal = GlobalClass.goals[currentMaxGoal]
             maxGoalCustom.binding.tvSecondaryText.text = maxGoal.interval
             var (maxhour, maxText, maxColor) = GoalHourCalculator().CheckGoal(maxGoal.interval, maxGoal.amount, activity.activityID)
             val maxBarColor = ColorStateList.valueOf(Color.parseColor(maxColor))
             maxGoalCustom.binding.vwBar.backgroundTintList = maxBarColor
             maxGoalCustom.binding.tvBlockText.text = maxText
-            maxGoalCustom.binding.tvBlockX.text = maxhour
-
+            maxGoalCustom.binding.tvBlockX.text = DoubleToTime(maxhour)
         }
 
         maxGoalCustom.setOnClickListener()
         {
             //go to edit/create goal screen for maximum goal
             var intent = Intent(requireContext(), Create_Goal::class.java)
-            intent.putExtra("currentMaxGoalIDIndex", currentMaxGoal)
+            intent.putExtra("currentGoalIDIndex", currentMaxGoal)
+            intent.putExtra("CurrentActivity", activityIDIndex)
             startActivity(intent)
         }
 
@@ -131,7 +124,10 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
 
         minGoalCustom.binding.tvPrimaryText.text = "Minimum Goal"
         minGoalCustom.binding.llBlockText.backgroundTintList = catColour
-        if (currentMinGoal == -1)
+
+        var minGoal = GlobalClass.goals[currentMinGoal]
+
+        if (!minGoal.isSet)
         {
             minGoalCustom.binding.tvSecondaryText.text = "Goal Not Set"
             minGoalCustom.binding.tvBlockText.text = "Hours"
@@ -139,20 +135,20 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         }
         else
         {
-            var minGoal = GlobalClass.goals[currentMinGoal]
             minGoalCustom.binding.tvSecondaryText.text = minGoal.interval
             var (hour, text, color) = GoalHourCalculator().CheckGoal(minGoal.interval, minGoal.amount, activity.activityID)
             val maxBarColor = ColorStateList.valueOf(Color.parseColor(color))
             minGoalCustom.binding.vwBar.backgroundTintList = maxBarColor
             minGoalCustom.binding.tvBlockText.text = text
-            minGoalCustom.binding.tvBlockX.text = hour
+            minGoalCustom.binding.tvBlockX.text = DoubleToTime(hour)
         }
 
         minGoalCustom.setOnClickListener()
         {
             //go to edit/create goal screen for minimum goal
             var intent = Intent(requireContext(), Create_Goal::class.java)
-            intent.putExtra("currentMinGoalIDIndex", currentMinGoal)
+            intent.putExtra("currentGoalIDIndex", currentMinGoal)
+            intent.putExtra("CurrentActivity", activityIDIndex)
             startActivity(intent)
         }
 
@@ -179,6 +175,11 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
 
        // var activity = GlobalClass.activities[GlobalClass.activities.size -1]
         //binding.imageView.setImageBitmap(activity.photo)
+
+
+
+
+        //------------------------------------------------------
 
         fun goBackToHomeScreen ()
         {
@@ -216,12 +217,14 @@ class View_Activity_Details_Fragment : Fragment(R.layout.activity_view_details_f
         binding.imgAddLog.setOnClickListener()
         {
             var intent = Intent(requireContext(), AddLog::class.java)
+            intent.putExtra("activityIDIndex", activityIDIndex)
             startActivity(intent)
         }
 
         binding.imgEditActivity.setOnClickListener()
         {
             var intent = Intent(requireContext(), CreateActivity::class.java)
+            intent.putExtra("activityIDIndex", activityIDIndex)
             startActivity(intent)
         }
 

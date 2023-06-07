@@ -1,7 +1,5 @@
 package com.example.opsc_poe
 
-import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -29,14 +27,18 @@ class MainActivity : AppCompatActivity()
         //set the sign in fragment to be the initial view
         fragmentControl.replaceFragment(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
 
+        //get the intent value if it exists
+        var showSignUp = intent.getBooleanExtra("LoadSignUp", false)
+
+        if (showSignUp)
+        {
+            fragmentControl.replaceFragment(sign_up_fragment(), R.id.fcFragmentContainer, supportFragmentManager)
+        }
 
         //Sign in view activation
         binding.tvSignIn.setOnClickListener{
             //replaceFragment(sign_in_fragment())
             fragmentControl.replaceFragmentAnim(sign_in_fragment(), R.id.fcFragmentContainer, supportFragmentManager, "Left_Half")
-
-            //val i = Intent(this, sign_in_fragment::class.java)
-
         }
 
         //Sign up view activation
@@ -44,10 +46,6 @@ class MainActivity : AppCompatActivity()
             //replaceFragment(sign_up_fragment())
             fragmentControl.replaceFragmentAnim(sign_up_fragment(), R.id.fcFragmentContainer, supportFragmentManager, "Right_Half")
         }
-
-
-
-
     }
 
   /*  private fun replaceFragment(fragment : Fragment) {
@@ -56,4 +54,5 @@ class MainActivity : AppCompatActivity()
         fragmentTransaction.replace(R.id.fcFragmentContainer, fragment)
         fragmentTransaction.commit()
     }*/
+  override fun onBackPressed() {}
 }

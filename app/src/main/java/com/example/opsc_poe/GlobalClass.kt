@@ -3,15 +3,27 @@ package com.example.opsc_poe
 import android.app.AlertDialog
 import android.app.Application
 import android.content.Context
+import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.icu.text.IDNA.Info
+import android.view.ContentInfo
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
 
 
 class GlobalClass : Application()
 {
-
-    companion object {
+    companion object
+    {
 
 
         var activities = arrayListOf<Temp_ActivityDataClass>()
@@ -19,6 +31,122 @@ class GlobalClass : Application()
         var goals = arrayListOf<Temp_GoalDataClass>()
         var logs = arrayListOf<Temp_LogDataClass>()
         var user = Temp_UserDataClass()
+
+        fun ReturnToHome(context: Context)
+        {
+            var intent = Intent(context, Home_Activity::class.java)
+            context.startActivity(intent)
+        }
+
+        fun NoUserAppData(barLayout: LinearLayout, barActivity: FragmentActivity?, barContext : Context, screenFunction: String, dataID : Int)
+        {
+
+            var barNoData = CustomActivity(barActivity)
+            barNoData.binding.tvPrimaryText.text = "No $screenFunction Data"
+            barNoData.binding.tvSecondaryText.text = "Click Here to Add $screenFunction Data"
+            barNoData.binding.vwBar.backgroundTintList = ContextCompat.getColorStateList(barContext, R.color.Default_Charcoal_Grey)
+            barNoData.binding.llBlockText.backgroundTintList = ContextCompat.getColorStateList(barContext, R.color.Muted_Green)
+            barNoData.binding.tvBlockText.text = "Click Here"
+            barNoData.binding.tvBlockX.text = "+"
+            barNoData.binding.tvBlockX.textSize = 36F
+
+            barNoData.isClickable = true
+
+            //set the + text to be closer to the Click Me Text
+            val barParam: ViewGroup.MarginLayoutParams = barNoData.binding.tvBlockX.layoutParams as ViewGroup.MarginLayoutParams
+            barParam.setMargins(barParam.leftMargin, -40, barParam.rightMargin, barParam.bottomMargin)
+            barNoData.binding.tvBlockX.layoutParams = barParam
+
+
+            when (screenFunction)
+            {
+                "LogsData" ->
+                {
+
+                        val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
+                        logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
+                        barNoData.binding.vwBar.layoutParams = logParam
+
+                        barNoData.binding.tvPrimaryText.text = "No Logs Found"
+                        barNoData.binding.tvSecondaryText.text = "Try a different set of filters"
+
+                        barNoData.binding.tvBlockText.text = ""
+                        barNoData.binding.tvBlockX.text = "\uD83D\uDCC5"
+                        barNoData.binding.tvBlockX.height = 210
+
+
+                }
+                "Logs" ->
+                {
+
+                    val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
+                    logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
+
+                    barNoData.binding.vwBar.layoutParams = logParam
+                    barNoData.binding.tvSecondaryText.text = "Go to an activity to add a log"
+
+                    barNoData.binding.tvBlockText.text = ""
+                    barNoData.binding.tvBlockX.text = "\uD83D\uDCC5"
+                    barNoData.binding.tvBlockX.height = 210
+                }
+                "Log" ->
+                {
+                    barNoData.setOnClickListener()
+                    {
+                        //load add activity
+                        var intent = Intent(barContext, AddLog::class.java)
+                        intent.putExtra("activityIDIndex", dataID)
+                        barContext.startActivity(intent)
+                    }
+                }
+                "Activity" ->
+                {
+                    barNoData.setOnClickListener()
+                    {
+
+                        //check if any categories exist first
+
+                        var userHasData = false
+                        for (i in categories.indices)
+                        {
+                            if (categories[i].userID == user.userID)
+                            {
+                                //load add activity
+                               userHasData = true
+                                break
+                            }
+                        }
+
+                        if (userHasData == true)
+                        {
+                            var intent = Intent(barContext, CreateActivity::class.java)
+                            barContext.startActivity(intent)
+                        }
+                        else
+                        {
+                            InformUser("No Categories Available", "Add a category from the home page", barContext)
+                        }
+
+
+                    }
+                }
+                "Category" ->
+                {
+                    barNoData.setOnClickListener()
+                    {
+                        //load add category view
+                        var intent = Intent(barContext, CreateCategory::class.java)
+                        barContext.startActivity(intent)
+                    }
+
+                }
+            }
+
+
+            barLayout.addView(barNoData)
+
+        }
+
 
 
         fun InformUser(messageTitle: String, messageText: String, context: Context) {
@@ -29,18 +157,39 @@ class GlobalClass : Application()
             alert.show()
         }
 
+        fun DoubleToTime(currentDouble: String): String {
+
+            if (currentDouble.toDoubleOrNull() == null) {
+                return currentDouble
+
+            }
+            else
+            {
+                var splitCurrentDouble = currentDouble.split(".")
+                var currentHours = splitCurrentDouble[0].toInt()
+                var minutesFraction = "0." + splitCurrentDouble[1]
+                var currentMinutes = (minutesFraction.toDouble() * 60)
+                return "$currentHours:${currentMinutes.roundToInt()}"
+            }
+
+            //GlobalClass.InformUser("", "Hours Split: $currentHours Minutes Split: ${currentMinutes.roundToInt()}", requireContext())
+            //GlobalClass.InformUser("", "", requireContext())
+            //GlobalClass.InformUser("", "Hours Split: $tt", requireContext())
+
+        }
+
         //---------------------------------------------------------------------------------------------------------------------------------------------
         //temporary lists of registered users and their data
         //---------------------------------------------------------------------------------------------------------------------------------------------
         var listUserUserID = arrayListOf(1, 2, 3, 4)
         var listUserEmail = arrayListOf(
-            "jake",
+            "jake@turtletime.com",
             "jo@turtletime.com",
             "benji@turtletime.com",
             "marker@turtletime.com"
         )
         //@turtletime.com
-        var listUserUsername = arrayListOf("Jake", "Jo", "Benji", "Mark", "jrtu")
+        var listUserUsername = arrayListOf("Jake", "Jo", "Benji", "Mark")
         var listUserPasswordHash = arrayListOf(
             "cb75e237e40ab1e5f8481fb332076d0969cbf9c643d77133e16303730e501858",
             "53866f8bddeafb655d5f5a86599dafbec8c8eaefcd405d25952b957280e889f7",
@@ -135,7 +284,6 @@ class GlobalClass : Application()
         //---------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
     }
 
     fun LoadLists()
@@ -156,7 +304,7 @@ class GlobalClass : Application()
         for(i in listGoalGoalID.indices)
         {
 
-            var newGoal = Temp_GoalDataClass(listGoalGoalID[i], listGoalUserID[i], listGoalAmount[i], listGoalInterval[i])
+            var newGoal = Temp_GoalDataClass(listGoalGoalID[i], listGoalUserID[i], listGoalAmount[i], listGoalInterval[i], isSet = true)
             goals.add(newGoal)
         }
 
@@ -169,7 +317,6 @@ class GlobalClass : Application()
             activities.add(newActivity)
         }
 
-
         //add the logs
         for(i in listLogLogID.indices)
         {
@@ -179,14 +326,16 @@ class GlobalClass : Application()
         }
     }
 
-    override fun onCreate() {
+    override fun onCreate()
+    {
         super.onCreate()
-
         //call the data import method
         LoadLists()
+
+        //add images 3.6.9.12
+        activities[2].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockbike);
+        activities[5].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockdriving);
+        activities[8].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockboileggs);
+        activities[11].photo = BitmapFactory.decodeResource(applicationContext.resources,R.drawable.imgstockhacking);
     }
-
-
-
-
 }

@@ -4,70 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Light_Green"
-    tools:context=".MainActivity">
+    tools:context=".Global_Logs"
+    android:background="@color/Light_Green">
 
     <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/vwLogsBar"
         android:layout_width="4dp"
-        android:layout_height="82dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="14dp"
+        android:layout_height="40dp"
         android:background="@drawable/rounded_rectangle"
-        android:backgroundTint="@color/Dark_Green" />
+        android:backgroundTint="@color/Dark_Green"/>
 
     <ImageView
-        android:id="@+id/imgSettingsButton"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="14dp"
-        android:rotation="-45"
-        app:srcCompat="@drawable/cogturtle" />
+        android:id="@+id/imgBlackTurtle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/blackturtle"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="10dp"
+        android:rotation="-35"
+        />
 
     <LinearLayout
-        android:id="@+id/llCreateEditActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="14dp"
+        android:id="@+id/llLogsHeader"
+        android:layout_width="374dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/vwLogsBar"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvAppTitleWelcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome"
-            android:textColor="@color/Dark_Green"
-            android:textSize="30dp"
-            />
 
         <TextView
-            android:id="@+id/tvUserUsername"
+            android:id="@+id/tvLogs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="{Username}!"
+            android:layout_marginTop="10dp"
+            android:text="Logs"
             android:textColor="@color/Dark_Green"
             android:textSize="30dp"
             android:textStyle="bold"
-             />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
     <View
+        android:layout_below="@+id/llLogsHeader"
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
-        android:layout_height="668dp"
-        android:layout_marginTop="14dp"
-        android:layout_below="@id/llCreateEditActivity"
+        android:layout_height="700dp"
         android:background="@drawable/backing_shape"
-        android:backgroundTint="@color/Dark_Green" />
+        android:backgroundTint="@color/Dark_Green"/>
+
+
+
+
 
     <LinearLayout
         android:id="@+id/llSectionSelectorBar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/llCreateEditActivity"
+        android:layout_below="@id/llLogsHeader"
         android:layout_marginTop="26dp"
         android:layout_marginHorizontal="20dp"
         android:orientation="horizontal"
@@ -90,11 +90,12 @@
             app:tint="@color/Input_Grey"
             />
 
+
         <TextView
             android:id="@+id/tvSectionTitle"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="Activities"
+            android:text="List"
             android:textSize="30dp"
             android:textAlignment="center"
             android:textColor="@color/Input_Grey"
@@ -112,32 +113,51 @@
             android:onClick="onClick"/>
 
 
-
-
     </LinearLayout>
+
 
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
-        android:layout_height="496dp"
+        android:layout_height="500dp"
         android:id="@+id/fcFragmentContainer"
         android:layout_marginTop="6dp"
         android:layout_below="@id/llSectionSelectorBar"
         />
 
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/fcFragmentContainer"
+        android:layout_marginTop="5dp"
+        android:id="@+id/tvBackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textSize="20dp"
+        android:paddingLeft="78dp"
+        android:paddingRight="56dp"
+        android:paddingVertical="18dp"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Input_Grey"
+        />
 
 
     <ImageView
-        android:layout_marginTop="12dp"
-        android:id="@+id/imgAddEntry"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/fcFragmentContainer"
+        android:id="@+id/imgBackIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="11.5dp"
         android:background="@drawable/rounded_rectangle"
-        app:srcCompat="@drawable/plusturtle"
-        android:layout_below="@id/fcFragmentContainer"/>
-
-
-
-
+        android:backgroundTint="@color/Muted_Green"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:paddingVertical="13dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="15dp"
+        app:srcCompat="@drawable/navigation_arrow"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </RelativeLayout>

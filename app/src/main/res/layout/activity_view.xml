@@ -18,7 +18,7 @@
         android:backgroundTint="@color/Dark_Green" />
 
     <ImageView
-        android:id="@+id/imgBlackTurtle"
+        android:id="@+id/imgSettingsButton"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginLeft="300dp"
@@ -67,7 +67,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
-        android:layout_height="680dp"
+        android:layout_height="700dp"
         android:id="@+id/fcFragmentContainer"
         android:layout_below="@id/llViewActivity"
         android:layout_marginTop="16dp"

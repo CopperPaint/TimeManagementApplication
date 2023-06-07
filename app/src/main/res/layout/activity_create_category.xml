@@ -20,7 +20,9 @@
         android:id="@+id/imgBlackTurtle"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/cogturtle"
+        app:srcCompat="@drawable/backturtle"
+        android:clickable="true"
+        android:onClick="OnClick"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="10dp"
         android:rotation="-45"
@@ -36,7 +38,7 @@
         android:layout_toRightOf="@id/vwLogsBar">
 
         <TextView
-            android:id="@+id/tvCreate"
+            android:id="@+id/tvScreenFunction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create"
@@ -66,7 +68,7 @@
     <View
         android:id="@+id/vwEntryBackground"
         android:layout_width="match_parent"
-        android:layout_height="640dp"
+        android:layout_height="680dp"
         android:layout_below="@id/llCreateCategory"
         android:layout_marginTop="10dp"
         android:background="@drawable/backing_shape"
@@ -99,7 +101,7 @@
             android:ems="10"
             android:textSize="14dp"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text=""
             android:padding="5dp"/>
 
         <TextView
@@ -155,7 +157,7 @@
             android:backgroundTint="@color/Input_Grey"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Description"
+            android:text=""
             android:textSize="14dp"
             android:gravity="top"
             android:padding="5dp"/>

@@ -17,7 +17,7 @@
         android:backgroundTint="@color/Dark_Green"/>
 
     <ImageView
-        android:id="@+id/imgBlackTurtle"
+        android:id="@+id/imgSettingsButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:srcCompat="@drawable/cogturtle"
@@ -37,7 +37,10 @@
             android:text="{CategoryName}!"
             android:textColor="@color/Dark_Green"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="end"
+            />
 
 
     <View
@@ -145,7 +148,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_rectangle"
-            app:srcCompat="@drawable/cyanturtle"
+            app:srcCompat="@drawable/plusturtle"
             android:layout_weight="1"
             android:layout_marginRight="5dp"
             android:clickable="true"
@@ -159,7 +162,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rounded_rectangle"
-            app:srcCompat="@drawable/brownturtle"
+            app:srcCompat="@drawable/editturtle"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             />

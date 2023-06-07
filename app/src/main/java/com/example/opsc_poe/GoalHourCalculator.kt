@@ -1,19 +1,25 @@
 package com.example.opsc_poe
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import androidx.core.content.ContextCompat.startActivity
 import java.time.LocalDate
 import java.time.temporal.WeekFields
 import java.util.*
+import kotlin.math.roundToInt
 
 //private var data = GlobalClass
 
 class GoalHourCalculator
 {
+    //preset bar colors
     var yellow = "#fcef5d"
     var red = "#e81e1e"
     var green = "#40bf2a"
-    public fun CalculateHours(minIndex: Int, maxIndex: Int, activityID: Int): Triple<String, String, String>
+
+    //calculate goal hours if both goals exists
+    fun CalculateHours(minIndex: Int, maxIndex: Int, activityID: Int): Triple<String, String, String>
     {
         var mingoal = GlobalClass.goals[minIndex]
         var maxgoal = GlobalClass.goals[maxIndex]
@@ -33,83 +39,80 @@ class GoalHourCalculator
                 goalText = "Goal Reached!"
                 barColour = green
             }
-            else
+            else //if over or if equal to max
             {
                 calcHour = maxHour
                 goalText = maxText
                 barColour = maxColor
             }
         }
-        else
+        else //if over to equal to min
         {
             calcHour = minHour
             goalText = minText
             barColour = minColor
         }
-
-        //test area
-        //barColour = "#a0c064"
+        //return goal data
         return Triple(calcHour, goalText, barColour)
     }
 
-
-    //method to get the index of the goal using the ID
-    public fun GetGoalIndex(id: Int): Int
-    {
-        var index: Int = -1
-        for (i in 0..GlobalClass.goals.size-1)//added -1
-        {
-            if (GlobalClass.goals[i].goalID == id)
-            {
-                index = i;
-            }
-        }
-        return index
-    }
-
     //method to get the total hours logged in the specified interval
-    public fun GetHours(interval: String, activityID: Int): Double
+    fun GetHours(interval: String, activityID: Int): Double
     {
         var total: Double = 0.0
-        if (interval.equals("Daily"))
+        if (interval.equals("Daily")) //Daily
         {
+            //logs
             for (log in GlobalClass.logs.indices)
             {
-                if (GlobalClass.logs[log].activityID == activityID) //this if statement is wrong //log activity id is wrong  //3 must be changed back to activityID
-                {
-                    if (GlobalClass.logs[log].startDate == LocalDate.now()) //ask what this does
-                    {
-                        total = total + GlobalClass.logs[log].hours
-                    }
-                }
-            }
-        }
-        else if (interval.equals("Weekly"))
-        {
-            val weekFields = WeekFields.of(Locale.UK)
-            val currentWeek = LocalDate.now().get(weekFields.weekOfWeekBasedYear())
-            for (log in GlobalClass.logs.indices)
-            {
+                //if log belongs to activity
                 if (GlobalClass.logs[log].activityID == activityID)
                 {
-                    val logWeek = GlobalClass.logs[log].startDate.get(weekFields.weekOfWeekBasedYear())
-                    if (logWeek == currentWeek)
+                    //if log start date is today
+                    if (GlobalClass.logs[log].startDate == LocalDate.now())
                     {
+                        //add hours
                         total = total + GlobalClass.logs[log].hours
                     }
                 }
             }
         }
-        else if (interval.equals("Monthly"))
+        else if (interval.equals("Weekly")) //Weekly
         {
-            val currentDate = LocalDate.now()
-
+            //get current week
+            val weekFields = WeekFields.of(Locale.UK)
+            val currentWeek = LocalDate.now().get(weekFields.weekOfWeekBasedYear())
+            //logs
             for (log in GlobalClass.logs.indices)
             {
-                if (GlobalClass.logs[log].activityID == activityID) //this if statement is wrong //log activity id is wrong  //3 must be changed back to activityID
+                //if log belongs to activity
+                if (GlobalClass.logs[log].activityID == activityID)
                 {
+                    //get log week
+                    val logWeek = GlobalClass.logs[log].startDate.get(weekFields.weekOfWeekBasedYear())
+                    //if log in in week
+                    if (logWeek == currentWeek)
+                    {
+                        //add hour
+                        total = total + GlobalClass.logs[log].hours
+                    }
+                }
+            }
+        }
+        else if (interval.equals("Monthly")) //Monthly
+        {
+            //get current date
+            val currentDate = LocalDate.now()
+            //logs
+            for (log in GlobalClass.logs.indices)
+            {
+                //if log belongs to activiyt
+                if (GlobalClass.logs[log].activityID == activityID)
+                {
+                    //if log in this month of this year
                     if (GlobalClass.logs[log].startDate.month == currentDate.month && GlobalClass.logs[log].startDate.year == currentDate.year)
                     {
+                        //add hours
                         total = total + GlobalClass.logs[log].hours
                     }
                 }
@@ -118,33 +121,33 @@ class GoalHourCalculator
         return total
     }
 
-
+    //method to check the hours of an individual goal
     public fun CheckGoal(interval: String, amount: Int, activityID: Int): Triple<String, String, String>
     {
         var hourToGo: String = ""
         var hourText: String = ""
         var barColor: String = ""
 
-
         val total = GetHours(interval, activityID)
-        if (total == amount.toDouble())
+        if (total == amount.toDouble()) //if goal reached
         {
             hourToGo = "✔"
             hourText = "Goal Reached!"
             barColor = green
         }
-        else if (total > amount.toDouble())
+        else if (total > amount.toDouble()) //if over goal
         {
             hourToGo = (total - amount).toString()
             hourText = "Overtime"
             barColor = red
         }
-        else
+        else //if under goal
         {
             hourToGo = (amount.toDouble() - total).toString()
             hourText = "Hours to Go!"
             barColor = yellow
         }
+        //return goal data
         return Triple(hourToGo, hourText, barColor)
     }
 }

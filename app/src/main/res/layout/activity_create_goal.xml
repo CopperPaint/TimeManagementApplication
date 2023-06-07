@@ -39,7 +39,7 @@
             android:textColor="@color/Dark_Green"/>
 
         <TextView
-            android:id="@+id/tvScreenSubject"
+            android:id="@+id/tvHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Goal"
@@ -58,8 +58,10 @@
         android:id="@+id/imgBlackTurtle"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/cogturtle"
+        app:srcCompat="@drawable/backturtle"
         android:layout_marginLeft="320dp"
+        android:clickable="true"
+        android:onClick="OnClick"
         android:layout_marginTop="10dp"
         android:rotation="-45"
         />
@@ -69,7 +71,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/vwBackingBoard"
         android:layout_width="match_parent"
-        android:layout_height="640dp"
+        android:layout_height="680dp"
         android:background="@drawable/backing_shape"
         android:backgroundTint="@color/Dark_Green"/>
 
@@ -88,20 +90,20 @@
         />
 
 
-
     <TextView
-        android:text="{activityName}}"
-        android:layout_marginTop="4dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tvActivityName"
-        android:layout_marginLeft="20dp"
         android:id="@+id/tvActivity"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:textSize="14dp"
+        android:layout_below="@id/tvActivityName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/rounded_rectangle"
-        android:padding="8dp"/>
+        android:ems="10"
+        android:padding="8dp"
+        android:text="{activityName}}"
+        android:textSize="14dp"
+        tools:ignore="TextSizeCheck" />
 
     <TextView
         android:id="@+id/tvGoalHeading"
@@ -194,41 +196,43 @@
 
     <TextView
         android:id="@+id/tvSaveButton"
-        android:layout_below="@id/llGoalTime"
-        android:layout_marginTop="34dp"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/llGoalTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
         android:layout_weight="1"
-        android:textSize="24dp"
-        android:textColor="@color/Input_Grey"
-        android:text="Save"
-        android:textAlignment="center"
         android:background="@drawable/rounded_rectangle"
         android:backgroundTint="@color/Muted_Green"
-        android:paddingVertical="5dp"
-        android:paddingHorizontal="60dp"
-        android:textStyle="bold"
+        android:clickable="true"
         android:onClick="onClick"
-        android:clickable="true"/>
+        android:paddingHorizontal="60dp"
+        android:paddingVertical="5dp"
+        android:text="Save"
+        android:textAlignment="center"
+        android:textColor="@color/Input_Grey"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/tvNeedHelpButton"
-        android:layout_below="@id/tvSaveButton"
-        android:layout_marginTop="4dp"
-        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvSaveButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
-        android:textSize="16dp"
-        android:textColor="@color/Input_Grey"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:paddingHorizontal="60dp"
+        android:paddingVertical="5dp"
         android:text="Need Help?"
         android:textAlignment="center"
-        android:paddingVertical="5dp"
-        android:paddingHorizontal="60dp"
+        android:textColor="@color/Input_Grey"
+        android:textSize="16dp"
         android:textStyle="bold"
-        android:onClick="onClick"
-        android:clickable="true"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/imgCyanTurtle"

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Light_Green">
+
+    <View
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/vwLogsBar"
+        android:layout_width="4dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/Dark_Green"/>
+
+    <LinearLayout
+        android:id="@+id/llScreenHeading"
+        android:layout_width="389dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/vwLogsBar"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tvHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Help"
+            android:textColor="@color/Dark_Green"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgBlackTurtle"
+        android:layout_width="76dp"
+        android:layout_height="62dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="10dp"
+        android:rotation="-45"
+        app:srcCompat="@drawable/blackturtle" />
+
+    <View
+        android:layout_below="@id/llScreenHeading"
+        android:layout_marginTop="10dp"
+        android:id="@+id/vwBackingBoard"
+        android:layout_width="match_parent"
+        android:layout_height="680dp"
+        android:background="@drawable/backing_shape"
+        android:backgroundTint="@color/Dark_Green"/>
+
+
+    <ImageView
+        android:id="@+id/imgCyanTurtle"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:srcCompat="@drawable/cyanturtle"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="636dp"
+        android:rotation="25"
+        />
+
+    <ImageView
+        android:id="@+id/imgGreenTurtle"
+        android:layout_width="103dp"
+        android:layout_height="92dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="630dp"
+        android:rotation="-30"
+        app:srcCompat="@drawable/greenturtle" />
+
+    <LinearLayout
+        android:id="@+id/llHelp"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_below="@id/llScreenHeading"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvHeading"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/Muted_Green"
+            android:background="@drawable/rounded_rectangle"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tvHelpMessage"
+            android:layout_width="380dp"
+            android:layout_height="400dp"
+            android:textSize="20dp"
+            android:background="@drawable/rounded_rectangle"
+            android:text="Help Message"
+            android:layout_marginTop="6dp"
+            android:padding="8dp"/>
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/tvBackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textSize="20dp"
+            android:paddingLeft="78dp"
+            android:paddingRight="56dp"
+            android:paddingVertical="18dp"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Input_Grey"
+            />
+
+
+        <ImageView
+            android:id="@+id/imgBackIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-51dp"
+            android:layout_marginTop="-57.5dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/Muted_Green"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:paddingVertical="13dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="15dp"
+            app:srcCompat="@drawable/navigation_arrow"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvHelpName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp"
+        android:textSize="25dp"
+        android:text="TextView" />
+
+
+</RelativeLayout>

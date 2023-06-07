@@ -1,5 +1,6 @@
 package com.example.opsc_poe
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.example.opsc_poe.databinding.SignInFragmentBinding
+import kotlinx.coroutines.delay
 
 
 class sign_in_fragment : Fragment(R.layout.sign_in_fragment) {
@@ -39,6 +41,7 @@ class sign_in_fragment : Fragment(R.layout.sign_in_fragment) {
             {
                 val trySignIn  =  Temp_UserDataClass()
                 val trySubmitSignIn = trySignIn.ValidateUser(binding.etEmail.text.toString(),binding.etPassword.text.toString(), requireContext())
+
 
 
                 if (trySubmitSignIn)
