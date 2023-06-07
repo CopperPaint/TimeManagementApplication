@@ -60,22 +60,23 @@ class GlobalClass : Application()
             {
                 "LogsData" ->
                 {
-                    val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
-                    logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
-                    barNoData.binding.vwBar.layoutParams = logParam
 
-                    barNoData.binding.tvPrimaryText.text = "No Logs Found"
-                    barNoData.binding.tvSecondaryText.text = "Try a different set of filters"
+                        val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
+                        logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
+                        barNoData.binding.vwBar.layoutParams = logParam
 
-                    //val logParamFill: ViewGroup.MarginLayoutParams = barNoData.binding.tvBlockX.layoutParams as ViewGroup.MarginLayoutParams
-                    //logParam.setMargins(logParamFill.leftMargin, -60, logParamFill.rightMargin, logParamFill.bottomMargin)
-                    //barNoData.binding.tvBlockX.layoutParams = logParamFill
+                        barNoData.binding.tvPrimaryText.text = "No Logs Found"
+                        barNoData.binding.tvSecondaryText.text = "Try a different set of filters"
 
-                    barNoData.binding.tvBlockText.text = ""
-                    barNoData.binding.tvBlockX.text = "\uD83D\uDCC5"
+                        barNoData.binding.tvBlockText.text = ""
+                        barNoData.binding.tvBlockX.text = "\uD83D\uDCC5"
+                        barNoData.binding.tvBlockX.height = 210
+
+
                 }
                 "Logs" ->
                 {
+
                     val logParam: ViewGroup.MarginLayoutParams = barNoData.binding.vwBar.layoutParams as ViewGroup.MarginLayoutParams
                     logParam.setMargins(28, logParam.topMargin, logParam.rightMargin, logParam.bottomMargin)
 
@@ -84,6 +85,7 @@ class GlobalClass : Application()
 
                     barNoData.binding.tvBlockText.text = ""
                     barNoData.binding.tvBlockX.text = "\uD83D\uDCC5"
+                    barNoData.binding.tvBlockX.height = 210
                 }
                 "Log" ->
                 {

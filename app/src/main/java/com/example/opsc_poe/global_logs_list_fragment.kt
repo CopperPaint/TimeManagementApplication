@@ -7,6 +7,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings.Global
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,12 +81,32 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
             }
 
             binding.btnStartDate.setOnClickListener {
-                val calendar = Calendar.getInstance()
-                DatePickerDialog(requireContext(), StartdatePicker,
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)).show()
 
+                var userHasData = false
+                for (i in GlobalClass.logs.indices) {
+                    if (GlobalClass.logs[i].userID == GlobalClass.user.userID)
+                    {
+                        userHasData = true
+                        break
+                    }
+                }
+
+                if (userHasData == false)
+                {
+                    GlobalClass.InformUser(
+                        "No Logs Exist",
+                        "Go to an activity to add a log",
+                        requireContext()
+                    )
+                }
+                else
+                {
+                    val calendar = Calendar.getInstance()
+                    DatePickerDialog(requireContext(), StartdatePicker,
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show()
+                }
             }
 
             val EnddatePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -99,13 +120,36 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
             }
 
             binding.btnEndDate.setOnClickListener {
-                val calendar2 = Calendar.getInstance()
-                calendar2.set(2023, Calendar.JUNE, 1)
 
-                DatePickerDialog(requireContext(), EnddatePicker,
-                    calendar2.get(Calendar.YEAR),
-                    calendar2.get(Calendar.MONTH),
-                    calendar2.get(Calendar.DAY_OF_MONTH)).show()
+                var userHasData = false
+                for (i in GlobalClass.logs.indices) {
+                    if (GlobalClass.logs[i].userID == GlobalClass.user.userID)
+                    {
+                        userHasData = true
+                        break
+                    }
+                }
+
+                if (userHasData == false)
+                {
+                    GlobalClass.InformUser(
+                        "No Logs Exist",
+                        "Go to an activity to add a log",
+                        requireContext()
+                    )
+                }
+                else
+                {
+                    val calendar2 = Calendar.getInstance()
+                    calendar2.set(2023, Calendar.JUNE, 1)
+
+                    DatePickerDialog(requireContext(), EnddatePicker,
+                        calendar2.get(Calendar.YEAR),
+                        calendar2.get(Calendar.MONTH),
+                        calendar2.get(Calendar.DAY_OF_MONTH)).show()
+                }
+
+
             }
 
             //------------------------------------------------------
@@ -120,6 +164,7 @@ class global_logs_list_fragment : Fragment(R.layout.activity_global_logs_list_fr
             super.onDestroyView()
             _binding = null
         }
+
 
 
     private fun GenerateLogList()
