@@ -23,6 +23,7 @@ class Create_Goal : AppCompatActivity()
         window.statusBarColor = ContextCompat.getColor(this, R.color.Dark_Green)
 
         var currentActivityIndex = intent.extras?.getInt("CurrentActivity")!!
+        //var currentActivityIndex = intent.getIntExtra("CurrentActivity",0)
 
         //set activity
         var activity = GlobalClass.activities[currentActivityIndex]
@@ -97,7 +98,9 @@ class Create_Goal : AppCompatActivity()
             var intent = Intent(this, Help::class.java) //ViewActivity
 
             intent.putExtra("previousScreen", "Create_Goal")
-            intent.putExtra("currentActivityID", currentActivityIndex)
+            intent.putExtra("CurrentActivity", currentActivityIndex)
+            intent.putExtra("currentGoalIDIndex", currentGoalID)
+            //GlobalClass.InformUser("", currentActivityIndex.toString(), this)
             startActivity(intent)
         }
 
