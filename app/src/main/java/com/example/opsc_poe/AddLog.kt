@@ -17,6 +17,8 @@ import com.example.opsc_poe.GlobalClass.Companion.ReturnToHome
 import com.example.opsc_poe.databinding.ActivityAddLogBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.ZoneId
 import java.util.*
 import kotlin.math.round
@@ -161,12 +163,15 @@ class AddLog : AppCompatActivity()
                 else
                 {
                     //create new log item
+                    var startDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+
+
                     var log = Temp_LogDataClass(
                         logID = GlobalClass.logs.size + 1,
                         activityID = activity.activityID,
                         userID = GlobalClass.user.userID,
-                        startDate = calendar.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
-                        endDate = LocalDate.now(),
+                        startDate = startDate,
+                        endDate = addHoursToDate(startDate, inputTime),
                         hours = inputTime
                     )
                     GlobalClass.logs.add(log)
@@ -185,6 +190,14 @@ class AddLog : AppCompatActivity()
         }
     }
 
+
+    fun addHoursToDate(date: LocalDate, hours: Double): LocalDate
+    {
+        val time = LocalTime.MIDNIGHT
+        val dateTime = LocalDateTime.of(date, time)
+        val updatedDateTime = dateTime.plusHours(hours.toLong())
+        return updatedDateTime.toLocalDate()
+    }
 
     //Date Format Method
     //------------------------------------------------------------------------------------
