@@ -98,7 +98,3 @@ Camera functionality in emulator, due to android studio problem with camera acce
 Decision was made to hold the hours rather than the enddate for the logs/entries. 
 Android Native back buttons have been disabled, in favour of using our own back buttons.
 
-Rubric Usage
-------------
-
-We have decided to use the Rubric in Vc Learn, rubric has been included in the submission file
