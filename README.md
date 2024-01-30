@@ -8,7 +8,7 @@ Jo Saul ST10081839
 Jake Young ST10081936
 Benjamin Shirk ST10081854
 
--------------------------------------------------------------------------------------------
+
 
 App Info
 ===========================
@@ -19,7 +19,7 @@ API Version: 33
 
 Device Recommendation: Pixel 4 API 33
 
--------------------------------------------------------------------------------------------
+
 
 Database
 --------
@@ -42,7 +42,7 @@ email = "st10081936@vcconnect.edu.za"
 password = "Password@1"
 
 
--------------------------------------------------------------------------------------------
+
 
 About App
 ===========================
@@ -71,7 +71,7 @@ Also has an add Observation with the relevent data inputs from the user. User ca
 Settings - This page is where the user can use the relevent functionality, this page has a metric or imperial measurement option, default distance,
 change profile picture, change password, and a log out feature.
 
--------------------------------------------------------------------------------------------
+
 
 GitHub Link
 ===========================
